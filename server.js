@@ -1,6 +1,10 @@
 var http = require("http");
-http.createServer(function(request, response) {
+
+function serve(request, response){
 	response.writeHead(200, {"Content-Type": "text/plain"});
 	response.write("Hello World");
 	response.end();
-}).listen(8888);
+}
+
+var server = http.createServer(serve);
+server.listen(8888);
