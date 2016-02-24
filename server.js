@@ -9,7 +9,7 @@ var http = require('http'),
 // Make a simple fileserver for all of our static content.
 // Everything underneath <STATIC DIRECTORY NAME> will be served.
 var app = http.createServer(function(req, resp){
-	var filename = path.join(__dirname, "<STATIC DIRECTORY NAME>", url.parse(req.url).pathname);
+	var filename = path.join(__dirname, "files", url.parse(req.url).pathname);
 	(fs.exists || path.exists)(filename, function(exists){
 		if (exists) {
 			fs.readFile(filename, function(err, data){
