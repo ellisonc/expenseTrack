@@ -3,7 +3,8 @@
 var body = document.getElementById("body");
 
 var table = document.createElement("table");
-table.width = 100;
+table.width = 200;
+table.border = 5;
 
 var header = document.createElement("tr");
 var h1 = document.createElement("th");
@@ -41,11 +42,11 @@ for (var i = 0; i < 10; i ++){
     var c3 = document.createElement("td");
     var c4 = document.createElement("td");
     var c5 = document.createElement("td");
-    c1.innerHTML = expenses[i].day;
+    /*c1.innerHTML = expenses[i].day;
     c2.innerHTML = expenses[i].creator;
     c3.innerHTML = expenses[i].price;
     c4.innerHTML = expenses[i].creator;
-    c5.innerHTML = expenses[i].creator;
+    c5.innerHTML = expenses[i].creator;*/
     row.appendChild(c1);
     row.appendChild(c2);
     row.appendChild(c3);
