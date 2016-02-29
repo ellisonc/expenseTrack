@@ -1,5 +1,7 @@
 // JavaScript source code
 
+var addExpenseButton = document.getElementById("addExpense");
+addExpenseButton.onclick = addExpense();
 function addExpense() {
     updateTable();
 }
