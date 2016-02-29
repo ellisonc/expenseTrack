@@ -36,4 +36,4 @@ for (var i = 0; i < 10; i ++){
     row.appendChild(c5);
     table.appendChild(row);
 }
-test.appendChild(table);
+body.appendChild(table);
