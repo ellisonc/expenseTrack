@@ -16,10 +16,10 @@ h1.innerHTML = "Balance 2";
 header.appendChild(h1);
 header.appendChild(h2);
 header.appendChild(h3);
-header.appendChild(h5);
 header.appendChild(h4);
+header.appendChild(h5);
 table.appendChild(header);
-
+/**
 for (var i = 0; i < 10; i ++){
     var row = document.createElement("tr");
     var c1 = document.createElement("td");
@@ -33,4 +33,4 @@ for (var i = 0; i < 10; i ++){
     row.appendChild(c4);
     row.appendChild(c5);
     table.appendChild(row);
-}
+}**/
