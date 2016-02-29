@@ -1,5 +1,7 @@
 // JavaScript source code
 
+var test = document.getElementById("table");
+
 var table = document.createElement("table");
 
 var header = document.createElement("tr");
@@ -19,7 +21,7 @@ header.appendChild(h3);
 header.appendChild(h4);
 header.appendChild(h5);
 table.appendChild(header);
-/**
+
 for (var i = 0; i < 10; i ++){
     var row = document.createElement("tr");
     var c1 = document.createElement("td");
@@ -33,4 +35,5 @@ for (var i = 0; i < 10; i ++){
     row.appendChild(c4);
     row.appendChild(c5);
     table.appendChild(row);
-}**/
+}
+test.append(table);
