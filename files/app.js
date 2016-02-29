@@ -24,6 +24,7 @@ header.appendChild(h4);
 header.appendChild(h5);
 table.appendChild(header);
 
+/*
 var expenses = [];
 for (var i = 0; i < 10; i++) {
     var expense;
@@ -33,7 +34,7 @@ for (var i = 0; i < 10; i++) {
     expense.month = 10;
     expense.year = 2016;
     expenses.push(expense);
-}
+}*/
 
 for (var i = 0; i < 10; i ++){
     var row = document.createElement("tr");
