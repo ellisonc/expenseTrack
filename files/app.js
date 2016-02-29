@@ -27,7 +27,7 @@ table.appendChild(header);
 
 //var expenses = [];
 for (var i = 0; i < 10; i++) {
-    var expense;
+    var expense = {};
     expense.creator = "c";
     expense.price = 10;
     expense.day = 10;
