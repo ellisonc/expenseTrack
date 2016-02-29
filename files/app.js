@@ -4,7 +4,7 @@ var body = document.getElementById("body");
 
 var table = document.createElement("table");
 table.style.columnWidth = 100;
-table.border = 2;
+table.border = 1;
 
 var header = document.createElement("tr");
 var h1 = document.createElement("th");
@@ -25,7 +25,7 @@ header.appendChild(h5);
 table.appendChild(header);
 
 
-//var expenses = [];
+var expenses = [];
 for (var i = 0; i < 10; i++) {
     var expense = {};
     expense.creator = "c";
@@ -33,7 +33,7 @@ for (var i = 0; i < 10; i++) {
     expense.day = 10;
     expense.month = 10;
     expense.year = 2016;
-    //expenses.push(expense);
+    expenses.push(expense);
 }
 
 for (var i = 0; i < 10; i ++){
@@ -43,11 +43,11 @@ for (var i = 0; i < 10; i ++){
     var c3 = document.createElement("td");
     var c4 = document.createElement("td");
     var c5 = document.createElement("td");
-    /*c1.innerHTML = expenses[i].day;
+    c1.innerHTML = expenses[i].day;
     c2.innerHTML = expenses[i].creator;
     c3.innerHTML = expenses[i].price;
     c4.innerHTML = expenses[i].creator;
-    c5.innerHTML = expenses[i].creator;*/
+    c5.innerHTML = expenses[i].creator;
     row.appendChild(c1);
     row.appendChild(c2);
     row.appendChild(c3);
