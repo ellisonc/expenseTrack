@@ -3,18 +3,19 @@
 var body = document.getElementById("body");
 
 var table = document.createElement("table");
+table.width = 100;
 
 var header = document.createElement("tr");
 var h1 = document.createElement("th");
 h1.innerHTML = "Date";
 var h2 = document.createElement("th");
-h1.innerHTML = "Creator";
+h2.innerHTML = "Creator";
 var h3 = document.createElement("th");
-h1.innerHTML = "Price";
+h3.innerHTML = "Price";
 var h4 = document.createElement("th");
-h1.innerHTML = "Balance 1";
+h4.innerHTML = "Balance 1";
 var h5 = document.createElement("th");
-h1.innerHTML = "Balance 2";
+h5.innerHTML = "Balance 2";
 header.appendChild(h1);
 header.appendChild(h2);
 header.appendChild(h3);
