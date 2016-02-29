@@ -3,7 +3,7 @@
 var addExpenseButton = document.getElementById("addExpense");
 addExpenseButton.onclick = addExpense();
 function addExpense() {
-    updateTable();
+    //updateTable();
 }
 function updateTable() {
     var body = document.getElementById("body");
