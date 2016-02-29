@@ -23,6 +23,17 @@ header.appendChild(h4);
 header.appendChild(h5);
 table.appendChild(header);
 
+var expenses = [];
+for (var i = 0; i < 10; i++) {
+    var expense;
+    expense.creator = "c";
+    expense.price = 10;
+    expense.day = 10;
+    expense.month = 10;
+    expense.year = 2016;
+    expenses.push(expense);
+}
+
 for (var i = 0; i < 10; i ++){
     var row = document.createElement("tr");
     var c1 = document.createElement("td");
@@ -30,6 +41,11 @@ for (var i = 0; i < 10; i ++){
     var c3 = document.createElement("td");
     var c4 = document.createElement("td");
     var c5 = document.createElement("td");
+    c1.innerHTML = expenses[i].day;
+    c2.innerHTML = expenses[i].creator;
+    c3.innerHTML = expenses[i].price;
+    c4.innerHTML = expenses[i].creator;
+    c5.innerHTML = expenses[i].creator;
     row.appendChild(c1);
     row.appendChild(c2);
     row.appendChild(c3);
