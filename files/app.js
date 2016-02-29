@@ -25,7 +25,7 @@ header.appendChild(h5);
 table.appendChild(header);
 
 
-var expenses = [];
+//var expenses = [];
 for (var i = 0; i < 10; i++) {
     var expense;
     expense.creator = "c";
