@@ -1,6 +1,6 @@
 // JavaScript source code
 
-var test = document.getElementById("table");
+var body = document.getElementById("body");
 
 var table = document.createElement("table");
 
@@ -36,4 +36,4 @@ for (var i = 0; i < 10; i ++){
     row.appendChild(c5);
     table.appendChild(row);
 }
-test.append(table);
+test.appendChild(table);
