@@ -1,5 +1,5 @@
 var addExpenseButton = document.getElementById("addExpense");
-addExpenseButton.onclick = addExpense();
+addExpenseButton.onclick = addExpense;
 
 function addExpense() {
     window.alert("asdf");
