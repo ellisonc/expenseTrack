@@ -13,9 +13,13 @@
         </div>
 
         <div id="addItem">
-            <button id="addExpense" >Add Expense</button>
+            <button id="addExpense" onclick="addExpense()">Add Expense</button>
+            <br>
+            Name:<br><input type="text" id="username"/><br>
             Item:<br><input type="text" id="itemDescription" /><br>
             Cost:<br><input type="number" id="itemCost" />
+            <br>
+            <div id="errorMessage" ></div>
         </div>
     </div>
     <div id="body"></div>

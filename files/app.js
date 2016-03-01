@@ -1,9 +1,18 @@
 // JavaScript source code
-
-var addExpenseButton = document.getElementById("addExpense");
-addExpenseButton.onclick = addExpense();
+window.alert("test message");
 function addExpense() {
-    //updateTable();
+    var usernameField = document.getElementById("username")
+    var descriptionField = document.getElementById("itemDesciption");
+    var costField = document.getElementById("itemCost");
+    var errorMessageField = document.getElementById("errorMessage");
+    if (usernameField.innerHTML != "" && descriptionField.innerHTML != "" && costField.innerHTML != "") {
+        errorMessageField.innerHTML = "";
+        updateTable();
+    }
+    else {
+        
+        errorMessageField.innerHTML = "Input all fields";
+    }
 }
 function updateTable() {
     var body = document.getElementById("body");
