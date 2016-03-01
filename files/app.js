@@ -14,6 +14,7 @@ function getData() {
     expense.date = day + "/" + month;
     expense.description = "Test Expense";
     expenses.push(expense);
+    updateTable();
 }
 
 function removeChildren(input){
