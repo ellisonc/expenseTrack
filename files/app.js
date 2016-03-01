@@ -73,8 +73,8 @@ function updateTable() {
     h4.innerHTML = "Price";
     var h5 = document.createElement("th");
     h5.innerHTML = "Balance 1";
-    var h5 = document.createElement("th");
-    h5.innerHTML = "Balance 2";
+    var h6 = document.createElement("th");
+    h6.innerHTML = "Balance 2";
     h1.style.width = '200px';
     h2.style.width = '200px';
     h3.style.width = '200px';
