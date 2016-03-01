@@ -1,6 +1,7 @@
 // JavaScript source code
 window.alert("testing");
 var addButton = document.getElementById("addExpense");
+addButton.onclick = updateTable();
 
 window.alert("test");
 function addExpense() {
