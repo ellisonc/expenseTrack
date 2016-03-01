@@ -101,7 +101,6 @@ function updateTable() {
         else {
             due -= expenses[i].cost;
         }
-        alert(due);
         if (due < 0) {
             expenses[i].user1Due = -1*(due / 2);
             expenses[i].user2Due = 0;
