@@ -1,6 +1,7 @@
 // JavaScript source code
 window.alert("startasdfasdf");
-addButton.onclick = addExpense();
+var addExpenseButton = document.getElementById("addExpense");
+addExpenseButton.onclick = addExpense();
 window.alert("asdfasdf");
 function addExpense() {
     window.alert("start");
