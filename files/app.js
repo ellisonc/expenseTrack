@@ -5,6 +5,7 @@ var body = document.getElementById("body");
 var expenses = [];
 getData();
 function getData() {
+    alert("start get date");
     expense = {};
     expense.creator = "Kevin Hays";
     expense.cost = 1000;
@@ -14,6 +15,7 @@ function getData() {
     expense.date = day + "/" + month;
     expense.description = "Test Expense";
     expenses.push(expense);
+    alert("end get date");
     updateTable();
 }
 
@@ -54,6 +56,7 @@ function addExpense() {
 
 
 function updateTable() {
+    alert("update table start");
     removeChildren(body);
 
     var table = document.createElement("table");
@@ -86,7 +89,7 @@ function updateTable() {
     header.appendChild(h6);
     table.appendChild(header);
 
-
+    alert("update table loop");
 
 
     for (var i = 0; i < 10; i++) {
@@ -111,4 +114,5 @@ function updateTable() {
         table.appendChild(row);
     }
     body.appendChild(table);
+    alert("update table end");
 }
