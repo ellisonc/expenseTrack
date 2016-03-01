@@ -7,13 +7,13 @@ function addExpense() {
     var cost = document.getElementById("cost");
     var errorMessage = document.getElementById("errorMessage");
     if (userID.innerHTML != "" && description.innerHTML != "" && cost.innerHTML != "") {
-        errorMessageField.innerHTML = "";
+        errorMessage.innerHTML = "";
         window.alert("if statment");
         updateTable();
     }
     else {
         window.alert("else statement");
-        errorMessageField.innerHTML = "Input all fields";
+        errorMessage.innerHTML = "Input all fields";
     }
 }
 function updateTable() {
