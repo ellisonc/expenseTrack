@@ -1,5 +1,7 @@
 // JavaScript source code
 
+document.getElementById("addExpense").onclick = addExpense();
+
 function addExpense() {
     var usernameField = document.getElementById("username")
     var descriptionField = document.getElementById("itemDesciption");
