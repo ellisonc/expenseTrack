@@ -4,11 +4,11 @@ window.alert("testing");
 addButton.onclick = addExpense();
 
 function addExpense() {
-    var usernameField = document.getElementById("username")
-    var descriptionField = document.getElementById("itemDesciption");
-    var costField = document.getElementById("itemCost");
-    var errorMessageField = document.getElementById("errorMessage");
-    if (usernameField.innerHTML != "" && descriptionField.innerHTML != "" && costField.innerHTML != "") {
+    var userID = document.getElementById("userID")
+    var description = document.getElementById("description");
+    var cost = document.getElementById("cost");
+    var errorMessage = document.getElementById("errorMessage");
+    if (userID.innerHTML != "" && description.innerHTML != "" && cost.innerHTML != "") {
         errorMessageField.innerHTML = "";
         window.alert("if statment");
         updateTable();
