@@ -1,7 +1,7 @@
 // JavaScript source code
 window.alert("testing");
 var addButton = document.getElementById("addExpense");
-addButton.onclick = addExpense();
+
 window.alert("test");
 function addExpense() {
     var usernameField = document.getElementById("username")
