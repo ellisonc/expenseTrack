@@ -14,6 +14,7 @@ function getData() {
     var month = today.getMonth() + 1;
     expense.date = month + "/" + day;
     expense.description = "Test Expense";
+    expense.creatorID = 2;
     expenses.push(expense);
 
     updateTable();
@@ -41,6 +42,7 @@ function addExpense() {
         else {
             expense.creator = "Kevin Hays";
         }
+        expense.creatorID = userID.value;
         expense.cost = cost.value;
         var today = new Date();
         var day = today.getDate();
@@ -72,11 +74,11 @@ function updateTable() {
     var h3 = document.createElement("th");
     h3.innerHTML = "Description";
     var h4 = document.createElement("th");
-    h4.innerHTML = "Price";
+    h4.innerHTML = "Cost";
     var h5 = document.createElement("th");
-    h5.innerHTML = "Andrew Ellison Balance";
+    h5.innerHTML = "Andrew Ellison Due";
     var h6 = document.createElement("th");
-    h6.innerHTML = "Kevin Hays Balance";
+    h6.innerHTML = "Kevin Hays Due";
     h1.style.width = '200px';
     h2.style.width = '200px';
     h3.style.width = '200px';
@@ -91,8 +93,29 @@ function updateTable() {
     header.appendChild(h6);
     table.appendChild(header);
 
-
-
+    var balances = [];
+    var due = 0;
+    for (var i = 0; i < expenses.length; i++) {
+        if (expenses[i].creatorID == 1) {
+            due += expenses[i].price;
+        }
+        else {
+            due -= expenses[i].price;
+        }
+        balance = {};
+        if (due < 0) {
+            balance.user1Due = -1*(due / 2);
+            balance.user2Due = 0;
+        }
+        else if (due > 0) {
+            balance.user2Due = due / 2;
+            balance.user1Due = 0;
+        }
+        else {
+            balance.user1Due = 0;
+            balance.user2Due = 0;
+        }
+    }
 
     for (var i = 0; i < expenses.length; i++) {
         var row = document.createElement("tr");
@@ -106,8 +129,8 @@ function updateTable() {
         c2.innerHTML = expenses[i].creator;
         c3.innerHTML = expenses[i].description;
         c4.innerHTML = expenses[i].cost;
-        c5.innerHTML = expenses[i].creator;
-        c6.innerHTML = expenses[i].creator;
+        c5.innerHTML = balances[i].user1Due;
+        c6.innerHTML = balances[i].user2Due;
         row.appendChild(c1);
         row.appendChild(c2);
         row.appendChild(c3);
