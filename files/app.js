@@ -13,7 +13,7 @@ function getData() {
     var month = today.getMonth() + 1;
     expense.date = day + "/" + month;
     expense.description = "Test Expense";
-    expense.push(expense);
+    expenses.push(expense);
 }
 
 function removeChildren(input){
