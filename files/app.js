@@ -1,5 +1,5 @@
 // JavaScript source code
-window.alert("test message");
+
 function addExpense() {
     var usernameField = document.getElementById("username")
     var descriptionField = document.getElementById("itemDesciption");
