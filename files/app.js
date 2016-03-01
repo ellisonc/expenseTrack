@@ -6,7 +6,7 @@ function addExpense() {
     var description = document.getElementById("description");
     var cost = document.getElementById("cost");
     var errorMessage = document.getElementById("errorMessage");
-    if (userID.value != "" && description.value != "" && cost.value != "") {
+    if (userID.value != "" && description.value != "" && cost.value != "" && cost.value > 0 && cost.value < 3) {
         errorMessage.innerHTML = "";
         updateTable();
     }
