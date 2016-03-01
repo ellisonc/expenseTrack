@@ -2,6 +2,7 @@ var addExpenseButton = document.getElementById("addExpense");
 addExpenseButton.onclick = addExpense();
 
 function addExpense() {
+    window.alert("asdf");
     var userID = document.getElementById("userID")
     var description = document.getElementById("description");
     var cost = document.getElementById("cost");
