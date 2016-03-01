@@ -1,16 +1,11 @@
-// JavaScript source code
-window.alert("startasdfasdf");
 var addExpenseButton = document.getElementById("addExpense");
 addExpenseButton.onclick = addExpense();
-window.alert("asdfasdf");
+
 function addExpense() {
-    window.alert("start");
     var userID = document.getElementById("userID")
     var description = document.getElementById("description");
-    window.alert("start1");
     var cost = document.getElementById("cost");
     var errorMessage = document.getElementById("errorMessage");
-    window.alert("start2");
     if (userID.innerHTML != "" && description.innerHTML != "" && cost.innerHTML != "") {
         errorMessageField.innerHTML = "";
         window.alert("if statment");
