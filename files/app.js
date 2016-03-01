@@ -105,7 +105,7 @@ function updateTable() {
         c1.innerHTML = expenses[i].date;
         c2.innerHTML = expenses[i].creator;
         c3.innerHTML = expenses[i].description;
-        c4.innerHTML = expenses[i].price.toString();
+        c4.innerHTML = expenses[i].price;
         c5.innerHTML = expenses[i].creator;
         c6.innerHTML = expenses[i].creator;
         row.appendChild(c1);
