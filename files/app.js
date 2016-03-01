@@ -12,7 +12,7 @@ function getData() {
     var today = new Date();
     var day = today.getDate();
     var month = today.getMonth() + 1;
-    expense.date = day + "/" + month;
+    expense.date = month + "/" + day;
     expense.description = "Test Expense";
     expenses.push(expense);
 
@@ -45,7 +45,7 @@ function addExpense() {
         var today = new Date();
         var day = today.getDate();
         var month = today.getMonth() + 1;
-        expense.date = day + "/" + month;
+        expense.date = month + "/" + day;
         expense.description = "fixme";
         expenses.push(expense);
         updateTable();
@@ -105,7 +105,7 @@ function updateTable() {
         c1.innerHTML = expenses[i].date;
         c2.innerHTML = expenses[i].creator;
         c3.innerHTML = expenses[i].description;
-        c4.innerHTML = expenses[i].price;
+        c4.innerHTML = expenses[i].price.toString();
         c5.innerHTML = expenses[i].creator;
         c6.innerHTML = expenses[i].creator;
         row.appendChild(c1);
