@@ -2,19 +2,16 @@ var addExpenseButton = document.getElementById("addExpense");
 addExpenseButton.onclick = addExpense;
 
 function addExpense() {
-    window.alert("asdf");
     var userID = document.getElementById("userID")
     var description = document.getElementById("description");
     var cost = document.getElementById("cost");
     var errorMessage = document.getElementById("errorMessage");
     if (userID.innerHTML != "" && description.innerHTML != "" && cost.innerHTML != "") {
         errorMessage.innerHTML = "";
-        window.alert("if statment");
         updateTable();
     }
     else {
-        window.alert("else statement");
-        errorMessage.innerHTML = "Input all fields";
+        errorMessage.innerHTML = userID.innerHTML + " " + description.innerHTML + " " + cost.innerHTML;
     }
 }
 function updateTable() {
