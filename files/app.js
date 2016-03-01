@@ -115,6 +115,7 @@ function updateTable() {
             balance.user1Due = 0;
             balance.user2Due = 0;
         }
+        balances.push(balance);
     }
 
     for (var i = 0; i < expenses.length; i++) {
