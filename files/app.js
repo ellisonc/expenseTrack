@@ -1,9 +1,8 @@
 // JavaScript source code
 window.alert("testing");
-var addButton = document.getElementById("addExpense");
-addButton.onclick = updateTable();
 
-window.alert("test");
+addButton.onclick = updateTable;
+
 function addExpense() {
     var usernameField = document.getElementById("username")
     var descriptionField = document.getElementById("itemDesciption");
