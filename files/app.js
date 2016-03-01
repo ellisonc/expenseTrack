@@ -6,12 +6,12 @@ function addExpense() {
     var description = document.getElementById("description");
     var cost = document.getElementById("cost");
     var errorMessage = document.getElementById("errorMessage");
-    if (userID.innerHTML != "" && description.innerHTML != "" && cost.innerHTML != "") {
+    if (userID.value != "" && description.value != "" && cost.value != "") {
         errorMessage.innerHTML = "";
         updateTable();
     }
     else {
-        errorMessage.innerHTML = userID.innerHTML + " " + description.innerHTML + " " + cost.innerHTML;
+        errorMessage.innerHTML = "values" + userID.value + " " + description.value + " " + cost.value;
     }
 }
 function updateTable() {
