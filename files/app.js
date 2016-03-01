@@ -1,7 +1,7 @@
 // JavaScript source code
-
+window.alert("startasdfasdf");
 addButton.onclick = addExpense();
-
+window.alert("asdfasdf");
 function addExpense() {
     window.alert("start");
     var userID = document.getElementById("userID")
