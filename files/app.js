@@ -96,10 +96,10 @@ function updateTable() {
     var due = 0;
     for (var i = 0; i < expenses.length; i++) {
         if (expenses[i].creatorID == 1) {
-            due += expenses[i].price;
+            due += expenses[i].cost;
         }
         else {
-            due -= expenses[i].price;
+            due -= expenses[i].cost;
         }
         alert(due);
         if (due < 0) {
