@@ -48,7 +48,7 @@ function addExpense() {
         var day = today.getDate();
         var month = today.getMonth() + 1;
         expense.date = month + "/" + day;
-        expense.description = "fixme";
+        expense.description = description.value;
         expenses.push(expense);
         updateTable();
     }
@@ -96,10 +96,10 @@ function updateTable() {
     var due = 0;
     for (var i = 0; i < expenses.length; i++) {
         if (expenses[i].creatorID == 1) {
-            due += expenses[i].cost;
+            due += parseInt(expenses[i].cost);
         }
         else {
-            due -= expenses[i].cost;
+            due -= parseInt(expenses[i].cost);
         }
         if (due < 0) {
             expenses[i].user1Due = -1*(due / 2);
