@@ -6,7 +6,7 @@ function addExpense() {
     var description = document.getElementById("description");
     var cost = document.getElementById("cost");
     var errorMessage = document.getElementById("errorMessage");
-    if (userID.value != "" && description.value != "" && cost.value != "" && cost.value > 0 && cost.value < 3) {
+    if (userID.value != "" && description.value != "" && cost.value != "" && userID.value > 0 && userID.value < 3) {
         errorMessage.innerHTML = "";
         updateTable();
     }
@@ -32,6 +32,11 @@ function updateTable() {
     h4.innerHTML = "Balance 1";
     var h5 = document.createElement("th");
     h5.innerHTML = "Balance 2";
+    h1.style.width = '200px';
+    h2.style.width = '200px';
+    h3.style.width = '200px';
+    h4.style.width = '200px';
+    h5.style.width = '200px';
     header.appendChild(h1);
     header.appendChild(h2);
     header.appendChild(h3);
