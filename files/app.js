@@ -93,7 +93,6 @@ function updateTable() {
     header.appendChild(h6);
     table.appendChild(header);
 
-    var balances = [];
     var due = 0;
     for (var i = 0; i < expenses.length; i++) {
         if (expenses[i].creatorID == 1) {
@@ -102,20 +101,18 @@ function updateTable() {
         else {
             due -= expenses[i].price;
         }
-        balance = {};
         if (due < 0) {
-            balance.user1Due = -1*(due / 2);
-            balance.user2Due = 0;
+            expenses[i].user1Due = -1*(due / 2);
+            expenses[i].user2Due = 0;
         }
         else if (due > 0) {
-            balance.user2Due = due / 2;
-            balance.user1Due = 0;
+            expenses[i].user2Due = due / 2;
+            expenses[i].user1Due = 0;
         }
         else {
-            balance.user1Due = 0;
-            balance.user2Due = 0;
+            expenses[i].user1Due = 0;
+            expenses[i].user2Due = 0;
         }
-        balances.push(balance);
     }
 
     for (var i = 0; i < expenses.length; i++) {
@@ -130,8 +127,8 @@ function updateTable() {
         c2.innerHTML = expenses[i].creator;
         c3.innerHTML = expenses[i].description;
         c4.innerHTML = expenses[i].cost;
-        c5.innerHTML = balances[i].user1Due;
-        c6.innerHTML = balances[i].user2Due;
+        c5.innerHTML = expenses[i].user1Due;
+        c6.innerHTML = expenses[i].user2Due;
         row.appendChild(c1);
         row.appendChild(c2);
         row.appendChild(c3);
