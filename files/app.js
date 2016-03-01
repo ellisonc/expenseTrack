@@ -2,7 +2,7 @@
 
 var addButton = document.getElementById("addExpense");
 addButton.onclick = addExpense();
-
+window.alert("test");
 function addExpense() {
     var usernameField = document.getElementById("username")
     var descriptionField = document.getElementById("itemDesciption");
