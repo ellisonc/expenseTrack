@@ -5,7 +5,7 @@ var body = document.getElementById("body");
 var expenses = [];
 getData();
 function getData() {
-    alert("start get date");
+
     expense = {};
     expense.creator = "Kevin Hays";
     expense.cost = 1000;
@@ -15,16 +15,16 @@ function getData() {
     expense.date = day + "/" + month;
     expense.description = "Test Expense";
     expenses.push(expense);
-    alert("end get date");
+
     updateTable();
 }
 
 function removeChildren(input) {
-    alert("remove children start");
+
     while (input.firstChild) {
         input.removeChild(input.firstChild);
     }
-    alert("remove children end");
+
 }
 
 function addExpense() {
@@ -58,9 +58,9 @@ function addExpense() {
 
 
 function updateTable() {
-    alert("update table start");
+
     removeChildren(body);
-    alert("update table start2");
+
     var table = document.createElement("table");
     table.border = 1;
 
@@ -74,9 +74,9 @@ function updateTable() {
     var h4 = document.createElement("th");
     h4.innerHTML = "Price";
     var h5 = document.createElement("th");
-    h5.innerHTML = "Balance 1";
+    h5.innerHTML = "Andrew Ellison Balance";
     var h6 = document.createElement("th");
-    h6.innerHTML = "Balance 2";
+    h6.innerHTML = "Kevin Hays Balance";
     h1.style.width = '200px';
     h2.style.width = '200px';
     h3.style.width = '200px';
@@ -91,7 +91,7 @@ function updateTable() {
     header.appendChild(h6);
     table.appendChild(header);
 
-    alert("update table loop");
+
 
 
     for (var i = 0; i < expenses.length; i++) {
@@ -117,5 +117,5 @@ function updateTable() {
         table.appendChild(row);
     }
     body.appendChild(table);
-    alert("update table end");
+    
 }
