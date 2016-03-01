@@ -94,7 +94,7 @@ function updateTable() {
     alert("update table loop");
 
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < expenses.length; i++) {
         var row = document.createElement("tr");
         var c1 = document.createElement("td");
         var c2 = document.createElement("td");
