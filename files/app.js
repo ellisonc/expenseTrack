@@ -7,10 +7,11 @@ function addExpense() {
     var errorMessageField = document.getElementById("errorMessage");
     if (usernameField.innerHTML != "" && descriptionField.innerHTML != "" && costField.innerHTML != "") {
         errorMessageField.innerHTML = "";
+        window.alert("if statment");
         updateTable();
     }
     else {
-        
+        window.alert("else statement");
         errorMessageField.innerHTML = "Input all fields";
     }
 }
