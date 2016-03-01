@@ -19,10 +19,12 @@ function getData() {
     updateTable();
 }
 
-function removeChildren(input){
+function removeChildren(input) {
+    alert("remove children start");
     while (input.firstChild) {
         input.removeChild(input.firstChild);
     }
+    alert("remove children end");
 }
 
 function addExpense() {
@@ -58,7 +60,7 @@ function addExpense() {
 function updateTable() {
     alert("update table start");
     removeChildren(body);
-
+    alert("update table start2");
     var table = document.createElement("table");
     table.border = 1;
 
