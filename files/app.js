@@ -107,12 +107,13 @@ function updateTable() {
         c3.innerHTML = expenses[i].description;
         c4.innerHTML = expenses[i].price;
         c5.innerHTML = expenses[i].creator;
-        c5.innerHTML = expenses[i].creator;
+        c6.innerHTML = expenses[i].creator;
         row.appendChild(c1);
         row.appendChild(c2);
         row.appendChild(c3);
         row.appendChild(c4);
         row.appendChild(c5);
+        row.appendChild(c6);
         table.appendChild(row);
     }
     body.appendChild(table);
