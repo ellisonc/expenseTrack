@@ -23,7 +23,7 @@ function getData() {
     expense.creatorID = 2;
     expenses.push(expense);
     updateTable();
-}ls
+}
 
 function hideAddExpense() {
     addItemDiv.hidden = true;
