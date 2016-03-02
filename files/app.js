@@ -82,6 +82,7 @@ function addExpense() {
         if (date.value != "") {
             alert(date.value);
             var today = new Date(date.value);
+            alert(today.toString());
         }
         else {
             var today = new Date();
@@ -180,7 +181,7 @@ function updateTable() {
         var c4 = document.createElement("td");
         var c5 = document.createElement("td");
         var c6 = document.createElement("td");
-        c1.innerHTML = (expenses[i].date.getMonth()+1) + "/" + expenses[i].date.getUTCDate() + "/" + expenses[i].date.getFullYear();
+        c1.innerHTML = (expenses[i].date.getMonth()+1) + "/" + expenses[i].date.getDate() + "/" + expenses[i].date.getFullYear();
         c2.innerHTML = expenses[i].creator;
         c3.innerHTML = expenses[i].description;
         c4.innerHTML = expenses[i].cost;
