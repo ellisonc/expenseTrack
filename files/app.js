@@ -204,5 +204,6 @@ function updateTable() {
 
 function deleteExpense(e) {
     var target = e.target;
-    alert("here" + target.index);
+    expenses.splice(e.index, 1);
+    updateTable();
 }
