@@ -62,6 +62,8 @@ function login() {
     if (usernames.indexOf(inputUsername) != -1) {
         userID = usernames.indexOf(inputUsername);
         switchToMainScreen();
+
+
     }
     else {
         var loginError = document.getElementById("loginErrorMessage");
@@ -77,6 +79,7 @@ function createNewUser() {
         userID = usernames.length;
         usernames.push(inputUsernameField.value);
         switchToMainScreen();
+
     }
     else {
         var loginError = document.getElementById("loginErrorMessage");
@@ -117,8 +120,7 @@ function hideAddItem() {
     addItemDiv.hidden = true;
     createExpenseButton.hidden = false;
     createPaymentButton.hidden = false;
-    var errorMessage = document.getElementById("errorMessage");
-    errorMessage.innerHTML = "";
+
 }
 
 function showAddExpense() {
