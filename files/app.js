@@ -1,11 +1,15 @@
 var addExpenseButton = document.getElementById("addExpense");
 addExpenseButton.onclick = addExpense;
+
 var body = document.getElementById("body");
+var addItemDiv = document.getElementById("addItem");
+var createExpenseButton = document.getElementById("createNewExpense");
+createExpenseButton.onclick = showAddItem;
+addItemDiv.hidden = true;
 
 var expenses = [];
 getData();
 function getData() {
-
     expense = {};
     expense.creator = "Kevin Hays";
     expense.cost = 1000;
@@ -16,16 +20,18 @@ function getData() {
     expense.description = "Test Expense";
     expense.creatorID = 2;
     expenses.push(expense);
-
     updateTable();
+}ls
+
+function showAddItem(){
+    addItemDiv.hidden = false;
+    createExpenseButton.hidden = true;
 }
 
 function removeChildren(input) {
-
     while (input.firstChild) {
         input.removeChild(input.firstChild);
     }
-
 }
 
 function addExpense() {
@@ -50,6 +56,8 @@ function addExpense() {
         expense.date = month + "/" + day;
         expense.description = description.value;
         expenses.push(expense);
+        addItemDiv.hidden = true;
+        createExpenseButton.hidden = false;
         updateTable();
     }
     else {
