@@ -189,8 +189,8 @@ function updateTable() {
 
         var c7 = document.createElement("td");
         var deleteButton = document.createElement("button");
-        deleteButton.index = i;
-        deleteButton.onclick = deleteExpense;
+       // deleteButton.index = i;
+        //deleteButton.onclick = deleteExpense;
         deleteButton.innerHTML = "X";
         row.appendChild(c7);
 
