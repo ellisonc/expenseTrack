@@ -25,6 +25,7 @@ function signIn() {
 }
 
 function getData() {
+    alert("getting data");
     expense = {};
     expense.creator = "Kevin Hays";
     expense.cost = 1000;
