@@ -80,6 +80,7 @@ function addExpense() {
         expense.creatorID = userID.value;
         expense.cost = cost.value;
         if (date.value != "") {
+            alert(date.value);
             var today = new Date(date.value);
         }
         else {
@@ -180,8 +181,7 @@ function updateTable() {
         var c6 = document.createElement("td");
         c1.innerHTML = (expenses[i].date.getMonth()+1) + "/" + expenses[i].date.getDay() + "/" + expenses[i].date.getFullYear();
         c2.innerHTML = expenses[i].creator;
-        //c3.innerHTML = expenses[i].description;
-        c3.innerHTML = (expenses[i].date.getUTCMonth()) + "/" + expenses[i].date.getUTCDay() + "/" + expenses[i].date.getUTCFullYear();
+        c3.innerHTML = expenses[i].description;
         c4.innerHTML = expenses[i].cost;
         c5.innerHTML = expenses[i].user1Due;
         c6.innerHTML = expenses[i].user2Due;
