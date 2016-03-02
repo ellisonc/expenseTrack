@@ -1,4 +1,13 @@
 #header {
     text-align: center;
-    background-color: lightblue;
+    background-color: dimgray;
+    background-
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:x-large;
+}
+
+button{
+    text-align:center;
+    border:none;
+    background-color: cornflowerblue;
 }
