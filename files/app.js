@@ -82,14 +82,13 @@ function addExpense() {
         expense.creatorID = userID.value;
         expense.cost = cost.value;
         if (date.value != "") {
-            var day = date.value.getDate();
-            var month = date.value.getMonth() + 1;
+            var today = new Date(date.value);
         }
         else {
             var today = new Date();
-            var day = today.getDate();
-            var month = today.getMonth() + 1;
         }
+        var day = today.getDate();
+        var month = today.getMonth() + 1;
         expense.date = month + "/" + day;
         expense.description = description.value;
         expenses.push(expense);
