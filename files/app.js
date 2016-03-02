@@ -6,8 +6,9 @@ var addItemDiv = document.getElementById("addItem");
 var createExpenseButton = document.getElementById("createNewExpense");
 createExpenseButton.onclick = showAddExpense;
 addItemDiv.hidden = true;
+
 var cancelExpenseButton = document.getElementById("cancelExpense");
-cancelExpenseButton.onclick = hideAddExpense;
+//cancelExpenseButton.onclick = hideAddExpense;
 
 var expenses = [];
 getData();
