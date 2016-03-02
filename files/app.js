@@ -82,8 +82,6 @@ function addExpense() {
         if (date.value != "") {
             alert(date.value);
             var today = new Date(date.value);
-            alert(today.toUTCString);
-            al
         }
         else {
             var today = new Date();
