@@ -4,8 +4,10 @@ addExpenseButton.onclick = addExpense;
 var body = document.getElementById("body");
 var addItemDiv = document.getElementById("addItem");
 var createExpenseButton = document.getElementById("createNewExpense");
-createExpenseButton.onclick = showAddItem;
+createExpenseButton.onclick = showAddExpense;
 addItemDiv.hidden = true;
+var cancelExpenseButton = document.getElementById("cancelExpense");
+cancelExpenseButton.onclick = hideAddExpense;
 
 var expenses = [];
 getData();
@@ -23,7 +25,12 @@ function getData() {
     updateTable();
 }ls
 
-function showAddItem(){
+function hideAddExpense() {
+    addItemDiv.hidden = true;
+    createExpenseButton.hidden = false;
+}
+
+function showAddExpense(){
     addItemDiv.hidden = false;
     createExpenseButton.hidden = true;
 }
@@ -56,12 +63,11 @@ function addExpense() {
         expense.date = month + "/" + day;
         expense.description = description.value;
         expenses.push(expense);
-        addItemDiv.hidden = true;
-        createExpenseButton.hidden = false;
+        hideAddExpense();
         updateTable();
     }
     else {
-        errorMessage.innerHTML = "values" + userID.value + " " + description.value + " " + cost.value;
+        errorMessage.innerHTML = "Input valid values";
     }
 }
 
