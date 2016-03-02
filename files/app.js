@@ -181,7 +181,7 @@ function updateTable() {
         c1.innerHTML = (expenses[i].date.getMonth()+1) + "/" + expenses[i].date.getDay() + "/" + expenses[i].date.getFullYear();
         c2.innerHTML = expenses[i].creator;
         //c3.innerHTML = expenses[i].description;
-        c3.innerHTML = expenses[i].date.getUTCDate;
+        c3.innerHTML = expenses[i].date.getUTCDate();
         c4.innerHTML = expenses[i].cost;
         c5.innerHTML = expenses[i].user1Due;
         c6.innerHTML = expenses[i].user2Due;
