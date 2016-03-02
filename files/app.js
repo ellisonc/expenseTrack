@@ -83,11 +83,12 @@ function addExpense() {
         expense.cost = cost.value;
         if (date.value != "") {
             var today = new Date(date.value);
+            var day = today.getDate()+1;
         }
         else {
             var today = new Date();
+            var day = today.getDate();
         }
-        var day = today.getDate();
         var month = today.getMonth() + 1;
         expense.date = month + "/" + day;
         expense.description = description.value;
@@ -125,18 +126,22 @@ function updateTable() {
     h5.innerHTML = "Andrew Ellison Due";
     var h6 = document.createElement("th");
     h6.innerHTML = "Kevin Hays Due";
+    var h7 = document.createElement("th");
+    h7.innerHTML = "Delete";
     h1.style.width = '200px';
     h2.style.width = '200px';
     h3.style.width = '200px';
     h4.style.width = '200px';
     h5.style.width = '200px';
     h6.style.width = '200px';
+    h7.style.width = '200px';
     header.appendChild(h1);
     header.appendChild(h2);
     header.appendChild(h3);
     header.appendChild(h4);
     header.appendChild(h5);
     header.appendChild(h6);
+    header.appendChild(h7);
     table.appendChild(header);
 
     var due = 0;
@@ -181,8 +186,20 @@ function updateTable() {
         row.appendChild(c4);
         row.appendChild(c5);
         row.appendChild(c6);
+
+        var c7 = document.createElement("td");
+        var deleteButton = document.createElement("button");
+        deleteButton.index = i;
+        deleteButton.onclick = deleteExpense;
+        deleteButton.innerHTML = "X";
+        row.appendChild(c7);
+
         table.appendChild(row);
     }
     body.appendChild(table);
     
+}
+
+function deleteExpense() {
+    alert("here");
 }
