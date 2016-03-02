@@ -1,30 +1,83 @@
 var addExpenseButton = document.getElementById("addExpense");
 addExpenseButton.onclick = addExpense;
 
+var createPaymentButton = document.getElementById("createPayment");
+createPaymentButton.onclick = showPayment;
+
 var body = document.getElementById("tableHolder");
 var addItemDiv = document.getElementById("addItem");
 var createExpenseButton = document.getElementById("createNewExpense");
 createExpenseButton.onclick = showAddExpense;
 addItemDiv.hidden = true;
 
-var cancelExpenseButton = document.getElementById("cancelExpense");
+var cancelExpenseButton = document.getElementById("cancelItem");
 cancelExpenseButton.onclick = hideAddExpense;
 
 var mainPage = document.getElementById("mainPage");
 var loginScreen = document.getElementById("loginScreen");
 //Setup page here
 mainPage.hidden = true;
-var signInButton = document.getElementById("signIn");
-signInButton.onclick = signIn;
+var loginButton = document.getElementById("login");
+loginButton.onclick = login;
+
+var newUserButton = document.getElementById("newUser");
+newUserButton.onclick = createNewUser;
 
 var logoutButton = document.getElementById("logout");
 logoutButton.onclick = logout;
 
+var date = document.getElementById("date");
 var expenses = [];
-function signIn() {
+var userID;
+var usernames = [];
+
+var loginNameField = document.getElementById("loginName");
+var inputUsernameField = document.getElementById("username");
+
+function getUsernames() {
+    usernames = [];
+    usernames.push("andrew");
+    usernames.push("kevin");
+}
+function login() {
+    getUsernames();
+
+    var inputUsername = inputUsernameField.value;
+    inputUsername = inputUsername.toLowerCase();
+
+    if (usernames.indexOf(inputUsername) != -1) {
+        userID = usernames.indexOf(inputUsername);
+        switchToMainScreen();
+
+
+    }
+    else {
+        var loginError = document.getElementById("loginErrorMessage");
+        loginError.innerHTML = "Enter a valid username";
+    }
+}
+
+function createNewUser() {
+    var inputUsernameField = document.getElementById("username");
+    if (inputUsernameField.value != "") {
+        userID = usernames.length;
+        usernames.push(inputUsernameField.value);
+        switchToMainScreen();
+
+    }
+    else {
+        var loginError = document.getElementById("loginErrorMessage");
+        loginError.innerHTML = "Enter a valid username";
+    }
+}
+
+function switchToMainScreen() {
     mainPage.hidden = false;
     loginScreen.hidden = true;
+    inputUsernameField.innerHTML = "";
+    loginNameField.innerHTML = " " + usernames[userID];
     getData();
+    updateTable();
 }
 
 function logout() {
@@ -34,16 +87,16 @@ function logout() {
 }
 
 function getData() {
-   // alert("getting data");
+    //alert("getting data" + expenses.length);
     expense = {};
-    expense.creator = "Kevin Hays";
+    expense.creator = "kevin";
     expense.cost = 1000;
     var today = new Date();
     expense.date = today;
     expense.description = "Test Expense";
-    expense.creatorID = 2;
+    expense.creatorID = 1;
     expenses.push(expense);
-    updateTable();
+    //alert("got data" + expenses.length);
 }
 
 function hideAddExpense() {
@@ -51,9 +104,13 @@ function hideAddExpense() {
     createExpenseButton.hidden = false;
 }
 
-function showAddExpense(){
+function showAddExpense() {
     addItemDiv.hidden = false;
     createExpenseButton.hidden = true;
+}
+
+function showPayment() {
+
 }
 
 function removeChildren(input) {
@@ -63,26 +120,21 @@ function removeChildren(input) {
 }
 
 function addExpense() {
-    var userID = document.getElementById("userID")
     var description = document.getElementById("description");
     var cost = document.getElementById("cost");
     var date = document.getElementById("date");
     var errorMessage = document.getElementById("errorMessage");
-    if (userID.value != "" && description.value != "" && cost.value != "" && userID.value > 0 && userID.value < 3) {
+    if (description.value != "" && cost.value != "") {
         errorMessage.innerHTML = "";
         expense = {};
-        if (userID.value == 1) {
-            expense.creator = "Andrew Ellison";
-        }
-        else {
-            expense.creator = "Kevin Hays";
-        }
-        expense.creatorID = userID.value;
+        expense.creator = usernames[userID];
+
+        expense.creatorID = userID;
         expense.cost = cost.value;
         if (date.value != "") {
-            alert(date.value);
             var today = new Date(date.value);
-            alert(today.toString());
+            var offset = new Date().getTimezoneOffset();
+            today.setMinutes(today.getMinutes() + offset);
         }
         else {
             var today = new Date();
@@ -103,6 +155,7 @@ function addExpense() {
 }
 
 
+
 function compareExpenseDates(one, two) {
     if (one.date < two.date) {
         return -1;
@@ -114,7 +167,7 @@ function compareExpenseDates(one, two) {
 }
 
 function updateTable() {
-    //alert("updating table");
+    //alert("updating table" + expenses.length);
     removeChildren(body);
     expenses.sort(compareExpenseDates);
     var table = document.createElement("table");
@@ -129,84 +182,89 @@ function updateTable() {
     h3.innerHTML = "Description";
     var h4 = document.createElement("th");
     h4.innerHTML = "Cost";
-    var h5 = document.createElement("th");
-    h5.innerHTML = "Andrew Ellison Due";
-    var h6 = document.createElement("th");
-    h6.innerHTML = "Kevin Hays Due";
-    var h7 = document.createElement("th");
-    h7.innerHTML = "Delete";
-    h1.style.width = '200px';
-    h2.style.width = '200px';
-    h3.style.width = '200px';
-    h4.style.width = '200px';
-    h5.style.width = '200px';
-    h6.style.width = '200px';
-    h7.style.width = '200px';
+    h1.style.width = '80px';
+    h2.style.width = '150px';
+    h3.style.width = '300px';
+    h4.style.width = '100px';
     header.appendChild(h1);
     header.appendChild(h2);
     header.appendChild(h3);
     header.appendChild(h4);
-    header.appendChild(h5);
-    header.appendChild(h6);
+
+    for (var i = 0; i < usernames.length; i++) {
+        var tempHeader = document.createElement("th");
+        tempHeader.innerHTML = usernames[i] + " Owes";
+        tempHeader.style.width = '150px';
+        header.appendChild(tempHeader);
+    }
+
+    var h7 = document.createElement("th");
+    h7.innerHTML = "Delete";
+    h7.style.width = '50px';
     header.appendChild(h7);
     table.appendChild(header);
 
-    var due = 0;
-    for (var i = 0; i < expenses.length; i++) {
-        if (expenses[i].creatorID == 1) {
-            due += parseInt(expenses[i].cost);
-        }
-        else {
-            due -= parseInt(expenses[i].cost);
-        }
-        if (due < 0) {
-            expenses[i].user1Due = -1*(due / 2);
-            expenses[i].user2Due = 0;
-        }
-        else if (due > 0) {
-            expenses[i].user2Due = due / 2;
-            expenses[i].user1Due = 0;
-        }
-        else {
-            expenses[i].user1Due = 0;
-            expenses[i].user2Due = 0;
-        }
+
+    var amountPaid = [];
+    for (var i = 0; i < usernames.length; i++) {//store user ids as well or lookup to fix array
+        amountPaid.push(0);
     }
 
     for (var i = 0; i < expenses.length; i++) {
+        //alert("enter loop" + expenses.length);
         var row = document.createElement("tr");
         var c1 = document.createElement("td");
         var c2 = document.createElement("td");
         var c3 = document.createElement("td");
         var c4 = document.createElement("td");
-        var c5 = document.createElement("td");
-        var c6 = document.createElement("td");
-        c1.innerHTML = (expenses[i].date.getMonth()+1) + "/" + expenses[i].date.getDate() + "/" + expenses[i].date.getFullYear();
+        c1.innerHTML = (expenses[i].date.getMonth() + 1) + "/" + expenses[i].date.getDate() + "/" + expenses[i].date.getFullYear();
         c2.innerHTML = expenses[i].creator;
         c3.innerHTML = expenses[i].description;
         c4.innerHTML = expenses[i].cost;
-        c5.innerHTML = expenses[i].user1Due;
-        c6.innerHTML = expenses[i].user2Due;
         row.appendChild(c1);
         row.appendChild(c2);
         row.appendChild(c3);
         row.appendChild(c4);
-        row.appendChild(c5);
-        row.appendChild(c6);
+
+
+        var tempID = parseInt(expenses[i].creatorID);
+
+        amountPaid[tempID] = amountPaid[tempID] + parseInt(expenses[i].cost);
+        var totalPaid = 0;
+
+
+        for (var j = 0; j < amountPaid.length; j++) {
+            totalPaid += amountPaid[j];
+        }
+
+        for (var j = 0; j < usernames.length; j++) {
+            var tempCell = document.createElement("td");
+            tempCell.innerHTML = Math.round((totalPaid / usernames.length - amountPaid[j])*100)/100;
+
+            row.appendChild(tempCell);
+        }
+
+        //alert(expenses[i].creatorID);
 
         var c7 = document.createElement("td");
         c7.style.textAlign = "center";
-        var deleteButton = document.createElement("button");
-        deleteButton.index = i;
-        deleteButton.onclick = deleteExpense;
-        deleteButton.innerHTML = "X";
-        c7.appendChild(deleteButton);
+        // alert("here4");
+        if (tempID == userID) {
+            //alert("here5");
+            var deleteButton = document.createElement("button");
+            deleteButton.index = i;
+            deleteButton.onclick = deleteExpense;
+            deleteButton.innerHTML = "X";
+            c7.appendChild(deleteButton);
+        }
+        //alert("here6");
         row.appendChild(c7);
 
         table.appendChild(row);
+
     }
     body.appendChild(table);
-    
+
 }
 
 function deleteExpense(e) {

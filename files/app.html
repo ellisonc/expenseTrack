@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
 <head>
-<meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>Expense Tracker</title>
     <link rel="stylesheet" type="text/css" href="app.css" />
-    
+
 </head>
 <body>
 
@@ -12,25 +12,28 @@
             ROOMATE EXPENSE TRACKER BY ANDREW ELLISON AND KEVIN HAYS
         </div><br />
         <div id="loginScreen">
-            <button id="signIn">Sign In</button>
+            Username:<br />
+            <input type="text" id="username" /><br /><br />
+            <button id="login">Login</button><button id="newUser" style="margin-left:20px">Create new user</button>
             <br /><br />
+            <div id="loginErrorMessage" style="color:red"></div>
         </div>
         <br />
         <div id="mainPage">
+            You are logged in as user: <strong id="loginName"></strong><br /><br />
             <button id="createNewExpense">Create New Expense</button>
+            <br /><br />
+            <button id="createPayment">Create Payment</button>
             <br />
-
             <div id="addItem">
-                User ID:<br />
-                <input type="number" id="userID" max="1" /><br />
                 Item Description:<br />
                 <input type="text" id="description" /><br />
-                Cost<br />
+                Amount<br />
                 <input type="number" id="cost" /><br /><br />
                 Date (Will default to today)<br />
                 <input type="date" id="date" /><br /><br />
                 <button id="addExpense">Add Expense</button><br /><br />
-                <button id="cancelExpense">Cancel</button><br /><br>
+                <button id="cancelItem">Cancel</button><br /><br>
                 <div id="errorMessage" style="color:red"></div>
             </div>
             <br />
@@ -38,7 +41,7 @@
             <br /><br />
             <div id="tableHolder"></div>
         </div>
-    </div>  
+    </div>
 </body>
 <script type="text/javascript" src="app.js"></script>
 
