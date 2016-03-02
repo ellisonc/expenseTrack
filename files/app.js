@@ -86,6 +86,7 @@ function addExpense() {
         else {
             var today = new Date();
         }
+        today.setHours(12);
         expense.date = today
         expense.description = description.value;
         expenses.push(expense);
