@@ -17,10 +17,10 @@ mainPage.hidden = true;
 var signInButton = document.getElementById("signIn");
 signInButton.onclick = signIn;
 
+var expenses = [];
 function signIn() {
     mainPage.hidden = false;
     loginScreen.hidden = true;
-    var expenses = [];
     getData();
 }
 
