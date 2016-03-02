@@ -10,30 +10,31 @@
     <div id="main">
         <div id="header" style="font-size:36px; text-align:center">
             ROOMATE EXPENSE TRACKER BY ANDREW ELLISON AND KEVIN HAYS
-        </div>
-        <div id="heading">
-            <p id="name">Welcome</p>
-            <button id="SignIn">Sign In</button>
+        </div><br />
+        <div id="loginScreen">
+            <button id="signIn">Sign In</button>
             <br /><br />
         </div>
         <br />
-        <button id="createNewExpense">Create New Expense</button>
-        <br />
+        <div id="mainPage">
+            <button id="createNewExpense">Create New Expense</button>
+            <br />
 
-        <div id="addItem">
-            User ID:<br />
-            <input type="number" id="userID" max="1" /><br />
-            Item Description:<br />
-            <input type="text" id="description" /><br />
-            Cost<br />
-            <input type="number" id="cost" /><br /><br />
-            <button id="addExpense" >Add Expense</button><br /><br />
-            <button id="cancelExpense">Cancel</button><br /><br>
-            <div id="errorMessage" style="color:red"></div>
+            <div id="addItem">
+                User ID:<br />
+                <input type="number" id="userID" max="1" /><br />
+                Item Description:<br />
+                <input type="text" id="description" /><br />
+                Cost<br />
+                <input type="number" id="cost" /><br /><br />
+                <button id="addExpense">Add Expense</button><br /><br />
+                <button id="cancelExpense">Cancel</button><br /><br>
+                <div id="errorMessage" style="color:red"></div>
+            </div>
+            <br /><br />
+            <div id="tableHolder"></div>
         </div>
-    </div>
-    <br /><br />
-    <div id="body"></div>
+    </div>  
 </body>
 <script type="text/javascript" src="app.js"></script>
 

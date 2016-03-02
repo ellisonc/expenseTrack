@@ -1,7 +1,7 @@
 var addExpenseButton = document.getElementById("addExpense");
 addExpenseButton.onclick = addExpense;
 
-var body = document.getElementById("body");
+var body = document.getElementById("tableHolder");
 var addItemDiv = document.getElementById("addItem");
 var createExpenseButton = document.getElementById("createNewExpense");
 createExpenseButton.onclick = showAddExpense;
@@ -10,8 +10,20 @@ addItemDiv.hidden = true;
 var cancelExpenseButton = document.getElementById("cancelExpense");
 cancelExpenseButton.onclick = hideAddExpense;
 
-var expenses = [];
-getData();
+var mainPage = document.getElementById("mainPage");
+var loginScreen = document.getElementById("loginScreen");
+//Setup page here
+mainPage.hidden = true;
+var signInButton = document.getElementById("signIn");
+signInButton.onclick = signIn;
+
+function signIn() {
+    mainPage.hidden = false;
+    loginScreen.hidden = true;
+    var expenses = [];
+    getData();
+}
+
 function getData() {
     expense = {};
     expense.creator = "Kevin Hays";
