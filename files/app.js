@@ -39,9 +39,7 @@ function getData() {
     expense.creator = "Kevin Hays";
     expense.cost = 1000;
     var today = new Date();
-    var day = today.getDate();
-    var month = today.getMonth() + 1;
-    expense.date = month + "/" + day;
+    expense.date = today;
     expense.description = "Test Expense";
     expense.creatorID = 2;
     expenses.push(expense);
@@ -83,14 +81,11 @@ function addExpense() {
         expense.cost = cost.value;
         if (date.value != "") {
             var today = new Date(date.value);
-            var day = today.getDate()+1;
         }
         else {
             var today = new Date();
-            var day = today.getDate();
         }
-        var month = today.getMonth() + 1;
-        expense.date = month + "/" + day;
+        expense.date = today
         expense.description = description.value;
         expenses.push(expense);
         userID.value = "";
@@ -105,11 +100,20 @@ function addExpense() {
 }
 
 
+function compareExpenseDates(one, two) {
+    if (one.date < two.date) {
+        return -1;
+    }
+    if (one.date > two.date) {
+        return 1;
+    }
+    return 0;
+}
 
 function updateTable() {
     //alert("updating table");
     removeChildren(body);
-
+    expenses.sort(compareExpenseDates);
     var table = document.createElement("table");
     table.border = 1;
 
