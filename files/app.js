@@ -8,7 +8,7 @@ createExpenseButton.onclick = showAddExpense;
 addItemDiv.hidden = true;
 
 var cancelExpenseButton = document.getElementById("cancelExpense");
-//cancelExpenseButton.onclick = hideAddExpense;
+cancelExpenseButton.onclick = hideAddExpense;
 
 var expenses = [];
 getData();
@@ -64,6 +64,9 @@ function addExpense() {
         expense.date = month + "/" + day;
         expense.description = description.value;
         expenses.push(expense);
+        userID.value = "";
+        description.value = "";
+        cost.value = "";
         hideAddExpense();
         updateTable();
     }
