@@ -90,7 +90,7 @@ function addExpense() {
 
 
 function updateTable() {
-
+    alert("updating table");
     removeChildren(body);
 
     var table = document.createElement("table");
