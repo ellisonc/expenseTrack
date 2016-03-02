@@ -1,2 +1,0 @@
-# expenseTrack
-roommate expense tracking
