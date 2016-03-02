@@ -202,6 +202,7 @@ function updateTable() {
     
 }
 
-function deleteExpense() {
-    alert("here");
+function deleteExpense(e) {
+    var target = e.target;
+    alert("here" + target.index);
 }
