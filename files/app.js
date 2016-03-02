@@ -17,6 +17,9 @@ mainPage.hidden = true;
 var signInButton = document.getElementById("signIn");
 signInButton.onclick = signIn;
 
+var logoutButton = document.getElementById("logout");
+logoutButton.onclick = logout;
+
 var expenses = [];
 function signIn() {
     mainPage.hidden = false;
@@ -24,8 +27,13 @@ function signIn() {
     getData();
 }
 
+function logout() {
+    mainPage.hidden = true;
+    loginScreen.hidden = false;
+}
+
 function getData() {
-    alert("getting data");
+   // alert("getting data");
     expense = {};
     expense.creator = "Kevin Hays";
     expense.cost = 1000;
@@ -91,7 +99,7 @@ function addExpense() {
 
 
 function updateTable() {
-    alert("updating table");
+    //alert("updating table");
     removeChildren(body);
 
     var table = document.createElement("table");
