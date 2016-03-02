@@ -188,6 +188,7 @@ function updateTable() {
         row.appendChild(c6);
 
         var c7 = document.createElement("td");
+        c7.style.textAlign = "center";
         var deleteButton = document.createElement("button");
         deleteButton.index = i;
         deleteButton.onclick = deleteExpense;
