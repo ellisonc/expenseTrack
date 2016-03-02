@@ -29,6 +29,7 @@ function signIn() {
 
 function logout() {
     mainPage.hidden = true;
+    hideAddExpense();
     loginScreen.hidden = false;
 }
 
@@ -67,6 +68,7 @@ function addExpense() {
     var userID = document.getElementById("userID")
     var description = document.getElementById("description");
     var cost = document.getElementById("cost");
+    var date = document.getElementById("date");
     var errorMessage = document.getElementById("errorMessage");
     if (userID.value != "" && description.value != "" && cost.value != "" && userID.value > 0 && userID.value < 3) {
         errorMessage.innerHTML = "";
@@ -79,9 +81,15 @@ function addExpense() {
         }
         expense.creatorID = userID.value;
         expense.cost = cost.value;
-        var today = new Date();
-        var day = today.getDate();
-        var month = today.getMonth() + 1;
+        if (date.value != "") {
+            var day = date.value.getDate();
+            var month = date.value.getMonth() + 1;
+        }
+        else {
+            var today = new Date();
+            var day = today.getDate();
+            var month = today.getMonth() + 1;
+        }
         expense.date = month + "/" + day;
         expense.description = description.value;
         expenses.push(expense);
