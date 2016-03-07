@@ -37,25 +37,61 @@ var date = document.getElementById("date");
 var expenses = [];
 var userID;
 var usernames = [];
+getUsernames();
 
 var loginNameField = document.getElementById("loginName");
 var inputUsernameField = document.getElementById("username");
 //skipLogin();
 function skipLogin() {
-    getUsernames();
     userID = 1;
     switchToMainScreen();
 }
 
 function getUsernames() {
     usernames = [];
+
+    
+
+    /*
+    alert("here");
+    var client = new XMLHttpRequest();
+    client.open('GET', 'C:\\Users\\26kth\\Documents\\GitHub\\expenseTrack\\files\\usernames.txt');
+    alert("asdf");
+    client.onreadystatechange = function () {
+        alert(client.responseText);
+        if (client.responseText != '') {
+            var txt = client.responseText.split("\n");
+            alert(txt);
+        }
+    }
+    client.send();
+    /*
+    var file = "usernames.txt";
+    alert("here");
+    var rawFile = new XMLHttpRequest();
+    alert("here1");
+    rawFile.open("GET", file, false);
+    alert("here2");
+    rawFile.onreadystatechange = function () {
+        alert("here3");
+        if (rawFile.readyState === 4) {
+            if (rawFile.status === 200 || rawFile.status == 0) {
+                var allText = rawFile.responseText;
+                var lines = allText.split('\n');
+                alert("here4");
+                for (var i = 0; i < lines.length; i++) {
+                    usernames.push(lines[i]);
+
+                }
+            }
+        }
+    }
+    rawFile.send(null);*/
     usernames.push("andrew");
     usernames.push("kevin");
     usernames.push("third");
 }
 function login() {
-    getUsernames();
-
     var inputUsername = inputUsernameField.value;
     inputUsername = inputUsername.toLowerCase();
 
@@ -346,7 +382,7 @@ function updateTable() {
             deleteButton.index = i;
             deleteButton.onclick = deleteExpense;
             deleteButton.innerHTML = "X";
-            c7.appendChild(deleteButton);
+            c7.appendChild(deleteButton);   
         }
         //alert("here6");
         row.appendChild(c7);
@@ -358,8 +394,8 @@ function updateTable() {
 
 }
 
-function deleteExpense(e) {
-    var target = e.target;
-    expenses.splice(e.index, 1);
+function deleteExpense() {
+    alert(this.index);
+    expenses.splice(this.index, 1);
     updateTable();
 }
