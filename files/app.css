@@ -7,7 +7,7 @@
     background-color:#20417c;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size:x-large;
-    color: #bfbfbf;
+    color: #f1f1f1;
 }
 
 #menu{
@@ -24,8 +24,46 @@ body{
     background-color:#d4def1
 }
 
+table{
+    background-color:#f3f3f3;
+    border:none;
+}
+
+td{
+    padding:0px;
+    border:none;
+}
+
+th{
+    background-color:#20417c;
+    color:#f1f1f1;
+    border:none;
+    padding:0px;
+}
+
+tr{
+    border:none;
+    padding:0px;
+}
+
 .menuButton{
     float:right;
+    border-radius: 0px;
+    border:solid;
+    border-color:black;
+    border-width:thin;
+    padding:20px;
+    width:150px;
+    background-color: cornflowerblue;
+    -webkit-transition: width .2s;
+    transition: width .2s;
+}
+
+.menuButton:hover{
+    width: 160px;
+}
+
+oButton{
     border-radius: 10px;
     border:solid;
     border-color: cornflowerblue;
@@ -36,18 +74,7 @@ body{
     transition: width .2s;
 }
 
-button{
-    border-radius: 10px;
-    border:solid;
-    border-color: cornflowerblue;
-    padding:20px;
-    width:150px;
-    background-color: cornflowerblue;
-    -webkit-transition: width .2s;
-    transition: width .2s;
-}
-
-button:hover{
+oButton:hover{
     width: 160px;
 }
 
