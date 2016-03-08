@@ -41,6 +41,14 @@ getUsernames();
 
 var loginNameField = document.getElementById("loginName");
 var inputUsernameField = document.getElementById("username");
+inputUsernameField.onkeypress = function (e) {
+    if (!e) e = window.event;
+    var key = e.keyCode || e.which;
+    if (key == '13') {
+        login();
+        return;
+    }
+};
 //skipLogin();
 function skipLogin() {
     userID = 1;
@@ -50,7 +58,7 @@ function skipLogin() {
 function getUsernames() {
     usernames = [];
 
-    
+
 
     /*
     alert("here");
@@ -194,7 +202,7 @@ function addItem() {
     //alert(description.value);
     //alert(cost.value);
     if (description.value != "" && cost.value != "") {
-        
+
         //alert("if");
         item = {};
         if (!creatingExpense) {
@@ -224,8 +232,8 @@ function addItem() {
         else {
             item.type = "expense";
         }
-        
-        
+
+
         item.creator = usernames[userID];
         item.cost = cost.value;
         if (date.value != "") {
@@ -250,7 +258,7 @@ function addItem() {
     else {
         errorMessage.innerHTML = "Input valid values";
     }
-   
+
 }
 
 
@@ -331,7 +339,7 @@ function updateTable() {
         else {
             tempType.innerHTML = "(EXPNS) ";
         }
-        
+
         c3.innerHTML = expenses[i].description;
         c4.innerHTML = expenses[i].cost;
         row.appendChild(c1);
@@ -340,7 +348,7 @@ function updateTable() {
         row.appendChild(c3);
         row.appendChild(c4);
         var tempRecip = document.createElement("td");
-        
+
         if (expenses[i].type == "payment") {
             var index = usernames.indexOf(expenses[i].recipientID);
             tempRecip.innerHTML = usernames[index];
@@ -351,12 +359,12 @@ function updateTable() {
 
 
         var tempID = parseInt(expenses[i].creatorID);
-       // alert(expenses[i].cost);
+        // alert(expenses[i].cost);
         if (expenses[i].type == "payment") {
             amountPaid[expenses[i].recipientID] -= parseFloat(expenses[i].cost);
         }
         amountPaid[tempID] += parseFloat(expenses[i].cost);
-      
+
         //alert(amountPaid.toString());
         var totalPaid = 0;
 
@@ -366,7 +374,7 @@ function updateTable() {
 
         for (var j = 0; j < usernames.length; j++) {
             var tempCell = document.createElement("td");
-            tempCell.innerHTML = Math.round((totalPaid / usernames.length - amountPaid[j])*100)/100;
+            tempCell.innerHTML = Math.round((totalPaid / usernames.length - amountPaid[j]) * 100) / 100;
 
             row.appendChild(tempCell);
         }
@@ -382,7 +390,7 @@ function updateTable() {
             deleteButton.index = i;
             deleteButton.onclick = deleteExpense;
             deleteButton.innerHTML = "X";
-            c7.appendChild(deleteButton);   
+            c7.appendChild(deleteButton);
         }
         //alert("here6");
         row.appendChild(c7);
