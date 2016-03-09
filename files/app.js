@@ -428,7 +428,7 @@ function updateTable() {
 }
 
 function deleteExpense() {
-    alert(this.index);
+    //alert(this.index);
     expenses.splice(this.index, 1);
     updateTable();
 }
