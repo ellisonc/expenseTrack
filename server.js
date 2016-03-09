@@ -16,7 +16,7 @@ var users = {};
 
 http.listen(8888);
 app.get('/', function (req, res) {
-    res.sentFile('app.html');
+    res.sendFile('app.html');
 })
 
 
