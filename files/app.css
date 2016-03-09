@@ -12,10 +12,9 @@
 
 #menu{
     float:right;
-    background-color:slategray;
+    background-color:#20417c;
     padding: 10px;
-    border:solid;
-    border-color:gray;
+    border:none;
     width:170px;
 }
 
@@ -31,7 +30,7 @@ table{
 
 td{
     font-family: sans-serif;
-    padding:0px;
+    padding:2px;
     border:none;
     text-align:center;
 }
@@ -47,6 +46,31 @@ th{
 tr{
     border:none;
     padding:0px;
+}
+
+#message{
+    background-color:slategray;
+    background:linear-gradient(slategray,#5d6771);
+    float:left;
+    width:100%;
+    height:auto;
+    text-align:center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:xx-large;
+    color:white;
+}
+.message{
+    float:left;
+    padding-left:5%;
+    padding-right:5%;
+}
+
+#welcome{
+    float: right;
+    color:#20417c;
+    padding-left:5%;
+    padding-right:5%;
+    text-shadow:0 0 5px #97a4bd;
 }
 
 #even{
@@ -67,38 +91,37 @@ tr{
     background-color:#f3f3f3;
 }
 
+.delete{
+    border:none;
+    border-radius:50%;
+    background-color:red;
+    transition:width .2s, border-radius .2s, height .2s;
+    width:19px;
+    height:19px;
+}
+
+.delete:hover{
+    width:100%;
+    height:100%;
+    border-radius:0%;
+}
+
 .menuButton{
     float:right;
     border-radius: 0px;
     border:solid;
     border-color:black;
     border-width:thin;
-    padding:20px;
-    width:150px;
+    padding-top:20px;
+    padding-bottom:20px;
+    width:90%;
     background-color: cornflowerblue;
     -webkit-transition: width .2s;
     transition: width .2s;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .menuButton:hover{
-    width: 160px;
+    width: 100%;
 }
 
-oButton{
-    border-radius: 10px;
-    border:solid;
-    border-color: cornflowerblue;
-    padding:20px;
-    width:150px;
-    background-color: cornflowerblue;
-    -webkit-transition: width .2s;
-    transition: width .2s;
-}
-
-oButton:hover{
-    width: 160px;
-}
-
-button:active{
-    background-color: lightgray;
-}

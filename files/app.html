@@ -8,9 +8,6 @@
 <body>
 
     <div id="main">
-        <div id="header">
-            ROOMATE EXPENSE TRACKER
-        </div><br />
         <div id="loginScreen">
             Username:<br />
             <input type="text" id="username" /><br /><br />
@@ -18,13 +15,16 @@
             <br /><br />
             <div id="loginErrorMessage" style="color:red"></div>
         </div>
-        <br />
         <div id="mainPage">
-            You are logged in as user: <strong id="loginName"></strong><br /><br />
+            <div id="message">
+                <div class="message">Roomate Expense Tracker</div>
+                <div id="welcome">Welcome <strong id="loginName"></strong></div>
+            </div>
             <div id="menu">
                 <div id="menuButtons">
                     <button class="menuButton" id="createNewExpense">Create New Expense</button>
                     <button class="menuButton" id="createPayment">Create Payment</button>
+                    <button class="menuButton" id="logout">Logout</button>
                 </div>
             </div>
             <br />
@@ -47,9 +47,6 @@
                 <button id="cancelItem">Cancel</button><br /><br>
                 <div id="errorMessage" style="color:red"></div>
             </div>
-            <br />
-            <button id="logout">Logout</button>
-            <br /><br />
             <div id="tableHolder"></div>
         </div>
     </div>

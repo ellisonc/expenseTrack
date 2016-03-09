@@ -309,7 +309,7 @@ function updateTable() {
 
     for (var i = 0; i < usernames.length; i++) {
         var tempHeader = document.createElement("th");
-        tempHeader.innerHTML = usernames[i] + " Owes";
+        tempHeader.innerHTML = usernames[i].charAt(0).toLocaleUpperCase() + usernames[i].substr(1,usernames[i].length) + " Owes";
         tempHeader.style.width = '150px';
         header.appendChild(tempHeader);
     }
@@ -412,6 +412,7 @@ function updateTable() {
             deleteButton.index = i;
             deleteButton.onclick = deleteExpense;
             deleteButton.innerHTML = "X";
+            deleteButton.className = "delete";
             c7.appendChild(deleteButton);
         }
         //alert("here6");
