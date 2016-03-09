@@ -31,6 +31,7 @@ td{
     text-align:center;
 }
 
+
 th{
     font-family: sans-serif;
     background-color:#20417c;
@@ -42,6 +43,46 @@ th{
 tr{
     border:none;
     padding:0px;
+    height:30px;
+}
+
+#loginScreen{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:large;
+}
+
+#login{
+    border-radius: 0px;
+    border:solid;
+    border-color:black;
+    border-width:thin;
+    width:50px;
+    height:30px;
+    background-color: cornflowerblue;
+    -webkit-transition: width .2s;
+    transition: width .2s;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#login:hover{
+    width:60px;
+}
+
+#newUser{
+    border-radius: 0px;
+    border:solid;
+    border-color:black;
+    border-width:thin;
+    width:120px;
+    height:30px;
+    background-color: cornflowerblue;
+    -webkit-transition: width .2s;
+    transition: width .2s;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#newUser:hover{
+    width:140px;
 }
 
 #message{
@@ -55,6 +96,7 @@ tr{
     font-size:xx-large;
     color:white;
 }
+
 .message{
     float:left;
     padding-left:5%;

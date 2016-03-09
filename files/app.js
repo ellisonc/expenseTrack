@@ -135,7 +135,7 @@ function switchToMainScreen() {
     mainPage.hidden = false;
     loginScreen.hidden = true;
     inputUsernameField.innerHTML = "";
-    loginNameField.innerHTML = " " + usernames[userID];
+    loginNameField.innerHTML = " " + nameformat(usernames[userID]);
     getData();
     updateTable();
 }
@@ -309,7 +309,7 @@ function updateTable() {
 
     for (var i = 0; i < usernames.length; i++) {
         var tempHeader = document.createElement("th");
-        tempHeader.innerHTML = usernames[i].charAt(0).toLocaleUpperCase() + usernames[i].substr(1,usernames[i].length) + " Owes";
+        tempHeader.innerHTML = nameformat(usernames[i]) + " Owes";
         tempHeader.style.width = '150px';
         header.appendChild(tempHeader);
     }
@@ -431,4 +431,8 @@ function deleteExpense() {
     alert(this.index);
     expenses.splice(this.index, 1);
     updateTable();
+}
+
+function nameformat(name) {
+    return name.charAt(0).toLocaleUpperCase() + name.substr(1, name.length);
 }
