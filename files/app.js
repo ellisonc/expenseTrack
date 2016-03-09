@@ -39,8 +39,10 @@ var userID;
 var usernames = [];
 getUsernames();
 
+
 var loginNameField = document.getElementById("loginName");
 var inputUsernameField = document.getElementById("username");
+inputUsernameField.focus();
 inputUsernameField.onkeypress = function (e) {
     if (!e) e = window.event;
     var key = e.keyCode || e.which;
