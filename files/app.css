@@ -21,7 +21,7 @@
 
 
 body{
-    background-color:#d4def1
+    background-color:#ebeff6;
 }
 
 table{
@@ -44,6 +44,24 @@ th{
 tr{
     border:none;
     padding:0px;
+}
+
+#even{
+    border:none;
+    padding:0px;
+    background-color: #f1f2dd;
+}
+
+#myEven{
+    background-color: #72d46e;
+}
+
+#myOdd{
+    background-color:#518a4f;
+}
+
+#odd{
+    background-color:#f3f3f3;
 }
 
 .menuButton{

@@ -49,12 +49,13 @@ inputUsernameField.onkeypress = function (e) {
         return;
     }
 };
+//for testing
 //skipLogin();
 function skipLogin() {
     userID = 1;
     switchToMainScreen();
 }
-
+//end for testing
 function getUsernames() {
     usernames = [];
 
@@ -326,6 +327,24 @@ function updateTable() {
     for (var i = 0; i < expenses.length; i++) {
         //alert("enter loop" + expenses.length);
         var row = document.createElement("tr");
+        //alert(item.creatorID);
+        //alert(item.creator);
+        if (i % 2 == 0) {
+            if (item.creatorID == userID) {
+                row.id = "myEven";
+            }
+            else {
+                row.id = "even";
+            }
+        }
+        else {
+            if (item.creatorID == userID) {
+                row.id = "myOdd";
+            }
+            else {
+                row.id = "odd";
+            }
+        }
         var c1 = document.createElement("td");
         var c2 = document.createElement("td");
         var c3 = document.createElement("td");
