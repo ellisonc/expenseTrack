@@ -52,7 +52,7 @@ inputUsernameField.onkeypress = function (e) {
     }
 };
 //for testing
-//skipLogin();
+skipLogin();
 function skipLogin() {
     userID = 1;
     switchToMainScreen();
@@ -325,14 +325,14 @@ function updateTable() {
     for (var i = 0; i < usernames.length; i++) {//store user ids as well or lookup to fix array
         amountPaid.push(0);
     }
-
+    
     for (var i = 0; i < expenses.length; i++) {
         //alert("enter loop" + expenses.length);
         var row = document.createElement("tr");
         //alert(item.creatorID);
-        //alert(item.creator);
-        if (i % 2 == 0) {
-            if (item.creatorID == userID) {
+
+        if (i == 0 || i % 2 == 0) {
+            if (expenses[i].creatorID == userID) {
                 row.id = "myEven";
             }
             else {
@@ -340,13 +340,14 @@ function updateTable() {
             }
         }
         else {
-            if (item.creatorID == userID) {
+            if (expenses[i].creatorID == userID) {
                 row.id = "myOdd";
             }
             else {
                 row.id = "odd";
             }
         }
+
         var c1 = document.createElement("td");
         var c2 = document.createElement("td");
         var c3 = document.createElement("td");
@@ -360,7 +361,7 @@ function updateTable() {
         else {
             tempType.innerHTML = "(EXPNS) ";
         }
-
+        //alert("here");
         c3.innerHTML = expenses[i].description;
         c4.innerHTML = expenses[i].cost;
         row.appendChild(c1);
@@ -421,6 +422,7 @@ function updateTable() {
     }
     body.appendChild(table);
     table.hidden = false;
+    //alert("done");
 
 }
 
