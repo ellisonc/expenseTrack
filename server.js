@@ -16,7 +16,7 @@ var users = {};
 
 http.listen(8888);
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + 'app.html');
+    res.sendFile(__dirname + '/expenseTrack/files/app.html');
 })
 
 
