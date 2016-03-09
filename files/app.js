@@ -418,6 +418,7 @@ function updateTable() {
 
     }
     body.appendChild(table);
+    table.hidden = false;
 
 }
 
