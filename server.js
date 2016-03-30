@@ -19,13 +19,7 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/files/app.html');
 })
 
-app.get('/app.css', function (req, res) {
-    res.sendFile(__dirname + '/files/app.css');
-})
-
-app.get('/app.js', function (req, res) {
-    res.sendFile(__dirname + '/files/app.js');
-})
+app.use(express.static('files'));
 
 
 // Make a simple fileserver for all of our static content.
