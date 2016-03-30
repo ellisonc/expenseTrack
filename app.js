@@ -1,6 +1,7 @@
 
 //initialize socket io
-var socket = io.connect()
+var io = require('socket.io');
+var socket = io.connect();
 
 //buttons
 var addExpenseButton = document.getElementById("addExpense");
