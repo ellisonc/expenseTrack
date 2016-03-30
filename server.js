@@ -2,7 +2,14 @@ var express = require('express'),
     app = express(),
     http = require('http').createServer(app),
     io = require('socket.io').listen(http);
-
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
+var url = 'mongodb://localhost:27017/expenseTrack';
+MongoClient.connect(url, function (err, db) {
+    assert.equal(null, err);
+    console.log("Connected to db");
+    db.close();
+});
 
 http.listen(8888);
 app.get('/', function (req, res) {
