@@ -370,8 +370,9 @@ function updateTable() {
 
 function deleteExpense(e) {
     var target = e.target;
+    socket.emit('delete', target);
+    console.log('delete');
     expenses.splice(e.index, 1);
     updateTable();
 
-    socket.emit('delete', target);
 }
