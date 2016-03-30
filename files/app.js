@@ -1,3 +1,6 @@
+//initialize socket io
+var socket = io.connect();
+
 var addExpenseButton = document.getElementById("addExpense");
 addExpenseButton.onclick = addItem;
 
@@ -60,44 +63,6 @@ function skipLogin() {
 //end for testing
 function getUsernames() {
     usernames = [];
-
-
-
-    /*
-    alert("here");
-    var client = new XMLHttpRequest();
-    client.open('GET', 'C:\\Users\\26kth\\Documents\\GitHub\\expenseTrack\\files\\usernames.txt');
-    alert("asdf");
-    client.onreadystatechange = function () {
-        alert(client.responseText);
-        if (client.responseText != '') {
-            var txt = client.responseText.split("\n");
-            alert(txt);
-        }
-    }
-    client.send();
-    /*
-    var file = "usernames.txt";
-    alert("here");
-    var rawFile = new XMLHttpRequest();
-    alert("here1");
-    rawFile.open("GET", file, false);
-    alert("here2");
-    rawFile.onreadystatechange = function () {
-        alert("here3");
-        if (rawFile.readyState === 4) {
-            if (rawFile.status === 200 || rawFile.status == 0) {
-                var allText = rawFile.responseText;
-                var lines = allText.split('\n');
-                alert("here4");
-                for (var i = 0; i < lines.length; i++) {
-                    usernames.push(lines[i]);
-
-                }
-            }
-        }
-    }
-    rawFile.send(null);*/
     usernames.push("andrew");
     usernames.push("kevin");
     usernames.push("third");
@@ -250,6 +215,11 @@ function addItem() {
         item.creatorID = userID;
         item.date = today;
         item.description = description.value;
+
+        //communicate with server to add the item
+        socket.emit('addItem', { type: item.type, creatorID: item.creatorID, cost: item.cost, date: item.date, description: item.description });
+        console.log('emitted');
+
         expenses.push(item);
         userID.value = "";
         description.value = "";
@@ -430,6 +400,11 @@ function updateTable() {
 function deleteExpense() {
     //alert(this.index);
     expenses.splice(this.index, 1);
+
+    //communicate deletion with server
+    socket.emit('delete', target);
+    console.log('delete');
+
     updateTable();
 }
 
