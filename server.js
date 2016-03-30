@@ -16,9 +16,14 @@ var users = {};
 
 http.listen(8888);
 app.get('/', function (req, res) {
-    console.log(req);
     res.sendFile(__dirname + '/files/app.html');
+})
+
+app.get('/app.css', function (req, res) {
     res.sendFile(__dirname + '/files/app.css');
+})
+
+app.get('/app.js', function (req, res) {
     res.sendFile(__dirname + '/files/app.js');
 })
 
