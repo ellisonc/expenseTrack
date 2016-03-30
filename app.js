@@ -1,3 +1,8 @@
+
+//initialize socket io
+var socket = io();
+
+//buttons
 var addExpenseButton = document.getElementById("addExpense");
 addExpenseButton.onclick = addItem;
 
@@ -151,17 +156,15 @@ function removeChildren(input) {
     }
 }
 
+//Add a payment or an expense
 function addItem() {
     var description = document.getElementById("description");
     var cost = document.getElementById("cost");
     var date = document.getElementById("date");
     var errorMessage = document.getElementById("errorMessage");
     var paymentRecipient = document.getElementById("paymentRecipient");
-    //alert(description.value);
-    //alert(cost.value);
+
     if (description.value != "" && cost.value != "") {
-        
-        //alert("if");
         item = {};
         if (!creatingExpense) {
             item.type = "payment";
@@ -205,6 +208,10 @@ function addItem() {
         item.creatorID = userID;
         item.date = today;
         item.description = description.value;
+
+        //communicate with server to add the item
+        socket.emit('addItem', item.type, item.creatorID, item.cost, item.date, item.description);
+
         expenses.push(item);
         userID.value = "";
         description.value = "";
