@@ -112,7 +112,6 @@ function logout() {
 }
 
 function getData() {
-    //alert("getting data" + expenses.length);
     expense = {};
     expense.creator = "kevin";
     expense.type = "expense";
@@ -122,7 +121,6 @@ function getData() {
     expense.description = "Test Expense";
     expense.creatorID = 1;
     expenses.push(expense);
-    //alert("got data" + expenses.length);
 }
 
 function hideAddItem() {
@@ -297,9 +295,7 @@ function updateTable() {
     }
     
     for (var i = 0; i < expenses.length; i++) {
-        //alert("enter loop" + expenses.length);
         var row = document.createElement("tr");
-        //alert(item.creatorID);
 
         if (i == 0 || i % 2 == 0) {
             if (expenses[i].creatorID == userID) {
@@ -331,7 +327,6 @@ function updateTable() {
         else {
             tempType.innerHTML = "(EXPNS) ";
         }
-        //alert("here");
         c3.innerHTML = expenses[i].description;
         c4.innerHTML = expenses[i].cost;
         row.appendChild(c1);
@@ -351,13 +346,11 @@ function updateTable() {
 
 
         var tempID = parseInt(expenses[i].creatorID);
-        // alert(expenses[i].cost);
         if (expenses[i].type == "payment") {
             amountPaid[expenses[i].recipientID] -= parseFloat(expenses[i].cost);
         }
         amountPaid[tempID] += parseFloat(expenses[i].cost);
 
-        //alert(amountPaid.toString());
         var totalPaid = 0;
 
         for (var j = 0; j < amountPaid.length; j++) {
@@ -371,13 +364,9 @@ function updateTable() {
             row.appendChild(tempCell);
         }
 
-        //alert(expenses[i].creatorID);
-
         var c7 = document.createElement("td");
         c7.style.textAlign = "center";
-        // alert("here4");
         if (tempID == userID) {
-            //alert("here5");
             var deleteButton = document.createElement("button");
             deleteButton.index = i;
             deleteButton.onclick = deleteExpense;
@@ -385,7 +374,6 @@ function updateTable() {
             deleteButton.className = "delete";
             c7.appendChild(deleteButton);
         }
-        //alert("here6");
         row.appendChild(c7);
 
         table.appendChild(row);
@@ -393,12 +381,9 @@ function updateTable() {
     }
     body.appendChild(table);
     table.hidden = false;
-    //alert("done");
-
 }
 
 function deleteExpense() {
-    //alert(this.index);
     var ind = this.index;
     expenses.splice(this.index, 1);
 
