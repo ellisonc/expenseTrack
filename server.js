@@ -23,6 +23,11 @@ io.on('connection', function (socket) {
         console.log('description - ' + item.description);
     });
 
+    socket.on('delete', function (target) {
+        console.log('target: ');
+        console.log(target);
+    })
+
     socket.on('disconnect', function () {
         console.log('disconnected');
     });

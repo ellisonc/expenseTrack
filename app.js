@@ -372,4 +372,6 @@ function deleteExpense(e) {
     var target = e.target;
     expenses.splice(e.index, 1);
     updateTable();
+
+    socket.emit('delete', target);
 }
