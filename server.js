@@ -5,7 +5,7 @@ var express = require('express'),
 
 var users = {};
 
-http.listen(80);
+http.listen(8080);
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/files/app.html');
 });
