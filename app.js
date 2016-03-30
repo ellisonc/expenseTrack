@@ -1,5 +1,6 @@
 
 //initialize socket io
+var io = require('socket.io-client');
 var socket = io();
 
 //buttons
