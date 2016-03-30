@@ -14,11 +14,12 @@ app.use(express.static('files'));
 
 
 io.on('connection', function (socket) {
-    socket.on('addItem', function (type, creatorID, date, description) {
+
+    socket.on('addItem', function (item) {
         console.log('addItem: ');
-        console.log('type - ' + type);
-        console.log('creatorID - ' + creatorID);
-        console.log('date - ' + date);
-        console.log('description - ' + description);
+        console.log('type - ' + item.type);
+        console.log('creatorID - ' + item.creatorID);
+        console.log('date - ' + item.date);
+        console.log('description - ' + item.description);
     });
 });
