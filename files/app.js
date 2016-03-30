@@ -399,10 +399,11 @@ function updateTable() {
 
 function deleteExpense() {
     //alert(this.index);
+    var ind = this.index;
     expenses.splice(this.index, 1);
 
     //communicate deletion with server
-    socket.emit('delete', target);
+    socket.emit('delete', ind);
     console.log('delete');
 
     updateTable();
