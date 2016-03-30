@@ -3,7 +3,6 @@ var express = require('express'),
     http = require('http').createServer(app),
     io = require('socket.io').listen(http);
 
-var users = {};
 
 http.listen(8888);
 app.get('/', function (req, res) {
@@ -24,5 +23,7 @@ io.on('connection', function (socket) {
     //    console.log('description - ' + item.description);
     //});
 
-    //socket
+    socket.on('disconnect', function () {
+        console.log('disconnected');
+    });
 });
