@@ -88,6 +88,8 @@ function createNewUser() {
     if (inputUsernameField.value != "") {
         userID = usernames.length;
         usernames.push(inputUsernameField.value);
+        socket.emit("newUser", inputUsernameField.value);
+        inputUsernameField.value = "";
         switchToMainScreen();
     }
     else {
