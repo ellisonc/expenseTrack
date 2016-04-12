@@ -16,10 +16,9 @@ MongoClient.connect(url, function (err, db) {
     });
 
     app.use(express.static('files'));
-
+    
 
     io.on('connection', function (socket) {
-        console.log('connected');
 
         socket.on('addItem', function (item) {
             console.log('addItem: ');
