@@ -34,8 +34,7 @@ MongoClient.connect(url, function (err, db) {
         });
 
         socket.on('newUser', function (userName) {
-            console.log('newUser: ');
-            console.log(userName);
+            db.users.insert({UserName: userName})
         });
 
         socket.on('disconnect', function () {
