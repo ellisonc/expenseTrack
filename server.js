@@ -26,13 +26,14 @@ MongoClient.connect(url, function (err, db) {
             var testname = db.collection('users').find({userName: userName }, { limit: 1 }, function (err, user) {
                 if (user) {
                     taken = true;
+                    console.log("taken");
                 }
                 else {
                     taken = false;
                 }
             });
             if(testname )
-            fn(taken);
+            fn(true);
         });
 
         socket.on('addItem', function (item) {
