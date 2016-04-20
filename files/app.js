@@ -67,7 +67,7 @@ inputUsernameField.onkeypress = function (e) {
 };
 var newUserError = document.getElementById("newUserErrorMessage");
 newUsernameField.onchange = function (e) {
-    Console.log('checking');
+    Debug.log('checking');
     socket.emit('check', userName, function (taken) {
         if (taken.result) {
             newUserError.innerHTML = "Username already taken!";
