@@ -23,15 +23,14 @@ MongoClient.connect(url, function (err, db) {
         socket.on('check', function (userName, fn) {
             console.log('checking');
             var taken = false;
-            var testname = db.collection('users').find({userName: userName }, { limit: 1 }, function (err, user) {
-                if (user) {
+            var testSize = db.collection('users').find({ userName: userName }).limit(1).size();
+                if (testSize == 1) {
                     taken = true;
                     console.log(user);
                 }
                 else {
                     taken = false;
                 }
-            });
             if(testname )
             fn(true);
         });
