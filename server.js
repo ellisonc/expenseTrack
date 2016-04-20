@@ -20,6 +20,21 @@ MongoClient.connect(url, function (err, db) {
 
     io.on('connection', function (socket) {
 
+        socket.on('check', function (userName, fn) {
+            Console.log('checking');
+            var taken = false;
+            var testname = db.users.find({userName: userName }, {}, { limit: 1 }, function (err, user) {
+                if (user) {
+                    taken = true;
+                }
+                else {
+                    taken = false;
+                }
+            });
+            if(testname )
+            fn(taken);
+        });
+
         socket.on('addItem', function (item) {
             console.log('addItem: ');
             console.log('type - ' + item.type);
@@ -34,7 +49,7 @@ MongoClient.connect(url, function (err, db) {
         });
 
         socket.on('newUser', function (userName) {
-            db.users.insert({UserName: userName})
+            //db.users.insert({UserName: userName})
         });
 
         socket.on('disconnect', function () {

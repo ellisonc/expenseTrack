@@ -1,4 +1,4 @@
-//initialize socket io
+//initialize variables
 var socket = io.connect();
 
 var addExpenseButton = document.getElementById("addExpense");
@@ -23,13 +23,18 @@ cancelExpenseButton.onclick = hideAddItem;
 
 var mainPage = document.getElementById("mainPage");
 var loginScreen = document.getElementById("loginScreen");
+var newUserScreen = document.getElementById("newUserScreen");
 //Setup page here
 mainPage.hidden = true;
+newUserScreen.hidden = true;
 var loginButton = document.getElementById("login");
 loginButton.onclick = login;
 
 var newUserButton = document.getElementById("newUser");
-newUserButton.onclick = createNewUser;
+newUserButton.onclick = newuser;
+
+var createNewUserButton = document.getElementById("createNewUser");
+createNewUserButton.onclick = createNewUser;
 
 var logoutButton = document.getElementById("logout");
 logoutButton.onclick = logout;
@@ -40,11 +45,17 @@ var date = document.getElementById("date");
 var expenses = [];
 var userID;
 var usernames = [];
+
+
 getUsernames();
 
-
+//login and new user input fields
 var loginNameField = document.getElementById("loginName");
 var inputUsernameField = document.getElementById("username");
+var newUsernameField = document.getElementById("newUsername");
+var newPasswordField = document.getElementById("newPassword");
+var firstNameField = document.getElementById("firstName");
+
 inputUsernameField.focus();
 inputUsernameField.onkeypress = function (e) {
     if (!e) e = window.event;
@@ -54,13 +65,23 @@ inputUsernameField.onkeypress = function (e) {
         return;
     }
 };
-//for testing
-skipLogin();
-function skipLogin() {
-    userID = 1;
-    switchToMainScreen();
+var newUserError = document.getElementById("newUserErrorMessage");
+newUsernameField.onfocusout = function (e) {
+    socket.emit('check', userName, function (taken) {
+        if (taken.result) {
+            newUserError.innerHTML = "Username already taken!";
+        }
+        else {
+            newUserError.innerHTML = "";
+        }
+    })
 }
-//end for testing
+function newuser() {
+    loginScreen.hidden = true;
+    newUserScreen.hidden = false;
+    newUsernameField.focus();
+}
+
 function getUsernames() {
     usernames = [];
     usernames.push("andrew");
@@ -84,17 +105,27 @@ function login() {
 
 
 function createNewUser() {
-    var inputUsernameField = document.getElementById("username");
-    if (inputUsernameField.value != "") {
-        userID = usernames.length;
-        usernames.push(inputUsernameField.value);
-        socket.emit("newUser", inputUsernameField.value);
-        inputUsernameField.value = "";
+    if (newUsernameField.value != "") {
+        //userID = usernames.length;
+        //usernames.push(inputUsernameField.value);
+        //send things to server
+        var tempPass = newPasswordField.value;
+        var newUserData = {
+            username: inputUsernameField.value,
+            password: tempPass,
+            name: firstNameField.value,
+            rooms: {
+            }
+        };
+        socket.emit("newUser", newUserData);
+        newUsernameField.value = "";
+        newPasswordField.value = "";
+        firstNameField.value = "";
         switchToMainScreen();
     }
     else {
-        var loginError = document.getElementById("loginErrorMessage");
-        loginError.innerHTML = "Enter a valid username";
+        var newUserError = document.getElementById("newUserErrorMessage");
+        newUserError.innerHTML = "Enter a valid username";
     }
 }
 
