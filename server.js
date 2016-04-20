@@ -23,7 +23,7 @@ MongoClient.connect(url, function (err, db) {
         socket.on('check', function (userName, fn) {
             console.log('checking');
             var taken = false;
-            var testname = db.collection('users').find({userName: userName }, {}, { limit: 1 }, function (err, user) {
+            var testname = db.collection('users').find({userName: userName }, { limit: 1 }, function (err, user) {
                 if (user) {
                     taken = true;
                 }

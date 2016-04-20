@@ -67,7 +67,6 @@ inputUsernameField.onkeypress = function (e) {
 };
 var newUserError = document.getElementById("newUserErrorMessage");
 newUsernameField.onchange = function (e) {
-    console.log('checking');
     var userName = newUsernameField.value;
     socket.emit('check', userName, function (taken) {
         if (taken.result) {
