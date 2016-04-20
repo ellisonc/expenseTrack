@@ -66,7 +66,7 @@ inputUsernameField.onkeypress = function (e) {
     }
 };
 var newUserError = document.getElementById("newUserErrorMessage");
-newUsernameField.onfocusout = function (e) {
+newUsernameField.onchange = function (e) {
     Console.log('checking');
     socket.emit('check', userName, function (taken) {
         if (taken.result) {
