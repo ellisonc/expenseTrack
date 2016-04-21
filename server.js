@@ -47,6 +47,7 @@ db.once('open', function () {
     io.on('connection', function (socket) {
 
         socket.on('newUser', function (data) {
+            console.log(data);
             var tempUser = new User({
                 username: data.username,
                 password: data.password,
