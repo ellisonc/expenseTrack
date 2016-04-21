@@ -23,7 +23,8 @@ MongoClient.connect(url, function (err, db) {
         socket.on('check', function (userName, fn) {
             console.log('checking ' + userName);            
             //query mongodb
-            var count = db.collection('users').find({ "username": userName }).limit(1).count();
+            var cursor = db.collection('users').find({"userName" : userName }).limit(1);
+            var count = cursor.count();
             console.log(count);
             if (count == 1) {
                 fn(true);
