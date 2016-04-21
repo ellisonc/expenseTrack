@@ -93,7 +93,7 @@ function getUsernames() {
     usernames.push("third");
 }
 function login() {
-    var inputUsername = inputUsernameField.value;
+    var inputUsername = newUsernameField.value;
     inputUsername = inputUsername.toLowerCase();
 
     if (usernames.indexOf(inputUsername) != -1) {
