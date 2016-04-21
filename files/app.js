@@ -68,16 +68,16 @@ inputUsernameField.onkeypress = function (e) {
 var newUserError = document.getElementById("newUserErrorMessage");
 newUsernameField.onchange = function (e) {
     var userName = newUsernameField.value;
-    socket.emit('check', userName, function (taken) {
-        if (taken.result) {
-            console.log("true");
-            newUserError.innerHTML = "Username already taken!";
-        }
-        else {
-            console.log("false");
-            newUserError.innerHTML = "";
-        }
-    });
+    //socket.emit('check', userName, function (taken) {
+    //    if (taken.result) {
+    //        console.log("true");
+    //        newUserError.innerHTML = "Username already taken!";
+    //    }
+    //    else {
+    //        console.log("false");
+    //        newUserError.innerHTML = "";
+    //    }
+    //});
 }
 function newuser() {
     loginScreen.hidden = true;
@@ -117,8 +117,6 @@ function createNewUser() {
             username: inputUsernameField.value,
             password: tempPass,
             name: firstNameField.value,
-            rooms: {
-            }
         };
         socket.emit("newUser", newUserData);
         newUsernameField.value = "";
@@ -135,6 +133,7 @@ function createNewUser() {
 function switchToMainScreen() {
     mainPage.hidden = false;
     loginScreen.hidden = true;
+    newUserScreen.hidden = true;
     inputUsernameField.innerHTML = "";
     loginNameField.innerHTML = " " + nameformat(usernames[userID]);
     getData();
