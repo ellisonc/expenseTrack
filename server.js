@@ -9,7 +9,6 @@ var url = 'mongodb://localhost:27017/expenseTrack';
 MongoClient.connect(url, function (err, db) {
     assert.equal(null, err);
     console.log("Connected to db");
-
     http.listen(8888);
     app.get('/', function (req, res) {
         res.sendFile(__dirname + '/files/app.html');
@@ -19,11 +18,12 @@ MongoClient.connect(url, function (err, db) {
     
 
     io.on('connection', function (socket) {
+        db.collection('users').insertOne({ "username": "tester" });
 
         socket.on('check', function (userName, fn) {
             console.log('checking ' + userName);            
             //query mongodb
-            var cursor = db.collection('users').find();
+            var cursor = db.collection('users').find({ "username": userName });
             cursor.count(function (err, count) {
                 console.log(count);
                 if (count != 0) {
