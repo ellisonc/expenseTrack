@@ -93,7 +93,7 @@ function getUsernames() {
     usernames.push("third");
 }
 function login() {
-    var inputUsername = newUsernameField.value;
+    var inputUsername = inputUsernameField.value;
     inputUsername = inputUsername.toLowerCase();
 
     if (usernames.indexOf(inputUsername) != -1) {
@@ -115,7 +115,7 @@ function createNewUser() {
         //send things to server
         var tempPass = newPasswordField.value;
         var newUserData = {
-            username: inputUsernameField.value,
+            username: newUsernameField.value,
             password: tempPass,
             name: firstNameField.value,
         };
