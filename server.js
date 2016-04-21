@@ -21,20 +21,15 @@ MongoClient.connect(url, function (err, db) {
     io.on('connection', function (socket) {
 
         socket.on('check', function (userName, fn) {
-            console.log('checking');
-            var taken = false;
-            
+            console.log('checking');            
             //query mongodb
-            var cursor = db.collection('users').find({ "userName": userName }, {);
-            cursor.each(function (err, doc) {
-                assert.equal(err, null);
-                if (doc != null) {
-                    fn(true);
-                }
-                else {
-                    fn(false);
-                }
-            });
+            var count = db.users.find({ "userName": userName }).limit(1).count();
+            if (count == 1) {
+                fn(true);
+            }
+            else {
+                fn(false);
+            }
         });
 
         socket.on('addItem', function (item) {
