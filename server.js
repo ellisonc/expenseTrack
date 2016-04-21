@@ -62,7 +62,7 @@ io.on('connection', function (socket) {
             else {
                 fn(true);
             }
-        })
+        });
     });
 });
 
