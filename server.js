@@ -39,6 +39,11 @@ db.once('open', function () {
 });
 
 mongoose.connect(url);
+http.listen(8888);
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/files/app.html');
+});
+app.use(express.static('files'));
 
 io.on('connection', function (socket) {
 
