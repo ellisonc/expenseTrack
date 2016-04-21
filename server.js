@@ -23,16 +23,16 @@ MongoClient.connect(url, function (err, db) {
         socket.on('check', function (userName, fn) {
             console.log('checking ' + userName);            
             //query mongodb
-            var cursor = db.collection('users').find({ "userName": userName });
-            console.log('strange');
-            var count = cursor.count();
-            console.log(count);
-            if (count == 1) {
-                fn(true);
-            }
-            else {
-                fn(false);
-            }
+            var cursor = db.collection('users').find();
+            cursor.count(function (err, count) {
+                console.log(count);
+                if (count != 0) {
+                    fn(true);
+                }
+                else {
+                    fn(false);
+                }
+            });
         });
 
         socket.on('addItem', function (item) {
