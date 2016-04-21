@@ -11,6 +11,7 @@ var db = mongoose.connection;
 
 db.on('error', console.error);
 db.once('open', function () {
+    //these are database schemas, they tell it what to expect
     var userSchema = new mongoose.Schema({
         username: String,
         password: String,
@@ -33,6 +34,7 @@ db.once('open', function () {
         timeStamp: Date
     });
 
+    //these are models based on the schemas
     var User = mongoose.model('User', userSchema);
     var Room = mongoose.model('Room', roomSchema);
     var Item = mongoose.model('Item', itemSchema);
@@ -46,20 +48,24 @@ db.once('open', function () {
 
     io.on('connection', function (socket) {
 
+        //creates a new user in the database
         socket.on('newUser', function (data) {
             console.log(data);
+            //User is a db "model", temp user is an instance of it.
             var tempUser = new User({
                 username: data.username,
                 password: data.password,
                 name: data.name,
                 rooms: null
             });
+            //database command
             tempUser.save(function (err, tempUser) {
                 if (err) return console.error(err);
             });
         });
 
         socket.on('check', function (userName) {
+            //this counts how many users in User have this username
             User.count({ username: userName }, function (err, count) {
                 console.log(count);
                 if (count == 0) {
