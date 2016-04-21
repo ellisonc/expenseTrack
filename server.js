@@ -36,40 +36,43 @@ db.once('open', function () {
     var User = mongoose.model('User', userSchema);
     var Room = mongoose.model('Room', roomSchema);
     var Item = mongoose.model('Item', itemSchema);
+
+
+    http.listen(8888);
+    app.get('/', function (req, res) {
+        res.sendFile(__dirname + '/files/app.html');
+    });
+    app.use(express.static('files'));
+
+    io.on('connection', function (socket) {
+
+        socket.on('newUser', function (data) {
+            var tempUser = new User({
+                username: data.username,
+                password: data.password,
+                name: data.name,
+                rooms: null
+            });
+            tempUser.save(function (err, tempUser) {
+                if (err) return console.error(err);
+            });
+        });
+
+        socket.on('check', function (username, fn) {
+            User.count({ username: username }, function (err, count) {
+                if (count == 0) {
+                    fn(false);
+                }
+                else {
+                    fn(true);
+                }
+            });
+        });
+    });
 });
 
 mongoose.connect(url);
-http.listen(8888);
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/files/app.html');
-});
-app.use(express.static('files'));
 
-io.on('connection', function (socket) {
-
-    socket.on('newUser', function (data) {
-        var tempUser = new User({
-            username: data.username,
-            password: data.password,
-            name: data.name,
-            rooms: null
-        });
-        tempUser.save(function (err, tempUser) {
-            if (err) return console.error(err);
-        });
-    });
-
-    socket.on('check', function (username, fn) {
-        User.count({ username: username }, function (err, count) {
-            if (count == 0) {
-                fn(false);
-            }
-            else {
-                fn(true);
-            }
-        });
-    });
-});
 
 //MongoClient.connect(url, function (err, db) {
 //    assert.equal(null, err);
