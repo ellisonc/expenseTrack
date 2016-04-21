@@ -73,7 +73,7 @@ newUsernameField.onchange = function (e) {
 
 socket.on("checkReturn", function (data) {
     console.log("recieved check");
-    if(data.result){
+    if(data){
         newUserError.innerHTML = "Username already taken!";
     }
     else{
