@@ -68,17 +68,17 @@ inputUsernameField.onkeypress = function (e) {
 var newUserError = document.getElementById("newUserErrorMessage");
 newUsernameField.onchange = function (e) {
     var userName = newUsernameField.value;
-    socket.emit('check', userName, function (taken) {
-        if (taken.result) {
-            console.log("true");
-            newUserError.innerHTML = "Username already taken!";
-        }
-        else {
-            console.log("false");
-            newUserError.innerHTML = "";
-        }
-    });
+    socket.emit('check', userName);
 }
+
+socket.on("checkReturn", function(data){
+    if(data.result){
+        newUserError.innerHTML = "Username already taken!";
+    }
+    else{
+        newUserError.innerHTML = "";
+    }
+});
 function newuser() {
     loginScreen.hidden = true;
     newUserScreen.hidden = false;

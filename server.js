@@ -58,14 +58,14 @@ db.once('open', function () {
             });
         });
 
-        socket.on('check', function (username, fn) {
-            User.count({ username: username }, function (err, count) {
+        socket.on('check', function (userName) {
+            User.count({ username: userName }, function (err, count) {
                 console.log(count);
                 if (count == 0) {
-                    fn(false);
+                    socket.emit("checkReturn", false);
                 }
                 else {
-                    fn(true);
+                    socket.emit("checkReturn", true);
                 }
             });
         });
