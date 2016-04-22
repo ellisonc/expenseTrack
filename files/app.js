@@ -107,6 +107,7 @@ function login() {
 }
 
 socket.on('loginResponse', function (response) {
+    console.log(response);
     if (response.result == false) {
         document.getElementById("loginErrorMessage").innerHTML = "Login Failed, Try again";
     }
