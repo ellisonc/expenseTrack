@@ -112,9 +112,11 @@ socket.on('loginResponse', function (response) {
         document.getElementById("loginErrorMessage").innerHTML = "Login Failed, Try again";
     }
     else {
-        currentUser.username = response.username;
-        currentUser.firstname = response.firstname;
-        currentUser.rooms = response.rooms;
+        currentUser = {
+            'username': response.username,
+            'firstname': response.firstname,
+            'rooms': response.rooms
+        };
         document.getElementById("loginErrorMessage").innerHTML = "";
         inputUsernameField.value = "";
         passwordField.value = "";
