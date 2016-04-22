@@ -61,7 +61,7 @@ var passwordField = document.getElementById("password");
 var firstNameField = document.getElementById("firstName");
 
 inputUsernameField.focus();
-inputUsernameField.onkeypress = function (e) {
+passwordField.onkeypress = function (e) {
     if (!e) e = window.event;
     var key = e.keyCode || e.which;
     if (key == '13') {
