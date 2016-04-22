@@ -41,6 +41,9 @@ logoutButton.onclick = logout;
 
 var creatingExpense = true;
 
+
+//globals
+var currentUser;
 var date = document.getElementById("date");
 var expenses = [];
 var userID;
@@ -54,6 +57,7 @@ var loginNameField = document.getElementById("loginName");
 var inputUsernameField = document.getElementById("username");
 var newUsernameField = document.getElementById("newUsername");
 var newPasswordField = document.getElementById("newPassword");
+var passwordField = document.getElementById("password");
 var firstNameField = document.getElementById("firstName");
 
 inputUsernameField.focus();
@@ -93,19 +97,27 @@ function getUsernames() {
     usernames.push("third");
 }
 function login() {
-    var inputUsername = inputUsernameField.value;
-    inputUsername = inputUsername.toLowerCase();
+    var tempUsername = inputUsernameField.value;
+    var tempPass = passwordField.value;
 
-    if (usernames.indexOf(inputUsername) != -1) {
-        userID = usernames.indexOf(inputUsername);
-        switchToMainScreen();
-    }
-    else {
-        var loginError = document.getElementById("loginErrorMessage");
-        loginError.innerHTML = "Enter a valid username";
-    }
+    socket.emit('loginAttempt', {
+        "username": tempUsername,
+        "password": tempPass
+    });
 }
 
+socket.on('loginResponse', function (response) {
+    if (response.result == false) {
+        document.getElementById("loginErrorMessage").innerHTML = "Login Failed, Try again";
+    }
+    else {
+        currentUser.username = response.username;
+        currentUser.firstname = response.firstname;
+        currentUser.rooms = response.rooms;
+        document.getElementById("loginErrorMessage").innerHTML = "";
+        switchToMainScreen();
+    }
+});
 
 
 function createNewUser() {

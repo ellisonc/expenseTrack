@@ -6,7 +6,6 @@ var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var url = 'mongodb://localhost:27017/expenseTrack';
 var mongoose = require('mongoose');
-
 var db = mongoose.connection;
 
 db.on('error', console.error);
@@ -76,6 +75,29 @@ db.once('open', function () {
                 }
             });
         });
+
+        socket.on('loginAttempt', function (data) {
+            User.findONe({ 'username': data.username }, function (err, tempUser) {
+                if (tempUser == null) {
+                    socket.emit('loginResponse', {
+                        'result': false,
+                        'username' : "",
+                        'firstname': "",
+                        'rooms' : null
+                    });
+                }
+                else if (tempUser.password == data.password) {
+                    socket.emit('loginResponse', {
+                        'result': true,
+                        'username' : tempUser.username,
+                        'firstname': tempUser.name,
+                        'rooms' : tempUser.rooms
+                    });
+                }
+            });
+        });
+
+
     });
 });
 
