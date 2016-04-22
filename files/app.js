@@ -115,6 +115,8 @@ socket.on('loginResponse', function (response) {
         currentUser.firstname = response.firstname;
         currentUser.rooms = response.rooms;
         document.getElementById("loginErrorMessage").innerHTML = "";
+        inputUsernameField.value = "";
+        passwordField.value = "";
         switchToMainScreen();
     }
 });
