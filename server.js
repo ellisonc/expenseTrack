@@ -77,7 +77,7 @@ db.once('open', function () {
         });
 
         socket.on('loginAttempt', function (data) {
-            User.findONe({ 'username': data.username }, function (err, tempUser) {
+            User.findOne({ 'username': data.username }, function (err, tempUser) {
                 if (tempUser == null) {
                     socket.emit('loginResponse', {
                         'result': false,
