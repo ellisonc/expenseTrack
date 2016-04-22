@@ -94,6 +94,14 @@ db.once('open', function () {
                         'rooms' : tempUser.rooms
                     });
                 }
+                else {
+                    socket.emit('loginResponse', {
+                        'result': false,
+                        'username': "",
+                        'firstname': "",
+                        'rooms': null
+                    });
+                }
             });
         });
 
