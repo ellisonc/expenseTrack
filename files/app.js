@@ -24,7 +24,11 @@ cancelExpenseButton.onclick = hideAddItem;
 var mainPage = document.getElementById("mainPage");
 var loginScreen = document.getElementById("loginScreen");
 var newUserScreen = document.getElementById("newUserScreen");
+var roomSelect = document.getElementById("roomSelect");
+var newRoomPage = document.getElementById("newRoom");
 //Setup page here
+roomSelect.hidden = true;
+newRoomPage.hidden = true;
 mainPage.hidden = true;
 newUserScreen.hidden = true;
 var loginButton = document.getElementById("login");
@@ -38,6 +42,18 @@ createNewUserButton.onclick = createNewUser;
 
 var logoutButton = document.getElementById("logout");
 logoutButton.onclick = logout;
+
+var createRoomButton = document.getElementById("createRoom");
+createRoomButton.onclick = createRoom;
+
+var changeRoomButton = document.getElementById("changeRoom");
+changeRoomButton.onclick = changeRoom;
+
+var selectRoomButton = document.getElementById("selectRoomButton");
+selectRoomButton.onclick = selectRoom;
+
+var newRoomButton = document.getElementById("newRoomButton");
+newRoomButton.onclick = newRoom;
 
 var creatingExpense = true;
 
@@ -61,6 +77,7 @@ var passwordField = document.getElementById("password");
 var firstNameField = document.getElementById("firstName");
 
 inputUsernameField.focus();
+//press enter to submit
 passwordField.onkeypress = function (e) {
     if (!e) e = window.event;
     var key = e.keyCode || e.which;
@@ -69,12 +86,21 @@ passwordField.onkeypress = function (e) {
         return;
     }
 };
+newPasswordField.onkeypress = function (e) {
+    if (!e) e = window.event;
+    var key = e.keyCode || e.which;
+    if (key == '13') {
+        login();
+        return;
+    }
+};
 var newUserError = document.getElementById("newUserErrorMessage");
+//check username availablity
 newUsernameField.onchange = function (e) {
     var userName = newUsernameField.value;
     socket.emit('check', userName);
 }
-
+//evaluate username availablity
 socket.on("checkReturn", function (data) {
     console.log("recieved check");
     if(data){
@@ -84,6 +110,7 @@ socket.on("checkReturn", function (data) {
         newUserError.innerHTML = "";
     }
 });
+
 function newuser() {
     loginScreen.hidden = true;
     newUserScreen.hidden = false;
@@ -102,7 +129,7 @@ function login() {
 
     socket.emit('loginAttempt', {
         "username": tempUsername,
-        "password": tempPass
+        "password": tempPass//don't forget to hash this at some point
     });
 }
 
@@ -124,17 +151,39 @@ socket.on('loginResponse', function (response) {
     }
 });
 
+function createRoom() {
+    newRoomPage.hidden = false;
+    body.hidden = true;
+}
+
+function newRoom() {
+    body.hidden = false;
+    newRoomPage.hidden = true;
+}
+
+function changeRoom() {
+    body.hidden = true;
+    roomSelect.hidden = false;
+}
+
+function selectRoom() {
+    body.hidden = false;
+    roomSelect.hidden = true;
+}
 
 function createNewUser() {
     if (newUsernameField.value != "") {
-        //userID = usernames.length;
-        //usernames.push(inputUsernameField.value);
         //send things to server
         var tempPass = newPasswordField.value;
         var newUserData = {
             username: newUsernameField.value,
             password: tempPass,
             name: firstNameField.value,
+        };
+        currentUser = {
+            'username': newUserData.username,
+            'firstname': newUserDate.name,
+            'rooms': null
         };
         socket.emit("newUser", newUserData);
         newUsernameField.value = "";

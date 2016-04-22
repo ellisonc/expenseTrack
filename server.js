@@ -47,7 +47,7 @@ db.once('open', function () {
 
     io.on('connection', function (socket) {
 
-        //creates a new user in the database
+        //create a new user in the database
         socket.on('newUser', function (data) {
             console.log(data);
             //User is a db "model", temp user is an instance of it.
@@ -63,6 +63,7 @@ db.once('open', function () {
             });
         });
 
+        //check username availability
         socket.on('check', function (userName) {
             //this counts how many users in User have this username
             User.count({ username: userName }, function (err, count) {
@@ -76,6 +77,7 @@ db.once('open', function () {
             });
         });
 
+        //try to login
         socket.on('loginAttempt', function (data) {
             console.log(data);
             User.findOne({ 'username': data.username }, function (err, tempUser) {
@@ -116,59 +118,3 @@ db.once('open', function () {
 });
 
 mongoose.connect(url);
-
-
-//MongoClient.connect(url, function (err, db) {
-//    assert.equal(null, err);
-//    console.log("Connected to db");
-//    http.listen(8888);
-//    app.get('/', function (req, res) {
-//        res.sendFile(__dirname + '/files/app.html');
-//    });
-
-//    app.use(express.static('files'));
-    
-
-//    io.on('connection', function (socket) {
-//        socket.on('check', function (userName, fn) {
-//            console.log('checking ' + userName);            
-//            //query mongodb
-//            var cursor = db.collection('users').find({ "username": userName });
-//            cursor.count(function (err, count) {
-//                console.log(count);
-//                if (count != 0) {
-//                    fn(true);
-//                }
-//                else {
-//                    fn(false);
-//                }
-//            });
-//        });
-
-//        socket.on('addItem', function (item) {
-//            console.log('addItem: ');
-//            console.log('type - ' + item.type);
-//            console.log('creatorID - ' + item.creatorID);
-//            console.log('date - ' + item.date);
-//            console.log('description - ' + item.description);
-//        });
-
-//        socket.on('delete', function (target) {
-//            console.log('target: ');
-//            console.log(target);
-//        });
-
-//        socket.on('newUser', function (userName) {
-//            //db.users.insert({UserName: userName})
-//        });
-
-//        socket.on('disconnect', function () {
-//            console.log('disconnected');
-//        });
-//    });
-
-
-
-//    db.close();
-//});
-
