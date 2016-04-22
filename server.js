@@ -80,6 +80,7 @@ db.once('open', function () {
             console.log(data);
             User.findOne({ 'username': data.username }, function (err, tempUser) {
                 if (tempUser == null) {
+                    console.log('null name');
                     socket.emit('loginResponse', {
                         'result': false,
                         'username' : "",
@@ -88,6 +89,8 @@ db.once('open', function () {
                     });
                 }
                 else if (tempUser.password == data.password) {
+                    console.log('password correct');
+                    console.log(tempUser.password);
                     socket.emit('loginResponse', {
                         'result': true,
                         'username' : tempUser.username,
@@ -96,6 +99,8 @@ db.once('open', function () {
                     });
                 }
                 else {
+                    console.log('password wrong');
+                    console.log(tempUser.password);
                     socket.emit('loginResponse', {
                         'result': false,
                         'username': "",
