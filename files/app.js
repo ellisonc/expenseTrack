@@ -152,21 +152,25 @@ socket.on('loginResponse', function (response) {
 });
 
 function createRoom() {
+    createRoomButton.hidden = true;
     newRoomPage.hidden = false;
     body.hidden = true;
 }
 
 function newRoom() {
+    createRoomButton.hidden = false;
     body.hidden = false;
     newRoomPage.hidden = true;
 }
 
 function changeRoom() {
+    changeRoomButton.hidden = true;
     body.hidden = true;
     roomSelect.hidden = false;
 }
 
 function selectRoom() {
+    changeRoomButton.hidden = false;
     body.hidden = false;
     roomSelect.hidden = true;
 }
