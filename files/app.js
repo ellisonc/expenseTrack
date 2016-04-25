@@ -176,9 +176,7 @@ function selectRoom() {
 }
 
 function createNewUser() {
-    console.log("creating new user");
-    newUsernameField.value = "asdfasdf";
-    return;
+
     if (newUsernameField.value != "") {
         //send things to server
         var tempPass = newPasswordField.value;
@@ -189,7 +187,7 @@ function createNewUser() {
         };
         currentUser = {
             'username': newUserData.username,
-            'firstname': newUserDate.name,
+            'firstname': newUserData.name,
             'rooms': null
         };
         socket.emit("newUser", newUserData);
