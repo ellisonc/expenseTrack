@@ -177,6 +177,8 @@ function selectRoom() {
 
 function createNewUser() {
     console.log("creating new user");
+    newUsernameField.value = "asdfasdf";
+    return;
     if (newUsernameField.value != "") {
         //send things to server
         var tempPass = newPasswordField.value;
