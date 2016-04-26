@@ -183,7 +183,7 @@ socket.on('returnRoomData', function (response) {
             tempItem.date = Date.parse(currentRoom.items[i].date);
             tempItem.description = String(currentRoom.items[i].description);
             alert(tempItem);
-            expense.push(tempItem);
+            expenses.push(tempItem);
         }
     }
 
