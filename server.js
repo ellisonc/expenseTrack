@@ -137,7 +137,7 @@ db.once('open', function () {
                     console.log(data);
                     console.log(tempRoom);
 
-                    tempRoom.users.push(data.username);
+                    tempRoom.users.push(data.name);
                     tempRoom.userIDs.push(data.userID);
                     tempRoom.save();
 
