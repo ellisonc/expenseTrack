@@ -158,15 +158,12 @@ socket.on('returnRoomData', function (response) {
         'users': response.users
     };
 
-    alert("asdfasd");
 
-    alert("mnid");
     for (var i = 0; i < currentRoom.users.length; i++) {
         var temp = String(currentRoom.users[i]);
         usernames[i] = temp;
     }
-    alert("post");
-    alert(usernames);
+
 
     switchToMainScreen();
 });
