@@ -176,7 +176,7 @@ function createNewUser() {
 }
 
 socket.on("createUserResponse", function (response) {
-    if (response.result) {
+    if (response) {
         switchToRoomSelectScreen();
     }
     else {
