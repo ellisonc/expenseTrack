@@ -366,7 +366,7 @@ function switchToMainScreen() {
         }
         list += " ";
     }
-
+    userList.innerHTML = list;
     updateTable();
 }
 
