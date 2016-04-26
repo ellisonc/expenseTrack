@@ -53,7 +53,7 @@ db.once('open', function () {
         socket.on('newUser', function (data) {
             console.log(data);
             User.count({ username: data.username }, function (err, count) {
-                console.log("asdfasdf");
+                console.log(count);
                 if (count == 0) {
                     console.log(count);
                     console.log("creating new user");
@@ -66,9 +66,11 @@ db.once('open', function () {
                     tempUser.save(function (err, tempUser) {
                         if (err) return console.error(err);
                     });
+                    console.log("emit false");
                     socket.emit("createUserResponse", true);
                 }
                 else {
+                    console.log("emit true");
                     socket.emit("createUserResponse", false);
                 }
             });

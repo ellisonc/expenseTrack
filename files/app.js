@@ -177,11 +177,11 @@ function createNewUser() {
 
 socket.on("createUserResponse", function (response) {
     if (response.result) {
-        var newUserError = document.getElementById("newUserErrorMessage");
-        newUserError.innerHTML = "Username already taken";
+        switchToRoomSelectScreen();
     }
     else {
-        selectRoomErrorMessage.innerHTML = response.error;
+        var newUserError = document.getElementById("newUserErrorMessage");
+        newUserError.innerHTML = "Username already taken";
     }
 });
 
