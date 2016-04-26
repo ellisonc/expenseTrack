@@ -51,8 +51,10 @@ db.once('open', function () {
 
         //create a new user in the database
         socket.on('newUser', function (data) {
+            console.log(data);
             User.count({ username: data.username }, function (err, count) {
                 if (count == 0) {
+                    console.log(count);
                     console.log("creating new user");
                     var tempUser = new User({
                         username: data.username,
