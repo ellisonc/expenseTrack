@@ -210,9 +210,9 @@ function selectRoom() {
 socket.on("roomLoginResponse", function (response) {
     if (response.result) {
         currentRoom = {
-            "roomName": result.roomName,
-            "items": result.items,
-            "users": result.users
+            "roomName": response.roomName,
+            "items": response.items,
+            "users": response.users
         }
         switchToMainScreen();
     }
