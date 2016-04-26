@@ -433,7 +433,7 @@ function addItem() {
                     errorMessage.innerHTML = "Input valid values";
                     return;
                 }
-                var recipientName = paymentRecipient;
+                var recipientName = paymentRecipient.value;
                 var index = usernames.indexOf(recipientName);
                 if (index == -1 || index == userID) {
                     errorMessage.innerHTML = "Input valid recipient";
@@ -455,7 +455,7 @@ function addItem() {
             item.recipientID = null;
             item.type = "expense";
         }
-
+        errorMessage.innerHTML = "";
 
         item.creator = usernames[userID];
         item.cost = cost.value;
