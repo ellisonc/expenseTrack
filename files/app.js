@@ -254,11 +254,12 @@ socket.on("createRoomResponse", function (response) {
 
 
 function switchToMainScreen() {
+    selectRoomScreen.hidden = true;
     mainPage.hidden = false;
     loginScreen.hidden = true;
     newUserScreen.hidden = true;
     inputUsernameField.innerHTML = "";
-    loginNameField.innerHTML = " " + nameformat(usernames[userID]);
+    loginNameField.innerHTML = " " + nameformat(usernames[userID]) + " asdjflkasndifgonasdoifnasd";
     getData();
     updateTable();
 }
