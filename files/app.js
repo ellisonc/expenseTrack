@@ -262,12 +262,11 @@ function selectRoom() {
 
 socket.on("roomLoginResponse", function (response) {
     if (response.result) {
-        currentRoom = {
-            "roomName": response.roomName,
-            "items": response.items,
-            "users": response.users
-        }
+
         currentUser.room = currentRoom.roomName;
+        socket.emit('getRoomData', {
+            "roomName": currentUser.room
+        });
         switchToMainScreen();
     }
     else {
@@ -306,8 +305,8 @@ socket.on("createRoomResponse", function (response) {
         userIDs = [];
         usernames[parseInt(currentUser.userID)] = currentUser.username;
         userIDs[0] = parseInt(currentUser.userID);
-        alert(userIDs);
-        alert(usernames);
+        //alert(userIDs);
+        //alert(usernames);
         switchToMainScreen();
     }
     else {
