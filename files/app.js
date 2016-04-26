@@ -160,6 +160,12 @@ socket.on('returnRoomData', function (response) {
     alert(currentRoom.items);
     alert(currentRoom.users[0]);
 
+    for (var i = 0 ; i < currentRoom.items; i++){
+
+    }
+    for (var i = 0; i < currentRoom.users; i++) {
+        usernames.push(currentRoom.users[i]);
+    }
     switchToMainScreen();
 });
 
