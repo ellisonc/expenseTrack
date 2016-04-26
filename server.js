@@ -111,10 +111,11 @@ db.once('open', function () {
                     console.log("login to room successful");
                     console.log(tempRoom.roomName);
                     console.log(tempRoom.users);
-                    /*console.log(data.username);
+
+                    console.log(data.username);
                     User.findOne({ 'username': data.username }, function (err, user) {
                         user.roomName = data.roomName;
-                    });*/
+                    });
                     //User.update({ 'username': data.username }, { 'roomName': data.roomName });
                     socket.emit("roomLoginResponse", {
                         'result': true,
@@ -149,7 +150,7 @@ db.once('open', function () {
                 }
                 else if (tempUser.password == data.password) {
                     console.log('password correct');
-                    console.log(tempUser.password);
+                    console.log(tempUser);
                     socket.emit('loginResponse', {
                         'result': true,
                         'username' : tempUser.username,
