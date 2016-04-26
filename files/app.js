@@ -381,7 +381,7 @@ function addItem() {
         item = {};
         if (!creatingExpense) {
             item.type = "payment";
-            if (usernames.length > 2) {
+            if (userIDs.length > 2) {
                 if (paymentRecipient.value == "") {
                     errorMessage.innerHTML = "Input valid values";
                     return;
@@ -395,11 +395,12 @@ function addItem() {
                 item.recipientID = index;
             }
             else {
-                if (userID == 1) {
-                    item.recipientID = 0;
+                var index = userIDs.indexOf(userID);
+                if (index == 1) {
+                    item.recipientID = userIDs[0];
                 }
                 else {
-                    item.recipientID = 1;
+                    item.recipientID = userIDs[1];
                 }
             }
         }
@@ -453,6 +454,7 @@ function compareExpenseDates(one, two) {
 
 function updateTable() {
     //alert("updating table" + expenses.length);
+    userID = parseInt(currentUser.userID);
     removeChildren(body);
     expenses.sort(compareExpenseDates);
     var table = document.createElement("table");
@@ -502,7 +504,7 @@ function updateTable() {
 
     var amountPaid = [];
     for (var i = 0; i < userIDs.length; i++) {//store user ids as well or lookup to fix array
-        amountPaid.push(0);
+        amountPaid[userID[i]] = 0;
     }
 
 
@@ -551,8 +553,8 @@ function updateTable() {
         var tempRecip = document.createElement("td");
 
         if (expenses[i].type == "payment") {
-            var index = usernames.indexOf(expenses[i].recipientID);
-            tempRecip.innerHTML = usernames[index];
+            //var index = usernames.indexOf(expenses[i].recipientID);
+            tempRecip.innerHTML = usernames[expenses[i].recipientID];
         }
         else {
             tempRecip.innerHTML = "N/A";
@@ -571,9 +573,9 @@ function updateTable() {
             totalPaid += amountPaid[j];
         }
 
-        for (var j = 0; j < usernames.length; j++) {
+        for (var j = 0; j < userIDs.length; j++) {
             var tempCell = document.createElement("td");
-            tempCell.innerHTML = Math.round((totalPaid / usernames.length - amountPaid[j]) * 100) / 100;
+            tempCell.innerHTML = Math.round((totalPaid / userIDs.length - amountPaid[userIDs[j]]) * 100) / 100;
 
             row.appendChild(tempCell);
         }
