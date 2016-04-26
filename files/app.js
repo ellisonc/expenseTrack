@@ -505,7 +505,8 @@ function updateTable() {
     
     var amountPaid = [];
     for (var i = 0; i < userIDs.length; i++) {//store user ids as well or lookup to fix array
-        amountPaid[parseInt(userID[i])] = 0;
+        var index = parseInt(userIDs[i]);
+        amountPaid[index] = 0;
     }
     alert(userIDs);
     alert(amountPaid);
