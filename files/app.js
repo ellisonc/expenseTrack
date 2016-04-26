@@ -356,6 +356,13 @@ function switchToMainScreen() {
     inputUsernameField.innerHTML = "";
     loginNameField.innerHTML = currentUser.username;
     mainHeaderDiv.innerHTML = "Room: " + currentRoom.roomName;
+
+    var userList = document.getElementById("userList");
+    var list = "Users: ";
+    for (var i = 0; i < userIDs.length; i++) {
+        list += usernames[userIDs[i]];
+    }
+    userList.innerHTML = list;
     updateTable();
 }
 
