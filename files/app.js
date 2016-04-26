@@ -166,7 +166,7 @@ socket.on('returnRoomData', function (response) {
 
         }
     }
-
+    alert("here");
     for (var i = 0; i < currentRoom.users.length; i++) {
         var temp = String(currentRoom.users[i]);
         usernames[currentRoom.userIds[i]] = temp;
