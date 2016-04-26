@@ -15,11 +15,12 @@ db.once('open', function () {
         username: String,
         password: String,
         name: String,
-        rooms: Array
+        room: String,
     });
 
     var roomSchema = new mongoose.Schema({
-        roomID: String,
+        roomName: String,
+        password: String,
         users: Array,
         Items: Array
     });
@@ -57,7 +58,7 @@ db.once('open', function () {
                 username: data.username,
                 password: data.password,
                 name: data.name,
-                rooms: null
+                room: null
             });
             //database command
             tempUser.save(function (err, tempUser) {

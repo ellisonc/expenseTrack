@@ -26,7 +26,11 @@ var loginScreen = document.getElementById("loginScreen");
 var newUserScreen = document.getElementById("newUserScreen");
 var roomSelect = document.getElementById("roomSelect");
 var newRoomPage = document.getElementById("newRoom");
+
+var selectRoomScreen = document.getElementById("selectRoomScreen");
+
 //Setup page here
+selectRoomScreen.hidden = true;
 roomSelect.hidden = true;
 newRoomPage.hidden = true;
 mainPage.hidden = true;
@@ -142,7 +146,7 @@ socket.on('loginResponse', function (response) {
         currentUser = {
             'username': response.username,
             'firstname': response.firstname,
-            'rooms': response.rooms
+            'rooms': response.room
         };
         document.getElementById("loginErrorMessage").innerHTML = "";
         inputUsernameField.value = "";
@@ -188,19 +192,26 @@ function createNewUser() {
         currentUser = {
             'username': newUserData.username,
             'firstname': newUserData.name,
-            'rooms': null
+            'room': null
         };
         socket.emit("newUser", newUserData);
         socket.emit("checkNewUser", newUserData);
         newUsernameField.value = "";
         newPasswordField.value = "";
         firstNameField.value = "";
-        switchToMainScreen();
+        switchToRoomSelectScreen();
     }
     else {
         var newUserError = document.getElementById("newUserErrorMessage");
         newUserError.innerHTML = "Enter a valid username";
     }
+}
+
+function switchToRoomSelectScreen(){
+    loginScreen.hidden = true;
+    newUserScreen.hidden = true;
+    selectRoomScreen.hidden = false;
+    inputUsernameField.innerHTML = "";
 }
 
 function switchToMainScreen() {
