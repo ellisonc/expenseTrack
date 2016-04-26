@@ -502,12 +502,11 @@ function updateTable() {
     table.appendChild(header);
 
 
+    
     var amountPaid = [];
     for (var i = 0; i < userIDs.length; i++) {//store user ids as well or lookup to fix array
         amountPaid[userID[i]] = 0;
     }
-
-
 
     
     for (var i = 0; i < expenses.length; i++) {
@@ -560,17 +559,19 @@ function updateTable() {
             tempRecip.innerHTML = "N/A";
         }
 
+       
+
 
         var tempID = parseInt(expenses[i].creatorID);
         if (expenses[i].type == "payment") {
-            amountPaid[expenses[i].recipientID] -= parseFloat(expenses[i].cost);
+            amountPaid[parseInt(expenses[i].recipientID)] -= parseFloat(expenses[i].cost);
         }
         amountPaid[tempID] += parseFloat(expenses[i].cost);
 
         var totalPaid = 0;
 
-        for (var j = 0; j < amountPaid.length; j++) {
-            totalPaid += amountPaid[j];
+        for (var j = 0; j < userIDs.length; j++) {
+            totalPaid += amountPaid[userIDs[j]];
         }
         alert(userIDs.length);
         for (var j = 0; j < userIDs.length; j++) {
