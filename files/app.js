@@ -70,7 +70,6 @@ var usernames = [];
 
 getUsernames();
 
-
 //login and new user input fields
 var loginNameField = document.getElementById("loginName");
 var inputUsernameField = document.getElementById("username");
@@ -113,13 +112,6 @@ function getUsernames() {
     usernames.push("kevin");
     usernames.push("third");
 }
-        currentUser = {
-            'username': response.username,
-            'firstname': response.firstname,
-            'room': response.room
-        };
-        document.getElementById("loginErrorMessage").innerHTML = "";
-        inputUsernameField.value = "";
 function login() {
     var tempUsername = inputUsernameField.value;
     var tempPass = passwordField.value;
@@ -136,6 +128,13 @@ socket.on('loginResponse', function (response) {
         document.getElementById("loginErrorMessage").innerHTML = "Login Failed, Try again";
     }
     else {
+        currentUser = {
+            'username': response.username,
+            'firstname': response.firstname,
+            'room': response.room
+        };
+        document.getElementById("loginErrorMessage").innerHTML = "";
+        inputUsernameField.value = "";
         passwordField.value = "";
         if (currentUser.room == null) {
             switchToRoomSelectScreen();
@@ -262,7 +261,7 @@ function switchToMainScreen() {
     loginScreen.hidden = true;
     newUserScreen.hidden = true;
     inputUsernameField.innerHTML = "";
-    loginNameField.innerHTML = " " + currentUser.name;
+    loginNameField.innerHTML = " " + nameformat(usernames[userID]) + " asdjflkasndifgonasdoifnasd";
     getData();
     updateTable();
 }
