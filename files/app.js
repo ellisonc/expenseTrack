@@ -292,6 +292,7 @@ socket.on("roomLoginResponse", function (response) {
 function createNewRoom() {
     if (selectRoomName.value != "") {
         if (selectRoomPassword.value != "") {
+            alert(currentUser.name);
             var newRoomData = {
                 roomName: selectRoomName.value,
                 password: selectRoomPassword.value,
