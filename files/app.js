@@ -572,7 +572,7 @@ function updateTable() {
         for (var j = 0; j < amountPaid.length; j++) {
             totalPaid += amountPaid[j];
         }
-
+        alert(userIDs.length);
         for (var j = 0; j < userIDs.length; j++) {
             var tempCell = document.createElement("td");
             tempCell.innerHTML = Math.round((totalPaid / userIDs.length - amountPaid[userIDs[j]]) * 100) / 100;
