@@ -158,19 +158,16 @@ socket.on('returnRoomData', function (response) {
         'users': response.users
     };
 
-    alert(currentRoom.users);
-    var test = currentRoom.users[0];
-    alert(test);
+
     for (var i = 0 ; i < currentRoom.items.length; i++){
 
     }
 
     for (var i = 0; i < currentRoom.users.length; i++) {
-        expenses.push(currentRoom.users[i]);
+        usernames.push(currentRoom.users[i]);
     }
-    usernames = currentRoom.users;
     alert(usernames);
-    alert(expenses);
+
     switchToMainScreen();
 });
 
