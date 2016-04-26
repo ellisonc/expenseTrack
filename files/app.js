@@ -175,8 +175,8 @@ socket.on('returnRoomData', function (response) {
         var index = parseInt(currentRoom.userIDs[i]);
         usernames[index] = temp;
     }
-    //alert(userIDs);
-    //alert(usernames);
+    alert(userIDs);
+    alert(usernames);
 
     switchToMainScreen();
 });
@@ -508,7 +508,8 @@ function updateTable() {
         var index = parseInt(userIDs[i]);
         amountPaid[index] = 0;
     }
-
+    alert(userIDs);
+    alert(amountPaid);
 
     
     for (var i = 0; i < expenses.length; i++) {
@@ -563,7 +564,7 @@ function updateTable() {
 
        
 
-        //alert(expenses[i].creatorID);
+        alert(expenses[i].creatorID);
         var tempID = parseInt(expenses[i].creatorID);
         if (expenses[i].type == "payment") {
             amountPaid[parseInt(expenses[i].recipientID)] -= parseFloat(expenses[i].cost);
@@ -575,7 +576,7 @@ function updateTable() {
         for (var j = 0; j < userIDs.length; j++) {
             totalPaid += amountPaid[userIDs[j]];
         }
-        //alert(amountPaid);
+        alert(amountPaid);
         for (var j = 0; j < userIDs.length; j++) {
             var tempCell = document.createElement("td");
             tempCell.innerHTML = Math.round((totalPaid / userIDs.length - amountPaid[userIDs[j]]) * 100) / 100;
