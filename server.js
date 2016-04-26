@@ -116,7 +116,7 @@ db.once('open', function () {
                    
                     User.findOne({ 'username': data.username }, function (err, doc) {
                         doc.room = tempRoom.roomName;
-                        doc.visits.$inc();
+                        
                         doc.save();
                     });
                     socket.emit("roomLoginResponse", {
