@@ -246,6 +246,18 @@ db.once('open', function () {
             });
         });
 
+        socket.on('delete', function (data) {
+            Room.findOne({ 'roomName': data.roomName }, function (err, tempRoom) {
+                if (tempRoom == null) {
+                    console.log("error in deleteion");
+                }
+                else {
+                    tempRoom.items.splice(data.index, 1);
+                    tempRoom.save();
+                }
+            });
+        });
+
     });
 });
 

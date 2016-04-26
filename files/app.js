@@ -566,8 +566,7 @@ function updateTable() {
         row.appendChild(c1);
         row.appendChild(c2);
         row.appendChild(tempType);
-        row.appendChild(c3);
-        row.appendChild(c4);
+        
         var tempRecip = document.createElement("td");
 
         if (expenses[i].type == "payment") {
@@ -579,7 +578,8 @@ function updateTable() {
         }
         row.appendChild(tempRecip);
 
-       
+        row.appendChild(c3);
+        row.appendChild(c4);
 
         //alert(expenses[i].creatorID);
         var tempID = parseInt(expenses[i].creatorID);
@@ -625,7 +625,7 @@ function deleteExpense() {
     expenses.splice(this.index, 1);
 
     //communicate deletion with server
-    socket.emit('delete', ind);
+    socket.emit('delete', {index: ind, roomName: currentRoom.roomName});
     console.log('delete');
 
     updateTable();
