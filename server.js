@@ -114,7 +114,7 @@ db.once('open', function () {
 
                     console.log(data.username);
                    
-                    User.update({ username: data.username }, { room: data.roomName });
+                    User.update({ username: data.username }, {$set:{room: data.roomName }});
                     socket.emit("roomLoginResponse", {
                         'result': true,
                         'roomName': tempRoom.roomName,
