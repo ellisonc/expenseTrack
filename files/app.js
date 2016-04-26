@@ -182,7 +182,8 @@ socket.on('returnRoomData', function (response) {
             tempItem.cost = parseInt(currentRoom.items[i].cost);
             tempItem.date = Date.parse(currentRoom.items[i].date);
             tempItem.description = String(currentRoom.items[i].description);
-            alert(tempItem);
+            alert(tempItem.type + " " + tempItem.recipientID + " " + tempItem.creatorID + " " + tempItem.creator + " " + tempItem.cost + " " +
+                tempItem.date + " " + tempItem.description + " ");
             expenses.push(tempItem);
         }
     }
