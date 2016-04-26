@@ -561,7 +561,7 @@ function updateTable() {
 
        
 
-
+        alert(expenses[i].creatorID);
         var tempID = parseInt(expenses[i].creatorID);
         if (expenses[i].type == "payment") {
             amountPaid[parseInt(expenses[i].recipientID)] -= parseFloat(expenses[i].cost);
@@ -573,7 +573,7 @@ function updateTable() {
         for (var j = 0; j < userIDs.length; j++) {
             totalPaid += amountPaid[userIDs[j]];
         }
-        alert(userIDs.length);
+        alert(amountPaid);
         for (var j = 0; j < userIDs.length; j++) {
             var tempCell = document.createElement("td");
             tempCell.innerHTML = Math.round((totalPaid / userIDs.length - amountPaid[userIDs[j]]) * 100) / 100;
