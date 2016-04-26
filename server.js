@@ -114,7 +114,7 @@ db.once('open', function () {
 
                     console.log(data.username);
                     User.findOne({ 'username': data.username }, function (err, user) {
-                        user.roomName = data.roomName;
+                        user.room = data.roomName;
                     });
                     //User.update({ 'username': data.username }, { 'roomName': data.roomName });
                     socket.emit("roomLoginResponse", {
