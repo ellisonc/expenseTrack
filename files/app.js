@@ -173,7 +173,7 @@ socket.on('returnRoomData', function (response) {
     
     if (currentRoom.items != null) {
         for (var i = 0; i < currentRoom.items.length; i++) {
-            alert("item found " + i);
+            //alert("item found " + i);
             var tempItem = {};
             tempItem.type = String(currentRoom.items[i].type);
             tempItem.recipientID = parseInt(currentRoom.items[i].recipientID);
@@ -187,8 +187,7 @@ socket.on('returnRoomData', function (response) {
             tempItem.date = tempDate;
 
             tempItem.description = String(currentRoom.items[i].description);
-            alert(tempItem.type + " " + tempItem.recipientID + " " + tempItem.creatorID + " " + tempItem.creator + " " + tempItem.cost + " " +
-                tempItem.date + " " + tempItem.description + " ");
+            //alert(tempItem.type + " " + tempItem.recipientID + " " + tempItem.creatorID + " " + tempItem.creator + " " + tempItem.cost + " " + tempItem.date + " " + tempItem.description + " ");
             expenses.push(tempItem);
         }
     }
@@ -436,13 +435,13 @@ function addItem() {
             var today = new Date();
         }
         item.creatorID = userID;
-        item.date = today.getTime();
+        item.date = today;
         item.description = description.value;
 
         //communicate with server to add the item
-        socket.emit('addItem', { type: item.type, recipientID: item.recipientID, creatorID: item.creatorID, cost: item.cost, date: item.date, description: item.description, roomName: currentRoom.roomName });
+        socket.emit('addItem', { type: item.type, recipientID: item.recipientID, creatorID: item.creatorID, cost: item.cost, date: item.date.getTime(), description: item.description, roomName: currentRoom.roomName });
         console.log('emitted');
-
+        
         expenses.push(item);
         userID.value = "";
         description.value = "";
