@@ -420,7 +420,8 @@ function compareExpenseDates(one, two) {
 }
 
 function updateTable() {
-    //alert("updating table" + expenses.length);
+    alert("asdf");
+    alert("updating table" + expenses.length);
     removeChildren(body);
     expenses.sort(compareExpenseDates);
     var table = document.createElement("table");
