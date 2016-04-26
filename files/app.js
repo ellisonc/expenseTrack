@@ -497,6 +497,7 @@ function updateTable() {
     header.appendChild(h1);
     header.appendChild(h2);
     header.appendChild(type);
+    header.appendChild(rec);
     header.appendChild(h3);
     header.appendChild(h4);
 
@@ -576,6 +577,7 @@ function updateTable() {
         else {
             tempRecip.innerHTML = "N/A";
         }
+        row.appendChild(tempRecip);
 
        
 
