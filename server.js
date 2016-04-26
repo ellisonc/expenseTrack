@@ -38,7 +38,7 @@ db.once('open', function () {
     var Room = mongoose.model('Room', roomSchema);
     var Item = mongoose.model('Item', itemSchema);
     console.log("initialized");
-    console.log(User.getIndexes());
+    
 
     http.listen(8888);
     app.get('/', function (req, res) {
@@ -50,7 +50,7 @@ db.once('open', function () {
 
         //create a new user in the database
         socket.on('newUser', function (data) {
-            console.log(data);
+            console.log("creating new user " + data);
             //User is a db "model", temp user is an instance of it.
             var tempUser = new User({
                 username: data.username,
@@ -61,6 +61,12 @@ db.once('open', function () {
             //database command
             tempUser.save(function (err, tempUser) {
                 if (err) return console.error(err);
+            });
+        });
+
+        socket.on('checkNewUser', function (data) {
+            User.count({ username: data.username }, function (err, count) {
+                console.log("checking new user " + count);
             });
         });
 
