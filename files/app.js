@@ -146,12 +146,18 @@ socket.on('loginResponse', function (response) {
         currentUser = {
             'username': response.username,
             'firstname': response.firstname,
-            'rooms': response.room
+            'room': response.room
         };
         document.getElementById("loginErrorMessage").innerHTML = "";
         inputUsernameField.value = "";
         passwordField.value = "";
-        switchToMainScreen();
+        if (currentUser.room == null) {
+            switchToRoomSelectScreen();
+        }
+        else {
+            switchToMainScreen();
+        }
+        
     }
 });
 

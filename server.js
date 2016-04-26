@@ -97,7 +97,7 @@ db.once('open', function () {
                         'result': false,
                         'username' : "",
                         'firstname': "",
-                        'rooms' : null
+                        'room' : null
                     });
                 }
                 else if (tempUser.password == data.password) {
@@ -107,7 +107,7 @@ db.once('open', function () {
                         'result': true,
                         'username' : tempUser.username,
                         'firstname': tempUser.name,
-                        'rooms' : tempUser.rooms
+                        'room' : tempUser.room
                     });
                 }
                 else {
@@ -117,7 +117,7 @@ db.once('open', function () {
                         'result': false,
                         'username': "",
                         'firstname': "",
-                        'rooms': null
+                        'room': null
                     });
                 }
             });
