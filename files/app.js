@@ -180,7 +180,12 @@ socket.on('returnRoomData', function (response) {
             tempItem.creatorID = parseInt(currentRoom.items[i].creatorID);
             tempItem.creator = usernames[tempItem.creatorID];
             tempItem.cost = parseInt(currentRoom.items[i].cost);
-            tempItem.date = Date.parse(currentRoom.items[i].date);
+
+            var time = parseInt(currentRoom.items[i].date);
+            var tempDate = new Date(time);
+
+            tempItem.date = tempDate;
+
             tempItem.description = String(currentRoom.items[i].description);
             alert(tempItem.type + " " + tempItem.recipientID + " " + tempItem.creatorID + " " + tempItem.creator + " " + tempItem.cost + " " +
                 tempItem.date + " " + tempItem.description + " ");
@@ -431,7 +436,7 @@ function addItem() {
             var today = new Date();
         }
         item.creatorID = userID;
-        item.date = today;
+        item.date = today.getTime();
         item.description = description.value;
 
         //communicate with server to add the item
