@@ -165,7 +165,7 @@ socket.on('returnRoomData', function (response) {
 
     if (currentRoom.items != null) {
         for (var i = 0; i < currentRoom.items.length; i++) {
-
+            alert(currentRoom.items[i]);
         }
     }
 
