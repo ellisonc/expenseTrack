@@ -199,6 +199,7 @@ function selectRoom() {
         roomLogin = {
             roomName: selectRoomName.value,
             password: selectRoomPassword.value,
+            username: currentUser.username
         }
         socket.emit("roomLogin", roomLogin);
     }

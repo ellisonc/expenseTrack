@@ -111,6 +111,7 @@ db.once('open', function () {
                     console.log("login to room successful");
                     console.log(tempRoom.roomName);
                     console.log(tempRoom.users);
+                    User.update({ username: data.username }, { roomName: data.roomName });
                     socket.emit("roomLoginResponse", {
                         'result': true,
                         'roomName': tempRoom.roomName,
