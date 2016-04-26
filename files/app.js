@@ -214,6 +214,7 @@ socket.on("roomLoginResponse", function (response) {
             "items": response.items,
             "users": response.users
         }
+        currentUser.room = currentRoom.roomName;
         switchToMainScreen();
     }
     else {
