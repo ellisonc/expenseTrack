@@ -159,9 +159,7 @@ socket.on('returnRoomData', function (response) {
     };
 
     alert("asdfasd");
-    for (var i = 0 ; i < currentRoom.items.length; i++){
 
-    }
     alert("mnid");
     for (var i = 0; i < currentRoom.users.length; i++) {
         var temp = String(currentRoom.users[i]);
