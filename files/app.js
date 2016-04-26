@@ -367,6 +367,15 @@ function switchToMainScreen() {
         list += " ";
     }
     userList.innerHTML = list;
+    if (usersIDs.length == 1) {
+        createExpenseButton.hidden = true;
+        createPaymentButton.hidden = true;
+    }
+    else {
+        createExpenseButton.hidden = false;
+        createPaymentButton.hidden = false;
+    }
+
     updateTable();
 }
 
