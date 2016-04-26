@@ -53,6 +53,7 @@ db.once('open', function () {
         socket.on('newUser', function (data) {
             console.log(data);
             User.count({ username: data.username }, function (err, count) {
+                console.log("asdfasdf");
                 if (count == 0) {
                     console.log(count);
                     console.log("creating new user");
@@ -71,8 +72,6 @@ db.once('open', function () {
                     socket.emit("createUserResponse", false);
                 }
             });
-            console.log("creating new user");
-
         });
 
         socket.on('newRoom', function (data) {
