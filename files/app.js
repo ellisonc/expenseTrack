@@ -278,7 +278,8 @@ function selectRoom() {
 
 socket.on("roomLoginResponse", function (response) {
     if (response.result) {
-
+        selectRoomName.value = "";
+        selectRoomPassword.value = "";
         currentUser.room = currentRoom.roomName;
         socket.emit('getRoomData', {
             "roomName": currentUser.room
@@ -326,8 +327,8 @@ socket.on("createRoomResponse", function (response) {
         userIDs = [];
         usernames[parseInt(currentUser.userID)] = currentUser.name;
         userIDs[0] = parseInt(currentUser.userID);
-        //alert(userIDs);
-        //alert(usernames);
+        selectRoomName.value = "";
+        selectRoomPassword.value = "";
         switchToMainScreen();
     }
     else {
