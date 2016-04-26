@@ -163,11 +163,6 @@ socket.on('returnRoomData', function (response) {
         'userIDs': response.userIDs
     };
 
-    if (currentRoom.items != null) {
-        for (var i = 0; i < currentRoom.items.length; i++) {
-            alert(currentRoom.items[i].cost);
-        }
-    }
 
     for (var i = 0; i < currentRoom.users.length; i++) {
         userIDs[i] = parseInt(currentRoom.userIDs[i]);
@@ -175,8 +170,22 @@ socket.on('returnRoomData', function (response) {
         var index = parseInt(currentRoom.userIDs[i]);
         usernames[index] = temp;
     }
-    //alert(userIDs);
-   // alert(usernames);
+    
+    if (currentRoom.items != null) {
+        for (var i = 0; i < currentRoom.items.length; i++) {
+            alert("item found " + i);
+            var tempItem = {};
+            tempItem.type = String(currentRoom.items[i].type);
+            tempItem.recipientID = parseInt(currentRoom.items[i].recipientID);
+            tempItem.creatorID = parseInt(currentRoom.items[i].creatorID);
+            tempItem.creator = usernames[tempItem.creatorID];
+            tempItem.cost = parseInt(currentRoom.items[i].cost);
+            tempItem.date = Date.parse(currentRoom.items[i].date);
+            tempItem.description = String(currentRoom.items[i].description);
+            alert(tempItem);
+            expense.push(tempItem);
+        }
+    }
 
     switchToMainScreen();
 });
@@ -405,6 +414,7 @@ function addItem() {
             }
         }
         else {
+            item.recipientID = null;
             item.type = "expense";
         }
 
@@ -424,7 +434,7 @@ function addItem() {
         item.description = description.value;
 
         //communicate with server to add the item
-        socket.emit('addItem', { type: item.type, creatorID: item.creatorID, cost: item.cost, date: item.date, description: item.description, roomName: currentRoom.roomName });
+        socket.emit('addItem', { type: item.type, recipientID: item.recipientID, creatorID: item.creatorID, cost: item.cost, date: item.date, description: item.description, roomName: currentRoom.roomName });
         console.log('emitted');
 
         expenses.push(item);

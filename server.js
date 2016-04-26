@@ -231,7 +231,8 @@ db.once('open', function () {
                         'creatorID': data.creatorID,
                         'cost': data.cost,
                         'date': data.date,
-                        'description': data.description
+                        'description': data.description,
+                        'recipientID': data.recipientID
                     }
                     if (tempRoom.items == null) {
                         tempRoom.items = [tempItem];
