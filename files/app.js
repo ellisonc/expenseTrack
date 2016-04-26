@@ -140,7 +140,8 @@ socket.on('loginResponse', function (response) {
             'username': response.username,
             'firstname': response.firstname,
             'room': response.room,
-            'userID': response.userID
+            'userID': response.userID,
+            'name': response.name
         };
         userID = currentUser.userID;
         document.getElementById("loginErrorMessage").innerHTML = "";
@@ -264,7 +265,7 @@ function selectRoom() {
         roomLogin = {
             roomName: selectRoomName.value,
             password: selectRoomPassword.value,
-            username: currentUser.username,
+            username: currentUser.name,
             userID: currentUser.userID
         }
         socket.emit("roomLogin", roomLogin);
@@ -303,7 +304,7 @@ function createNewRoom() {
                 'roomName': selectRoomName.value,
                 'password': selectRoomPassword.value,
                 'items': null,
-                'users': [currentUser.username]
+                'users': [currentUser.name]
             }
             socket.emit("newRoom", newRoomData);
         }

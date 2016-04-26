@@ -201,7 +201,8 @@ db.once('open', function () {
                         'username' : tempUser.username,
                         'firstname': tempUser.name,
                         'room': tempUser.room,
-                        'userID': tempUser.userID
+                        'userID': tempUser.userID,
+                        'name': tempUser.name
                     });
                 }
                 else {
