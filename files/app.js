@@ -161,17 +161,14 @@ socket.on('returnRoomData', function (response) {
     alert(currentRoom.users);
     var test = currentRoom.users[0];
     alert(test);
-    for (var i = 0 ; i < currentRoom.items; i++){
+    for (var i = 0 ; i < currentRoom.items.length; i++){
 
     }
-    var arrayTest = [];
+
     for (var i = 0; i < currentRoom.users.length; i++) {
-        var temp = String(currentRoom.users[0]);
-        usernames[i] = temp;
-        expenses[i] = "asdf";
-
+        expenses.push(currentRoom.users[i]);
     }
-    alert(usernames[0]);
+    usernames = currentRoom.users;
     alert(usernames);
     alert(expenses);
     switchToMainScreen();
