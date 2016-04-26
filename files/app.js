@@ -261,7 +261,7 @@ function switchToMainScreen() {
     loginScreen.hidden = true;
     newUserScreen.hidden = true;
     inputUsernameField.innerHTML = "";
-    loginNameField.innerHTML = "Testing 1 2 3";
+    loginNameField.innerHTML = currentUser.username;
     //getData();
     //updateTable();
 }
