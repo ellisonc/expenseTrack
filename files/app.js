@@ -278,8 +278,7 @@ function switchToMainScreen() {
     inputUsernameField.innerHTML = "";
     loginNameField.innerHTML = currentUser.username;
     mainHeaderDiv.innerHTML = "Room: " + currentRoom.roomName;
-    //getData();
-    //updateTable();
+    updateTable();
 }
 
 function logout() {
@@ -287,7 +286,7 @@ function logout() {
     hideAddItem();
     loginScreen.hidden = false;
 }
-
+/*
 function getData() {
     expense = {};
     expense.creator = "kevin";
@@ -298,7 +297,7 @@ function getData() {
     expense.description = "Test Expense";
     expense.creatorID = 1;
     expenses.push(expense);
-}
+}*/
 
 function hideAddItem() {
     addItemDiv.hidden = true;
