@@ -111,6 +111,7 @@ function getUsernames() {
     usernames.push("kevin");
     usernames.push("third");
 }
+
 function login() {
     var tempUsername = inputUsernameField.value;
     var tempPass = passwordField.value;
@@ -260,9 +261,9 @@ function switchToMainScreen() {
     loginScreen.hidden = true;
     newUserScreen.hidden = true;
     inputUsernameField.innerHTML = "";
-    loginNameField.innerHTML = " " + nameformat(usernames[userID]) + " asdjflkasndifgonasdoifnasd";
-    getData();
-    updateTable();
+    loginNameField.innerHTML = "Testing 1 2 3";
+    //getData();
+    //updateTable();
 }
 
 function logout() {

@@ -25,6 +25,8 @@ db.once('open', function () {
         items: Array
     });
 
+    
+
     var itemSchema = new mongoose.Schema({
         itemID: Number,
         amount: Number,
