@@ -111,10 +111,8 @@ db.once('open', function () {
                 }
                 else if (tempRoom.password == data.password) {
                     console.log("login to room successful");
-                    console.log(tempRoom.roomName);
-                    console.log(tempRoom.users);
 
-                    console.log(data.username);
+                    console.log(tempRoom.users);
 
                     User.findOne({ 'username': data.username }, function (err, doc) {
                         doc.room = tempRoom.roomName;
