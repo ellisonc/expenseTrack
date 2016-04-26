@@ -66,6 +66,7 @@ var currentRoom;
 var date = document.getElementById("date");
 var expenses = [];
 var userID;
+var userIDs = [];
 var usernames = [];
 
 
@@ -154,6 +155,7 @@ socket.on('loginResponse', function (response) {
 socket.on('returnRoomData', function (response) {
     expenses = [];
     usernames = [];
+    userIDs = [];
     currentRoom = {
         'roomName': response.roomName,
         'items': response.items,
@@ -166,12 +168,14 @@ socket.on('returnRoomData', function (response) {
 
         }
     }
-    alert("here");
+
     for (var i = 0; i < currentRoom.users.length; i++) {
+        userIDs[i] = parseInt(currentRoom.userIDs[i]);
         var temp = String(currentRoom.users[i]);
         var index = parseInt(currentRoom.userIDs[i]);
         usernames[index] = temp;
     }
+    alert(userIDs);
     alert(usernames);
 
     switchToMainScreen();
@@ -285,7 +289,11 @@ socket.on("createRoomResponse", function (response) {
     if (response) {
         expenses = [];
         usernames = [];
-        usernames[currentUser.userID] = currentUser.username;
+        userIDs = [];
+        usernames[parseInt(currentUser.userID)] = currentUser.username;
+        userIDs[0] = parseInt(currentUser.userID);
+        alert(userIDs);
+        alert(usernames);
         switchToMainScreen();
     }
     else {
