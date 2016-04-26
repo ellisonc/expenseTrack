@@ -157,6 +157,8 @@ socket.on('returnRoomData', function (response) {
         'items': response.items,
         'users': response.users
     };
+    alert(currentRoom.items);
+    alert(currentRoom.users);
     expenses = response.items;
     usernames = response.users;
     switchToMainScreen();
