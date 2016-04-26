@@ -190,9 +190,7 @@ db.once('open', function () {
                     console.log('null name');
                     socket.emit('loginResponse', {
                         'result': false,
-                        'username' : "",
-                        'firstname': "",
-                        'room' : null
+                        'error': "Invalid Username"
                     });
                 }
                 else if (tempUser.password == data.password) {
@@ -211,9 +209,7 @@ db.once('open', function () {
                     console.log(tempUser.password);
                     socket.emit('loginResponse', {
                         'result': false,
-                        'username': "",
-                        'firstname': "",
-                        'room': null
+                        'error': "Incorrect Password"
                     });
                 }
             });
