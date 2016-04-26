@@ -483,12 +483,15 @@ function updateTable() {
     header.appendChild(h3);
     header.appendChild(h4);
 
-    for (var i = 0; i < usernames.length; i++) {
+
+    for (var i = 0; i < userIDs.length; i++) {
         var tempHeader = document.createElement("th");
-        tempHeader.innerHTML = nameformat(usernames[i]) + " Owes";
+        tempHeader.innerHTML = nameformat(usernames[userIDs[i]]) + " Owes";
         tempHeader.style.width = '150px';
         header.appendChild(tempHeader);
     }
+
+
 
     var h7 = document.createElement("th");
     h7.innerHTML = "Delete";
@@ -498,9 +501,12 @@ function updateTable() {
 
 
     var amountPaid = [];
-    for (var i = 0; i < usernames.length; i++) {//store user ids as well or lookup to fix array
+    for (var i = 0; i < userIDs.length; i++) {//store user ids as well or lookup to fix array
         amountPaid.push(0);
     }
+
+
+
     
     for (var i = 0; i < expenses.length; i++) {
         var row = document.createElement("tr");
