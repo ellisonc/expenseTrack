@@ -158,6 +158,11 @@ socket.on('returnRoomData', function (response) {
         'users': response.users
     };
 
+    if (currentRoom.items != null) {
+        for (var i = 0; i < currentRoom.items.length; i++) {
+
+        }
+    }
 
     for (var i = 0; i < currentRoom.users.length; i++) {
         var temp = String(currentRoom.users[i]);
@@ -269,6 +274,12 @@ function createNewRoom() {
 
 socket.on("createRoomResponse", function (response) {
     if (response) {
+        expenses = [];
+        usernames = [];
+        for (var i = 0; i < currentRoom.users.length; i++) {
+            var temp = String(currentRoom.users[i]);
+            usernames[i] = temp;
+        }
         switchToMainScreen();
     }
     else {
