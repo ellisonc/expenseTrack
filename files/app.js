@@ -164,10 +164,12 @@ socket.on('returnRoomData', function (response) {
     for (var i = 0 ; i < currentRoom.items; i++){
 
     }
-    for (var i = 0; i < currentRoom.users; i++) {
+    var arrayTest = [];
+    for (var i = 0; i < currentRoom.users.length; i++) {
         var temp = String(currentRoom.users[0]);
         usernames[i] = temp;
         expenses[i] = "asdf";
+
     }
     alert(usernames[0]);
     alert(usernames);
