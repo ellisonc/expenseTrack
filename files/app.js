@@ -191,7 +191,7 @@ function createNewUser() {
             'rooms': null
         };
         socket.emit("newUser", newUserData);
-        sockit.emit("checkNewUser", newUserData);
+        socket.emit("checkNewUser", newUserData);
         newUsernameField.value = "";
         newPasswordField.value = "";
         firstNameField.value = "";

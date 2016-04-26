@@ -50,7 +50,8 @@ db.once('open', function () {
 
         //create a new user in the database
         socket.on('newUser', function (data) {
-            console.log("creating new user " + data);
+            console.log("creating new user");
+            console.log(data);
             //User is a db "model", temp user is an instance of it.
             var tempUser = new User({
                 username: data.username,
@@ -66,7 +67,8 @@ db.once('open', function () {
 
         socket.on('checkNewUser', function (data) {
             User.count({ username: data.username }, function (err, count) {
-                console.log("checking new user " + count);
+                console.log("checking new user");
+                console.log(count);
             });
         });
 
