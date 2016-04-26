@@ -16,6 +16,7 @@ db.once('open', function () {
         password: String,
         name: String,
         room: String,
+        userID: Number
     });
 
     var roomSchema = new mongoose.Schema({
@@ -54,6 +55,10 @@ db.once('open', function () {
         //create a new user in the database
         socket.on('newUser', function (data) {
             console.log(data);
+            User.count({}, function (err, count) {
+                console.log("this is the count ");
+                console.log(count);
+            });
             User.count({ username: data.username }, function (err, count) {
                 console.log(count);
                 if (count == 0) {
