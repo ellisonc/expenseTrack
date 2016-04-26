@@ -98,20 +98,7 @@ newPasswordField.onkeypress = function (e) {
 };
 var newUserError = document.getElementById("newUserErrorMessage");
 //check username availablity
-newUsernameField.onchange = function (e) {
-    var userName = newUsernameField.value;
-    socket.emit('check', userName);
-}
-//evaluate username availablity
-socket.on("checkReturn", function (data) {
-    console.log("recieved check");
-    if(data){
-        newUserError.innerHTML = "Username already taken!";
-    }
-    else{
-        newUserError.innerHTML = "";
-    }
-});
+
 
 function newuser() {
     loginScreen.hidden = true;
@@ -173,21 +160,30 @@ function createNewUser() {
         };
         currentUser = {
             'username': newUserData.username,
-            'firstname': newUserData.name,
+            'name': newUserData.name,
             'room': null
         };
         socket.emit("newUser", newUserData);
-        socket.emit("checkNewUser", newUserData);
+
         newUsernameField.value = "";
         newPasswordField.value = "";
         firstNameField.value = "";
-        switchToRoomSelectScreen();
     }
     else {
         var newUserError = document.getElementById("newUserErrorMessage");
         newUserError.innerHTML = "Enter a valid username";
     }
 }
+
+socket.on("createUserResponse", function (response) {
+    if (response.result) {
+        var newUserError = document.getElementById("newUserErrorMessage");
+        newUserError.innerHTML = "Username already taken";
+    }
+    else {
+        selectRoomErrorMessage.innerHTML = response.error;
+    }
+});
 
 function switchToRoomSelectScreen(){
     loginScreen.hidden = true;
@@ -224,13 +220,19 @@ socket.on("roomLoginResponse", function (response) {
 
 function createNewRoom() {
     if (selectRoomName.value != "") {
-        currentRoom = {
-            roomName:selectRoomName.value,
+        var newRoomData = {
+            roomName: selectRoomName.value,
             password: selectRoomPassword.value,
-            items:null,
-            users : [currentUser.username]
+            items: null,
+            users: [currentUser.username]
         }
-        socket.emit("newRoom", currentRoom);
+        currentRoom = {
+            'roomName':selectRoomName.value,
+            'password': selectRoomPassword.value,
+            'items':null,
+            'users' : [currentUser.username]
+        }
+        socket.emit("newRoom", newRoomData);
         
     }
     else {

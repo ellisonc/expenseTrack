@@ -51,19 +51,26 @@ db.once('open', function () {
 
         //create a new user in the database
         socket.on('newUser', function (data) {
+            User.count({ username: data.username }, function (err, count) {
+                if (count == 0) {
+                    console.log("creating new user");
+                    var tempUser = new User({
+                        username: data.username,
+                        password: data.password,
+                        name: data.name,
+                        room: null
+                    });
+                    tempUser.save(function (err, tempUser) {
+                        if (err) return console.error(err);
+                    });
+                    socket.emit("createUserResponse", true);
+                }
+                else {
+                    socket.emit("createUserResponse", false);
+                }
+            });
             console.log("creating new user");
-            console.log(data);
-            //User is a db "model", temp user is an instance of it.
-            var tempUser = new User({
-                username: data.username,
-                password: data.password,
-                name: data.name,
-                room: null
-            });
-            //database command
-            tempUser.save(function (err, tempUser) {
-                if (err) return console.error(err);
-            });
+
         });
 
         socket.on('newRoom', function (data) {
@@ -119,12 +126,6 @@ db.once('open', function () {
             });
         });
 
-        socket.on('checkNewUser', function (data) {
-            User.count({ username: data.username }, function (err, count) {
-                console.log("checking new user");
-                console.log(count);
-            });
-        });
 
         //check username availability
         socket.on('check', function (userName) {
