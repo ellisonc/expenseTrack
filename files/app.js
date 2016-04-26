@@ -53,6 +53,9 @@ newUserButton.onclick = newuser;
 var createNewUserButton = document.getElementById("createNewUser");
 createNewUserButton.onclick = createNewUser;
 
+var backButton = document.getElementById("backButton");
+backButton.onclick = loginPage;
+
 var logoutButton = document.getElementById("logout");
 logoutButton.onclick = logout;
 
@@ -106,6 +109,11 @@ function newuser() {
     loginScreen.hidden = true;
     newUserScreen.hidden = false;
     newUsernameField.focus();
+}
+
+function loginPage() {
+    loginScreen.hidden = false;
+    newUserScreen.hidden = true;
 }
 
 function getUsernames() {
@@ -330,6 +338,7 @@ function logout() {
     mainPage.hidden = true;
     hideAddItem();
     loginScreen.hidden = false;
+    newUserScreen.hidden = true;
 }
 /*
 function getData() {
