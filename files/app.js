@@ -7,6 +7,9 @@ addExpenseButton.onclick = addItem;
 var createPaymentButton = document.getElementById("createPayment");
 createPaymentButton.onclick = showPayment;
 
+var refreshButton = document.getElementById("refresh");
+refreshButton.onclick = refreshTable;
+
 var body = document.getElementById("tableHolder");
 var addItemDiv = document.getElementById("addItem");
 var createExpenseButton = document.getElementById("createNewExpense");
@@ -158,6 +161,12 @@ socket.on('loginResponse', function (response) {
     }
 });
 
+function refreshTable(){
+    socket.emit('getRoomData', {
+        "roomName": currentUser.room
+    });
+}
+
 socket.on('returnRoomData', function (response) {
     expenses = [];
     usernames = [];
@@ -256,6 +265,7 @@ function switchToRoomSelectScreen(){
     newUserScreen.hidden = true;
     selectRoomScreen.hidden = false;
     inputUsernameField.innerHTML = "";
+    selectRoomErrorMessage.innerHTML = "";
     var usernameHeader = document.getElementById("usernameHeader");
     usernameHeader.innerHTML = "You are logged in as: " + currentUser.username;
 }
@@ -329,6 +339,7 @@ socket.on("createRoomResponse", function (response) {
         userIDs[0] = parseInt(currentUser.userID);
         selectRoomName.value = "";
         selectRoomPassword.value = "";
+        selectRoomErrorMessage.innerHTML = "";
         switchToMainScreen();
     }
     else {
@@ -355,18 +366,6 @@ function logout() {
     newUserScreen.hidden = true;
     selectRoomScreen.hidden = true;
 }
-/*
-function getData() {
-    expense = {};
-    expense.creator = "kevin";
-    expense.type = "expense";
-    expense.cost = 1000;
-    var today = new Date();
-    expense.date = today;
-    expense.description = "Test Expense";
-    expense.creatorID = 1;
-    expenses.push(expense);
-}*/
 
 function hideAddItem() {
     addItemDiv.hidden = true;
