@@ -158,7 +158,7 @@ socket.on('returnRoomData', function (response) {
         'users': response.users
     };
     alert(currentRoom.items);
-    alert(currentRoom.users);
+    alert(currentRoom.users[0]);
 
     switchToMainScreen();
 });
