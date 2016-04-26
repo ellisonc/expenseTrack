@@ -167,8 +167,10 @@ socket.on('returnRoomData', function (response) {
     for (var i = 0; i < currentRoom.users; i++) {
         var temp = String(currentRoom.users[0]);
         usernames.push(temp);
+        expenses.push("asdf");
     }
     alert(usernames[0]);
+    alert(expenses);
     switchToMainScreen();
 });
 
