@@ -361,6 +361,10 @@ function switchToMainScreen() {
     var list = "Users: ";
     for (var i = 0; i < userIDs.length; i++) {
         list += usernames[userIDs[i]];
+        if (i != userIDs.length - 1) {
+            list += ",";
+        }
+        list += " ";
     }
     userList.innerHTML = list;
     updateTable();
@@ -429,7 +433,7 @@ function addItem() {
                     errorMessage.innerHTML = "Input valid values";
                     return;
                 }
-                var recipientName = paymentRecipient.value.toLowerCase();
+                var recipientName = paymentRecipient;
                 var index = usernames.indexOf(recipientName);
                 if (index == -1 || index == userID) {
                     errorMessage.innerHTML = "Input valid recipient";
