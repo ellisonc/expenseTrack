@@ -23,6 +23,7 @@ db.once('open', function () {
         roomName: String,
         password: String,
         users: Array,
+        userIDs: Array,
         items: Array
     });
 
@@ -55,9 +56,9 @@ db.once('open', function () {
         //create a new user in the database
         socket.on('newUser', function (data) {
             console.log(data);
+            var userCount;
             User.count({}, function (err, count) {
-                console.log("this is the count ");
-                console.log(count);
+                userCount = count;
             });
             User.count({ username: data.username }, function (err, count) {
                 console.log(count);
@@ -68,17 +69,23 @@ db.once('open', function () {
                         username: data.username,
                         password: data.password,
                         name: data.name,
-                        room: null
+                        room: null,
+                        userID: userCount
                     });
                     tempUser.save(function (err, tempUser) {
                         if (err) return console.error(err);
                     });
                     console.log("emit true");
-                    socket.emit("createUserResponse", true);
+                    socket.emit("createUserResponse", {
+                        'success': true,
+                        'userID': userCount
+                    });
                 }
                 else {
                     console.log("emit false");
-                    socket.emit("createUserResponse", false);
+                    socket.emit("createUserResponse", {
+                        'success': true,
+                    });
                 }
             });
         });
@@ -92,7 +99,8 @@ db.once('open', function () {
                         roomName: data.roomName,
                         password: data.password,
                         items: data.items,
-                        users: data.users
+                        users: data.users,
+                        userIDs: data.userIDs
                     });
                     tempRoom.save(function (err, tempRoom) {
                         if (err) return console.error(err);
@@ -130,6 +138,7 @@ db.once('open', function () {
                     console.log(tempRoom.users);
 
                     tempRoom.users.push(data.username);
+                    tempRoom.userIDs.push(data.userID);
                     tempRoom.save();
 
                     User.findOne({ 'username': data.username }, function (err, doc) {
@@ -165,7 +174,8 @@ db.once('open', function () {
                     socket.emit("returnRoomData", {
                         'roomName': tempRoom.roomName,
                         'items': tempRoom.items,
-                        'users': tempRoom.users
+                        'users': tempRoom.users,
+                        'userIDs':tempRoom.userIDs
                     });
                 }
             });
@@ -191,7 +201,8 @@ db.once('open', function () {
                         'result': true,
                         'username' : tempUser.username,
                         'firstname': tempUser.name,
-                        'room' : tempUser.room
+                        'room': tempUser.room,
+                        'userID': tempUser.userID
                     });
                 }
                 else {

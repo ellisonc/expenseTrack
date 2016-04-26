@@ -133,8 +133,10 @@ socket.on('loginResponse', function (response) {
         currentUser = {
             'username': response.username,
             'firstname': response.firstname,
-            'room': response.room
+            'room': response.room,
+            'userID': response.userID
         };
+        userID = currentUser.userID;
         document.getElementById("loginErrorMessage").innerHTML = "";
         inputUsernameField.value = "";
         passwordField.value = "";
@@ -155,7 +157,8 @@ socket.on('returnRoomData', function (response) {
     currentRoom = {
         'roomName': response.roomName,
         'items': response.items,
-        'users': response.users
+        'users': response.users,
+        'userIDs': response.userIDs
     };
 
     if (currentRoom.items != null) {
@@ -166,9 +169,9 @@ socket.on('returnRoomData', function (response) {
 
     for (var i = 0; i < currentRoom.users.length; i++) {
         var temp = String(currentRoom.users[i]);
-        usernames[i] = temp;
+        usernames[currentRoom.userIds[i]] = temp;
     }
-
+    alert(usernames);
 
     switchToMainScreen();
 });
@@ -187,7 +190,8 @@ function createNewUser() {
         currentUser = {
             'username': newUserData.username,
             'name': newUserData.name,
-            'room': null
+            'room': null,
+            'userID': -1
         };
         socket.emit("newUser", newUserData);
 
@@ -202,7 +206,9 @@ function createNewUser() {
 }
 
 socket.on("createUserResponse", function (response) {
-    if (response) {
+    if (response.success) {
+        currentUser.userID = response.userID;
+        userID = currentUser.userID;
         switchToRoomSelectScreen();
     }
     else {
@@ -225,7 +231,8 @@ function selectRoom() {
         roomLogin = {
             roomName: selectRoomName.value,
             password: selectRoomPassword.value,
-            username: currentUser.username
+            username: currentUser.username,
+            userID: currentUser.userID
         }
         socket.emit("roomLogin", roomLogin);
     }
@@ -256,6 +263,7 @@ function createNewRoom() {
             password: selectRoomPassword.value,
             items: null,
             users: [currentUser.username],
+            userIDs: [currentUser.userID],
             username: currentUser.username
         }
         currentRoom = {
@@ -276,10 +284,7 @@ socket.on("createRoomResponse", function (response) {
     if (response) {
         expenses = [];
         usernames = [];
-        for (var i = 0; i < currentRoom.users.length; i++) {
-            var temp = String(currentRoom.users[i]);
-            usernames[i] = temp;
-        }
+        usernames[currentUser.userID] = currentUser.username;
         switchToMainScreen();
     }
     else {
