@@ -292,7 +292,6 @@ socket.on("roomLoginResponse", function (response) {
 function createNewRoom() {
     if (selectRoomName.value != "") {
         if (selectRoomPassword.value != "") {
-            alert(currentUser.name);
             var newRoomData = {
                 roomName: selectRoomName.value,
                 password: selectRoomPassword.value,
@@ -324,7 +323,7 @@ socket.on("createRoomResponse", function (response) {
         expenses = [];
         usernames = [];
         userIDs = [];
-        usernames[parseInt(currentUser.userID)] = currentUser.username;
+        usernames[parseInt(currentUser.userID)] = currentUser.name;
         userIDs[0] = parseInt(currentUser.userID);
         //alert(userIDs);
         //alert(usernames);
