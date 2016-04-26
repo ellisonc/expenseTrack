@@ -66,11 +66,11 @@ db.once('open', function () {
                     tempUser.save(function (err, tempUser) {
                         if (err) return console.error(err);
                     });
-                    console.log("emit false");
+                    console.log("emit true");
                     socket.emit("createUserResponse", true);
                 }
                 else {
-                    console.log("emit true");
+                    console.log("emit false");
                     socket.emit("createUserResponse", false);
                 }
             });
