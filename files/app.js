@@ -159,6 +159,8 @@ socket.on('returnRoomData', function (response) {
     };
 
     alert(currentRoom.users);
+    var test = currentRoom.users[0];
+    alert(test);
     for (var i = 0 ; i < currentRoom.items; i++){
 
     }
