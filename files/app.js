@@ -297,7 +297,7 @@ function createNewRoom() {
                 roomName: selectRoomName.value,
                 password: selectRoomPassword.value,
                 items: null,
-                users: [currentUser.username],
+                users: [currentUser.name],
                 userIDs: [currentUser.userID],
                 username: currentUser.username
             }
