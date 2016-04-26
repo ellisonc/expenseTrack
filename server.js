@@ -111,7 +111,7 @@ db.once('open', function () {
                     console.log("login to room successful");
                     console.log(tempRoom.roomName);
                     console.log(tempRoom.users);
-                    User.update({ username: data.username }, { roomName: data.roomName });
+                    User.update({ 'username': data.username }, { 'roomName': data.roomName });
                     socket.emit("roomLoginResponse", {
                         'result': true,
                         'roomName': tempRoom.roomName,
@@ -126,21 +126,6 @@ db.once('open', function () {
                         'result': false,
                         'error': "Invalid Password"
                     });
-                }
-            });
-        });
-
-
-        //check username availability
-        socket.on('check', function (userName) {
-            //this counts how many users in User have this username
-            User.count({ username: userName }, function (err, count) {
-                console.log(count);
-                if (count == 0) {
-                    socket.emit("checkReturn", false);
-                }
-                else {
-                    socket.emit("checkReturn", true);
                 }
             });
         });
