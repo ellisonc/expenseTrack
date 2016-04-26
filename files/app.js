@@ -197,8 +197,31 @@ function switchToRoomSelectScreen(){
 }
 
 function selectRoom() {
-
+    if (selectRoomName.value != "") {
+        roomLogin = {
+            roomName: selectRoomName.value,
+            password: selectRoomPassword.value,
+        }
+        socket.emit("roomLogin", roomLogin);
+    }
+    else {
+        selectRoomErrorMessage.innerHTML = "Enter a valid room";
+    }
 }
+
+socket.on("roomLoginResponse", function (response) {
+    if (response.result) {
+        currentRoom = {
+            "roomName": result.roomName,
+            "items": result.items,
+            "users": result.users
+        }
+    }
+    else {
+        selectRoomErrorMessage.innerHTML = response.error;
+    }
+});
+
 function createNewRoom() {
     if (selectRoomName.value != "") {
         currentRoom = {

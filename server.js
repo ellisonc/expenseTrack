@@ -89,6 +89,36 @@ db.once('open', function () {
 
         });
 
+        socket.on('roomLogin', function (data) {
+            Room.findOne({ 'roomName': data.roomName }, function (err, tempRoom) {
+                if (tempRoom == null) {
+                    socket.emit("roomLoginResponse", {
+                        'result': false,
+                        'error': "Invalid Room Name"
+                    });
+                }
+                else if (tempRoom.password == data.password) {
+                    console.log("login to room successful");
+                    console.log(tempRoom.roomName);
+                    console.log(tempRoom.users);
+                    socket.emit("roomLoginResponse", {
+                        'result': true,
+                        'roomName': tempRoom.roomName,
+                        'password': tempRoom.password,
+                        'items': tempRoom.items,
+                        'users': tempRoom.users
+                    });
+                }
+                else {
+                    console.log("room login failed");
+                    socket.emit("roomLoginResponse", {
+                        'result': false,
+                        'error': "Invalid Password"
+                    });
+                }
+            });
+        });
+
         socket.on('checkNewUser', function (data) {
             User.count({ username: data.username }, function (err, count) {
                 console.log("checking new user");
