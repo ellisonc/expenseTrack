@@ -228,10 +228,10 @@ db.once('open', function () {
                 else {
                     var tempItem = {
                         'type': data.type,
-                        'creatorID': item.creatorID,
-                        'cost': item.cost,
-                        'date': item.date,
-                        'description': item.description
+                        'creatorID': data.creatorID,
+                        'cost': data.cost,
+                        'date': data.date,
+                        'description': data.description
                     }
                     tempRoom.items.push(tempItem);
                     tempRoom.save();
