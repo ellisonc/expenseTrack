@@ -149,7 +149,7 @@ db.once('open', function () {
                 }
                 else if (tempUser.password == data.password) {
                     console.log('password correct');
-                    console.log(tempUser);
+                    console.log(tempUser.password);
                     socket.emit('loginResponse', {
                         'result': true,
                         'username' : tempUser.username,
