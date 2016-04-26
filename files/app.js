@@ -164,7 +164,8 @@ socket.on('returnRoomData', function (response) {
     }
 
     for (var i = 0; i < currentRoom.users.length; i++) {
-        usernames.push(currentRoom.users[i]);
+        var temp = currentRoom.users[i];
+        usernames[i] = temp;
     }
     alert(usernames);
 
