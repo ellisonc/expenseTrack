@@ -25,7 +25,6 @@ var mainPage = document.getElementById("mainPage");
 var loginScreen = document.getElementById("loginScreen");
 var newUserScreen = document.getElementById("newUserScreen");
 
-var newRoomPage = document.getElementById("newRoom");
 
 var selectRoomScreen = document.getElementById("selectRoomScreen");
 var selectRoomName = document.getElementById("roomName");
