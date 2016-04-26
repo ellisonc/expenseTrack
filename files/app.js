@@ -366,15 +366,6 @@ function switchToMainScreen() {
         }
         list += " ";
     }
-    userList.innerHTML = list;
-    if (usersIDs.length == 1) {
-        createExpenseButton.hidden = true;
-        createPaymentButton.hidden = true;
-    }
-    else {
-        createExpenseButton.hidden = false;
-        createPaymentButton.hidden = false;
-    }
 
     updateTable();
 }
@@ -396,6 +387,9 @@ function hideAddItem() {
 }
 
 function showAddExpense() {
+    if (currentRoom.userIDs.length == 1) {
+        return;
+    }
     creatingExpense = true;
     addItemDiv.hidden = false;
     createExpenseButton.hidden = true;
@@ -406,6 +400,9 @@ function showAddExpense() {
 }
 
 function showPayment() {
+    if (currentRoom.userIDs.length == 1) {
+        return;
+    }
     creatingExpense = false;
     addItemDiv.hidden = false;
     createPaymentButton.hidden = true;
