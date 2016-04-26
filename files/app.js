@@ -69,7 +69,7 @@ var userID;
 var usernames = [];
 
 
-getUsernames();
+//getUsernames();
 
 //login and new user input fields
 var loginNameField = document.getElementById("loginName");
