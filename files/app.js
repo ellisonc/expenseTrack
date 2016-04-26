@@ -166,10 +166,11 @@ socket.on('returnRoomData', function (response) {
     }
     for (var i = 0; i < currentRoom.users; i++) {
         var temp = String(currentRoom.users[0]);
-        usernames.push(temp);
-        expenses.push("asdf");
+        usernames[i] = temp;
+        expenses[i] = "asdf";
     }
     alert(usernames[0]);
+    alert(usernames);
     alert(expenses);
     switchToMainScreen();
 });
