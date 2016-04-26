@@ -115,10 +115,10 @@ db.once('open', function () {
                     console.log(tempRoom.users);
 
                     console.log(data.username);
-                   
+
                     User.findOne({ 'username': data.username }, function (err, doc) {
                         doc.room = tempRoom.roomName;
-                        
+
                         doc.save();
                     });
                     socket.emit("roomLoginResponse", {
@@ -134,6 +134,22 @@ db.once('open', function () {
                     socket.emit("roomLoginResponse", {
                         'result': false,
                         'error': "Invalid Password"
+                    });
+                }
+            });
+        });
+
+        socket.on('getRoomData', function (data) {
+            Room.findOne({ "roomName": data.roomName }, function (err, tempRoom) {
+                if (tempRoom == null) {
+                    console.log("this should never happen");
+                }
+                else {
+                    console.log("returning room data");
+                    socket.emit("returnRoomData", {
+                        'roomName': tempRoom.roomName,
+                        'items': tempRoom.items,
+                        'users': tempRoom.users
                     });
                 }
             });

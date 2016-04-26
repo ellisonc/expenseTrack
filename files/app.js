@@ -36,6 +36,8 @@ var selectRoomErrorMessage = document.getElementById("newRoomErrorMessage");
 selectRoomButton.onclick = selectRoom;
 createNewRoomButton.onclick = createNewRoom;
 
+var mainHeaderDiv = document.getElementById("mainHeader");
+
 //Setup page here
 selectRoomScreen.hidden = true;
 
@@ -140,12 +142,25 @@ socket.on('loginResponse', function (response) {
             switchToRoomSelectScreen();
         }
         else {
-            switchToMainScreen();
-        }
-        
+            socket.emit('getRoomData', {
+                "roomName": currentUser.room
+            });
+        } 
     }
 });
 
+socket.on('returnRoomData', function (response) {
+    expenses = [];
+    usernames = [];
+    currentRoom = {
+        'roomName': response.roomName,
+        'items': response.items,
+        'users': response.users
+    };
+    expenses = response.items;
+    usernames = response.users;
+    switchToMainScreen();
+});
 
 
 function createNewUser() {
@@ -262,6 +277,7 @@ function switchToMainScreen() {
     newUserScreen.hidden = true;
     inputUsernameField.innerHTML = "";
     loginNameField.innerHTML = currentUser.username;
+    mainHeaderDiv.innerHTML = "Room: " + currentRoom.roomName;
     //getData();
     //updateTable();
 }
