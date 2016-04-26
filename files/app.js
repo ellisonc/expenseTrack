@@ -626,7 +626,6 @@ function deleteExpense() {
 
     //communicate deletion with server
     socket.emit('delete', {index: ind, roomName: currentRoom.roomName});
-    console.log('delete');
 
     updateTable();
 }
