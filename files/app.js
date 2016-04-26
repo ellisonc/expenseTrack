@@ -120,7 +120,7 @@ function login() {
 
     socket.emit('loginAttempt', {
         "username": tempUsername,
-        "password": tempPass//don't forget to hash this at some point
+        "password": tempPass//don't forget to hash this at some point. aint no on got time for that
     });
 }
 
@@ -252,7 +252,8 @@ function createNewRoom() {
             'roomName':selectRoomName.value,
             'password': selectRoomPassword.value,
             'items':null,
-            'users' : [currentUser.username]
+            'users': [currentUser.username],
+            'username': currentUser.username
         }
         socket.emit("newRoom", newRoomData);
         

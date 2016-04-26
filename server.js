@@ -92,6 +92,16 @@ db.once('open', function () {
                     tempRoom.save(function (err, tempRoom) {
                         if (err) return console.error(err);
                     });
+                    Users.findOne({ 'username': data.username }, function(err, tempUser){
+                        if (tempUser == null) {
+                            console.log("this shoiuld never happen");
+                        }
+                        else {
+                            tempUser.room = data.roomName;
+                            tempUser.save();
+                        }
+                    });
+
                     socket.emit("createRoomResponse", true);
                 }
                 else {
