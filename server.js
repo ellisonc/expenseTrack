@@ -22,7 +22,7 @@ db.once('open', function () {
         roomName: String,
         password: String,
         users: Array,
-        Items: Array
+        items: Array
     });
 
     var itemSchema = new mongoose.Schema({
@@ -64,6 +64,21 @@ db.once('open', function () {
             tempUser.save(function (err, tempUser) {
                 if (err) return console.error(err);
             });
+        });
+
+        socket.on('newRoom', function (data) {
+            console.log("creating new room");
+            console.log(data);
+            var tempRoom = new Room({
+                roomName: data.roomName,
+                password: data.password,
+                items: data.items,
+                users: data.users
+            });
+            tempRoom.save(function (err, tempRoom) {
+                if (err) return console.error(err);
+            });
+            console.log("created new room");
         });
 
         socket.on('checkNewUser', function (data) {

@@ -28,6 +28,14 @@ var roomSelect = document.getElementById("roomSelect");
 var newRoomPage = document.getElementById("newRoom");
 
 var selectRoomScreen = document.getElementById("selectRoomScreen");
+var selectRoomName = document.getElementById("roomName");
+var selectRoomPassword = document.getElementById("roomPassword");
+var selectRoomButton = document.getElementById("selectRoom");
+var createNewRoomButton = document.getElementById("createNewRoom");
+var selectRoomErrorMessage = document.getElementById("newRoomErrorMessage");
+
+selectRoomButton.onclick = selectRoom;
+createNewRoomButton.onclick = createNewRoom;
 
 //Setup page here
 selectRoomScreen.hidden = true;
@@ -64,6 +72,7 @@ var creatingExpense = true;
 
 //globals
 var currentUser;
+var currentRoom;
 var date = document.getElementById("date");
 var expenses = [];
 var userID;
@@ -161,29 +170,7 @@ socket.on('loginResponse', function (response) {
     }
 });
 
-function createRoom() {
-    createRoomButton.hidden = true;
-    newRoomPage.hidden = false;
-    body.hidden = true;
-}
 
-function newRoom() {
-    createRoomButton.hidden = false;
-    body.hidden = false;
-    newRoomPage.hidden = true;
-}
-
-function changeRoom() {
-    changeRoomButton.hidden = true;
-    body.hidden = true;
-    roomSelect.hidden = false;
-}
-
-function selectRoom() {
-    changeRoomButton.hidden = false;
-    body.hidden = false;
-    roomSelect.hidden = true;
-}
 
 function createNewUser() {
 
@@ -219,6 +206,25 @@ function switchToRoomSelectScreen(){
     selectRoomScreen.hidden = false;
     inputUsernameField.innerHTML = "";
 }
+
+function selectRoom() {
+
+}
+function createNewRoom() {
+    if (selectRoomName.value != "") {
+        currentRoom = {
+            roomName:selectRoomName.value,
+            password: selectRoomPassword.value,
+            items:null,
+            users : [currentUser.username]
+        }
+        socket.emit("newRoom", currentRoom);
+    }
+    else {
+        selectRoomErrorMessage.innerHTML "Enter a valid room";
+    }
+}
+
 
 function switchToMainScreen() {
     mainPage.hidden = false;
