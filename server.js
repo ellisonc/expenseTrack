@@ -37,8 +37,10 @@ db.once('open', function () {
     var User = mongoose.model('User', userSchema);
     var Room = mongoose.model('Room', roomSchema);
     var Item = mongoose.model('Item', itemSchema);
-
-
+    console.log("initialized");
+    console.log(User);
+    console.log(Room);
+    console.log(item);
     http.listen(8888);
     app.get('/', function (req, res) {
         res.sendFile(__dirname + '/files/app.html');
