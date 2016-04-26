@@ -175,8 +175,8 @@ socket.on('returnRoomData', function (response) {
         var index = parseInt(currentRoom.userIDs[i]);
         usernames[index] = temp;
     }
-    alert(userIDs);
-    alert(usernames);
+    //alert(userIDs);
+   // alert(usernames);
 
     switchToMainScreen();
 });
