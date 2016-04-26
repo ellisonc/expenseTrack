@@ -350,6 +350,7 @@ function logout() {
     hideAddItem();
     loginScreen.hidden = false;
     newUserScreen.hidden = true;
+    selectRoomScreen.hidden = true;
 }
 /*
 function getData() {
