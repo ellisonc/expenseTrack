@@ -116,12 +116,6 @@ function loginPage() {
     newUserScreen.hidden = true;
 }
 
-function getUsernames() {
-    usernames = [];
-    usernames.push("andrew");
-    usernames.push("kevin");
-    usernames.push("third");
-}
 
 function login() {
     var tempUsername = inputUsernameField.value;
@@ -205,29 +199,38 @@ socket.on('returnRoomData', function (response) {
 
 
 function createNewUser() {
-
+    var newUserError = document.getElementById("newUserErrorMessage");
     if (newUsernameField.value != "") {
-        //send things to server
-        var tempPass = newPasswordField.value;
-        var newUserData = {
-            username: newUsernameField.value,
-            password: tempPass,
-            name: firstNameField.value,
-        };
-        currentUser = {
-            'username': newUserData.username,
-            'name': newUserData.name,
-            'room': null,
-            'userID': -1
-        };
-        socket.emit("newUser", newUserData);
+        if (newPasswordField.value != "") {
+            if (firstNameField.value != "") {
+                //send things to server
+                var tempPass = newPasswordField.value;
+                var newUserData = {
+                    username: newUsernameField.value,
+                    password: tempPass,
+                    name: firstNameField.value,
+                };
+                currentUser = {
+                    'username': newUserData.username,
+                    'name': newUserData.name,
+                    'room': null,
+                    'userID': -1
+                };
+                socket.emit("newUser", newUserData);
 
-        newUsernameField.value = "";
-        newPasswordField.value = "";
-        firstNameField.value = "";
+                newUsernameField.value = "";
+                newPasswordField.value = "";
+                firstNameField.value = "";
+            }
+            else {
+                newUserError.innerHTML = "Enter a screen name";
+            }
+        }
+        else {
+            newUserError.innerHTML = "Enter a password";
+        }
     }
     else {
-        var newUserError = document.getElementById("newUserErrorMessage");
         newUserError.innerHTML = "Enter a valid username";
     }
 }
@@ -284,21 +287,26 @@ socket.on("roomLoginResponse", function (response) {
 
 function createNewRoom() {
     if (selectRoomName.value != "") {
-        var newRoomData = {
-            roomName: selectRoomName.value,
-            password: selectRoomPassword.value,
-            items: null,
-            users: [currentUser.username],
-            userIDs: [currentUser.userID],
-            username: currentUser.username
+        if (selectRoomPassword.value != "") {
+            var newRoomData = {
+                roomName: selectRoomName.value,
+                password: selectRoomPassword.value,
+                items: null,
+                users: [currentUser.username],
+                userIDs: [currentUser.userID],
+                username: currentUser.username
+            }
+            currentRoom = {
+                'roomName': selectRoomName.value,
+                'password': selectRoomPassword.value,
+                'items': null,
+                'users': [currentUser.username]
+            }
+            socket.emit("newRoom", newRoomData);
         }
-        currentRoom = {
-            'roomName':selectRoomName.value,
-            'password': selectRoomPassword.value,
-            'items':null,
-            'users': [currentUser.username]
+        else {
+            selectRoomErrorMessage.innerHTML = "Enter a password";
         }
-        socket.emit("newRoom", newRoomData);
         
     }
     else {
