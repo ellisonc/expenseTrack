@@ -218,7 +218,7 @@ db.once('open', function () {
             });
         });
 
-        scoket.on('addItem', function (data) {
+        socket.on('addItem', function (data) {
             console.log("attemtp to add itme");
             console.log(data);
             Room.findOne({ 'roomName': data.roomName }, function (err, tempRoom) {
