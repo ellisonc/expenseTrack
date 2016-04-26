@@ -159,8 +159,7 @@ socket.on('returnRoomData', function (response) {
     };
     alert(currentRoom.items);
     alert(currentRoom.users);
-    expenses = response.items;
-    usernames = response.users;
+
     switchToMainScreen();
 });
 
