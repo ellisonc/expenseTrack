@@ -190,6 +190,8 @@ function switchToRoomSelectScreen(){
     newUserScreen.hidden = true;
     selectRoomScreen.hidden = false;
     inputUsernameField.innerHTML = "";
+    var usernameHeader = document.getElementById("usernameHeader");
+    usernameHeader.innerHTML = "You are logged in as: " + currentUser.username;
 }
 
 function selectRoom() {
@@ -212,6 +214,7 @@ socket.on("roomLoginResponse", function (response) {
             "items": result.items,
             "users": result.users
         }
+        switchToMainScreen();
     }
     else {
         selectRoomErrorMessage.innerHTML = response.error;
@@ -242,7 +245,7 @@ function createNewRoom() {
 
 socket.on("createRoomResponse", function (response) {
     if (response) {
-
+        switchToMainScreen();
     }
     else {
         selectRoomErrorMessage.innerHTML = "Room name already taken";
