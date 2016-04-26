@@ -246,14 +246,14 @@ function createNewRoom() {
             roomName: selectRoomName.value,
             password: selectRoomPassword.value,
             items: null,
-            users: [currentUser.username]
+            users: [currentUser.username],
+            username: currentUser.username
         }
         currentRoom = {
             'roomName':selectRoomName.value,
             'password': selectRoomPassword.value,
             'items':null,
-            'users': [currentUser.username],
-            'username': currentUser.username
+            'users': [currentUser.username]
         }
         socket.emit("newRoom", newRoomData);
         
