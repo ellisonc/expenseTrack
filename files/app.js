@@ -38,6 +38,9 @@ createNewRoomButton.onclick = createNewRoom;
 
 var mainHeaderDiv = document.getElementById("mainHeader");
 
+var logoutSelectRoomButton = document.getElementById("logoutSelectRoom");
+logoutSelectRoomButton.onclick = logout;
+
 //Setup page here
 selectRoomScreen.hidden = true;
 
