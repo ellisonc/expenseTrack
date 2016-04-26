@@ -233,7 +233,12 @@ db.once('open', function () {
                         'date': data.date,
                         'description': data.description
                     }
-                    tempRoom.items.push(tempItem);
+                    if (tempRoom.items == null) {
+                        tempRoom.items = [tempItem];
+                    }
+                    else {
+                        tempRoom.items.push(tempItem);
+                    }
                     tempRoom.save();
                     console.log("item saved successfully");
                 }
