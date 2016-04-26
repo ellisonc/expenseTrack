@@ -218,6 +218,27 @@ db.once('open', function () {
             });
         });
 
+        scoket.on('addItem', function (data) {
+            console.log("attemtp to add itme");
+            console.log(data);
+            Room.findOne({ 'roomName': data.roomName }, function (err, tempRoom) {
+                if (tempRoom == null) {
+                    console.log("error in adding item");
+                }
+                else {
+                    var tempItem = {
+                        'type': data.type,
+                        'creatorID': item.creatorID,
+                        'cost': item.cost,
+                        'date': item.date,
+                        'description': item.description
+                    }
+                    tempRoom.items.push(tempItem);
+                    tempRoom.save();
+                    console.log("item saved successfully");
+                }
+            });
+        });
 
     });
 });

@@ -424,7 +424,7 @@ function addItem() {
         item.description = description.value;
 
         //communicate with server to add the item
-        socket.emit('addItem', { type: item.type, creatorID: item.creatorID, cost: item.cost, date: item.date, description: item.description });
+        socket.emit('addItem', { type: item.type, creatorID: item.creatorID, cost: item.cost, date: item.date, description: item.description, roomName: currentRoom.roomName });
         console.log('emitted');
 
         expenses.push(item);
