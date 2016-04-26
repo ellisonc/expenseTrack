@@ -44,8 +44,7 @@ db.once('open', function () {
     var Item = mongoose.model('Item', itemSchema);
     console.log("initialized");
     
-    User.drop();
-    Room.drop();
+
     
     http.listen(8888);
     app.get('/', function (req, res) {
