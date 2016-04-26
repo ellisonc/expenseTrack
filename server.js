@@ -134,7 +134,8 @@ db.once('open', function () {
                 else if (tempRoom.password == data.password) {
                     console.log("login to room successful");
 
-                    console.log(tempRoom.users);
+                    console.log(data);
+                    console.log(tempRoom);
 
                     tempRoom.users.push(data.username);
                     tempRoom.userIDs.push(data.userID);
