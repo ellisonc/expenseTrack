@@ -113,9 +113,10 @@ db.once('open', function () {
                     console.log("login to room successful");
 
                     console.log(tempRoom.users);
-                    console.log(tempRoom.users[0]);
-                    tempRoom.users.push("asdf tester add name");
-                    console.log(tempRoom.users);
+
+                    tempRoom.users.push(data.username);
+                    tempRoom.save();
+
                     User.findOne({ 'username': data.username }, function (err, doc) {
                         doc.room = tempRoom.roomName;
 
