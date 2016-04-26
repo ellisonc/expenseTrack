@@ -208,11 +208,21 @@ function createNewRoom() {
             users : [currentUser.username]
         }
         socket.emit("newRoom", currentRoom);
+        
     }
     else {
         selectRoomErrorMessage.innerHTML = "Enter a valid room";
     }
 }
+
+socket.on("createRoomResponse", function (response) {
+    if (response) {
+
+    }
+    else {
+        selectRoomErrorMessage.innerHTML = "Room name already taken";
+    }
+});
 
 
 function switchToMainScreen() {

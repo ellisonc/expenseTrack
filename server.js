@@ -67,18 +67,26 @@ db.once('open', function () {
         });
 
         socket.on('newRoom', function (data) {
-            console.log("creating new room");
-            console.log(data);
-            var tempRoom = new Room({
-                roomName: data.roomName,
-                password: data.password,
-                items: data.items,
-                users: data.users
+            Room.count({ roomName: data.roomName }, function (err, count) {
+                if (count == 0) {
+                    console.log("creating new room");
+                    console.log(data);
+                    var tempRoom = new Room({
+                        roomName: data.roomName,
+                        password: data.password,
+                        items: data.items,
+                        users: data.users
+                    });
+                    tempRoom.save(function (err, tempRoom) {
+                        if (err) return console.error(err);
+                    });
+                    socket.emit("createRoomResponse", true);
+                }
+                else {
+                    socket.emit("createRoomResponse", false);
+                }
             });
-            tempRoom.save(function (err, tempRoom) {
-                if (err) return console.error(err);
-            });
-            console.log("created new room");
+
         });
 
         socket.on('checkNewUser', function (data) {
