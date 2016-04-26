@@ -39,8 +39,8 @@ createNewRoomButton.onclick = createNewRoom;
 
 //Setup page here
 selectRoomScreen.hidden = true;
-roomSelect.hidden = true;
-newRoomPage.hidden = true;
+
+
 mainPage.hidden = true;
 newUserScreen.hidden = true;
 var loginButton = document.getElementById("login");
@@ -55,17 +55,6 @@ createNewUserButton.onclick = createNewUser;
 var logoutButton = document.getElementById("logout");
 logoutButton.onclick = logout;
 
-var createRoomButton = document.getElementById("createRoom");
-createRoomButton.onclick = createRoom;
-
-var changeRoomButton = document.getElementById("changeRoom");
-changeRoomButton.onclick = changeRoom;
-
-var selectRoomButton = document.getElementById("selectRoomButton");
-selectRoomButton.onclick = selectRoom;
-
-var newRoomButton = document.getElementById("newRoomButton");
-newRoomButton.onclick = newRoom;
 
 var creatingExpense = true;
 
@@ -221,7 +210,7 @@ function createNewRoom() {
         socket.emit("newRoom", currentRoom);
     }
     else {
-        selectRoomErrorMessage.innerHTML "Enter a valid room";
+        selectRoomErrorMessage.innerHTML = "Enter a valid room";
     }
 }
 
