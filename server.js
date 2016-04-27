@@ -181,22 +181,6 @@ db.once('open', function () {
             });
         });
 
-        socket.on('getFirstRoomData', function (data) {
-            Room.findOne({ "roomName": data.roomName }, function (err, tempRoom) {
-                if (tempRoom == null) {
-                    console.log("this should never happen");
-                }
-                else {
-                    console.log("returning room data");
-                    socket.emit("returnFirstRoomData", {
-                        'roomName': tempRoom.roomName,
-                        'items': tempRoom.items,
-                        'users': tempRoom.users,
-                        'userIDs': tempRoom.userIDs
-                    });
-                }
-            });
-        });
 
         //try to login
         socket.on('loginAttempt', function (data) {
