@@ -360,7 +360,7 @@ function switchToMainScreen() {
     loginScreen.hidden = true;
     newUserScreen.hidden = true;
     inputUsernameField.innerHTML = "";
-    loginNameField.innerHTML = currentUser.username;
+    loginNameField.innerHTML = currentUser.firstName;
     mainHeaderDiv.innerHTML = "Room: " + currentRoom.roomName;
 
     var userList = document.getElementById("userList");
