@@ -10,17 +10,21 @@
 <body>
 
     <div id="main">
-        <div id="loginScreen">
+        <div id="loginScreen" class="inputScreen">
+            <div id="loginMessage">
+                Welcome to Expense Tracker
+            </div><br />
             Username:<br />
             <input type="text" id="username" /><br /><br />
             Password:<br />
             <input type="password" id="password" /><br /><br />
-            <button id="login">Login</button><br/><br/>
-            <button id="newUser">New User</button><br /><br />
+            <button id="login" class="inputButton">Login</button><br /><br/>
+            <button id="newUser" class="inputButton">New User</button><br /><br />
             <br /><br />
             <div id="loginErrorMessage" style="color:red"></div>
         </div>
-        <div id="newUserScreen">
+        <div id="newUserScreen" class="inputScreen">
+            <div style="font-size: xx-large">New User Login</div><br/>
             Username:<br />
             <input type="text" id="newUsername" /><br /><br />
             Password:<br />
@@ -28,11 +32,11 @@
             Screen Name: <br />
             <input type="text" id="firstName" /><br /><br />
 
-            <button id="createNewUser">Create new user</button>
-            <button id="backButton">Back</button>
+            <button id="createNewUser" class="inputButton">Create new user</button><br /><br />
+            <button id="backButton" class="inputButton">Back</button><br /><br />
             <div id="newUserErrorMessage" style="color:red"></div>
         </div>
-        <div id="selectRoomScreen">
+        <div id="selectRoomScreen" class="inputScreen">
             <div id="usernameHeader"></div><br />
             Room Name:<br />
             <input type="text" id="roomName" /><br /><br />
@@ -77,7 +81,7 @@
                 <div id="errorMessage" style="color:red"></div>
             </div>
 
-            
+
             <div id="tableHolder"></div>
             <br />
             <br />
