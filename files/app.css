@@ -54,6 +54,7 @@ tr{
     border-width:thin;
     width:110px;
     height:30px;
+    color:#ffffff;
     background-color: #3f51b5;
     -webkit-transition: width .2s;
     transition: width .2s;
