@@ -504,10 +504,10 @@ function addItem() {
 
 function compareExpenseDates(one, two) {
     if (one.date > two.date) {
-        return -1;
+        return 1;
     }
     if (one.date < two.date) {
-        return 1;
+        return -1;
     }
     return 0;
 }
