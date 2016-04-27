@@ -28,7 +28,7 @@ td{
 
 th{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color:#303F9F;
+    background-color:#607d8b;
     color:#ffffff;
     border:none;
     padding:0px;
@@ -138,6 +138,7 @@ tr{
     padding-top:20px;
     padding-bottom:20px;
     width:90%;
+    color:#ffffff;
     background-color: #3f51b5;
     -webkit-transition: width .2s;
     transition: width .2s;
