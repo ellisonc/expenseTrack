@@ -55,7 +55,7 @@ tr{
     border:solid;
     border-color:black;
     border-width:thin;
-    width:110px;
+    width:120px;
     height:30px;
     color:#ffffff;
     background-color: #3f51b5;
@@ -65,7 +65,7 @@ tr{
 }
 
 .inputButton:hover{
-    width:130px;
+    width:140px;
 }
 
 #loginMessage{
