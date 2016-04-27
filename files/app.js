@@ -290,11 +290,11 @@ socket.on("roomLoginResponse", function (response) {
     if (response.result) {
         selectRoomName.value = "";
         selectRoomPassword.value = "";
-        currentUser.room = currentRoom.roomName;//used to be currentRoom.roomname
-        socket.emit('getRoomData', {
+        currentUser.room = currentRoom.roomName;
+        socket.emit('getRoomData', {//switched from getRoomData
             "roomName": currentUser.room
         });
-        switchToMainScreen();
+        //switchToMainScreen();
     }
     else {
         selectRoomErrorMessage.innerHTML = response.error;
