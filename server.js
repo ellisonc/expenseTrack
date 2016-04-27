@@ -81,7 +81,7 @@ db.once('open', function () {
                 else {
                     console.log("emit false");
                     socket.emit("createUserResponse", {
-                        'success': true,
+                        'success': false,
                     });
                 }
             });
